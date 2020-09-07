@@ -1,0 +1,9 @@
+.rando-box {
+	/* position: fixed; */
+	margin-left: 30px;
+	border: #59236e 2px solid;
+	border-radius: 4px;
+	height: 300px;
+	width: 250px;
+	margin-top: 5px;
+}

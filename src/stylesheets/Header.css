@@ -1,0 +1,25 @@
+.header {
+	width: 100%;
+	position: fixed;
+	background-color: #59236e;
+}
+
+.header-flex-container {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+
+#plumm-title {
+	color: #ffffff;
+	/* color: #59236e; */
+	font-family: "Ultra", serif;
+	font-weight: 100;
+	margin: 0;
+	padding: 0;
+	margin-left: 10px;
+}
+
+.header button {
+	padding: 5px 10px;
+}
