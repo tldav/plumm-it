@@ -15,9 +15,29 @@ connection.connect((err) => {
 });
 
 const db = {
-	all: () => {
+	allUsers: () => {
 		return new Promise((resolve, reject) => {
-			connection.query(`SELECT * FROM temp`, (err, results) => {
+			connection.query(`SELECT * FROM users`, (err, results) => {
+				if (err) {
+					return reject(err);
+				}
+				return resolve(results);
+			});
+		});
+	},
+	allThreads: () => {
+		return new Promise((resolve, reject) => {
+			connection.query(`SELECT * FROM threads`, (err, results) => {
+				if (err) {
+					return reject(err);
+				}
+				return resolve(results);
+			});
+		});
+	},
+	allComments: () => {
+		return new Promise((resolve, reject) => {
+			connection.query(`SELECT * FROM comments`, (err, results) => {
 				if (err) {
 					return reject(err);
 				}
