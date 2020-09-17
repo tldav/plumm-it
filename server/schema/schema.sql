@@ -30,6 +30,7 @@ CREATE TABLE comments(
 	comment_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     user_id INT UNSIGNED NOT NULL,
     thread_id INT UNSIGNED NOT NULL,
+    parent_comment INT UNSIGNED NOT NULL,
     body TEXT NOT NULL,
     created_at DATETIME NOT NULL,
     upvotes INT DEFAULT 0,
