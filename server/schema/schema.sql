@@ -30,12 +30,13 @@ CREATE TABLE comments(
 	comment_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     user_id INT UNSIGNED NOT NULL,
     thread_id INT UNSIGNED NOT NULL,
-    parent_comment INT UNSIGNED NOT NULL,
+    parent_comment_id INT UNSIGNED NOT NULL,
     body TEXT NOT NULL,
     created_at DATETIME NOT NULL,
     upvotes INT DEFAULT 0,
     downvotes INT DEFAULT 0,
     FOREIGN KEY(user_id) REFERENCES users(user_id),
     FOREIGN KEY(thread_id) REFERENCES threads(thread_id),
+    FOREIGN KEY(parent_comment_id) REFERENCES comments(comment_id)
     PRIMARY KEY (comment_id)
 );
