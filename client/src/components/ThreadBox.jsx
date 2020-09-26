@@ -14,12 +14,24 @@ const ThreadBox = (props) => {
       <h3>{props.threadTitle}</h3>
       <p>{props.body}</p>
       <div id="iconDiv">
-        <ThumbUpOutlinedIcon fontSize="small" />
-        <span className="threadIcon">{props.upvotes}</span>
-        <ThumbDownOutlinedIcon fontSize="small" />
-        <span className="threadIcon">{props.downvotes}</span>
-        <ChatBubbleOutlineTwoToneIcon fontSize="small" />
-        <span>{props.comments}</span>
+        <ThumbUpOutlinedIcon
+          className="icon"
+          fontSize="small"
+          onClick={() => console.log("add upvote to state")}
+        />
+        <span className="iconCount">{props.upvotes}</span>
+        <ThumbDownOutlinedIcon
+          className="icon"
+          fontSize="small"
+          onClick={() => console.log("add downvote to state")}
+        />
+        <span className="iconCount">{props.downvotes}</span>
+        <ChatBubbleOutlineTwoToneIcon
+          className="icon"
+          fontSize="small"
+          onClick={() => console.log("open comment threads")}
+        />
+        <span className="iconCount">{props.comments}</span>
       </div>
     </div>
   );

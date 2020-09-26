@@ -1,13 +1,11 @@
 import React from "react";
 import ThreadBox from "../components/ThreadBox";
 import RandoBox from "../components/RandoBox";
-import Header from "../components/Header";
 import threadContents from "../thread-contents.js";
 
 const Home = () => {
   return (
     <div className="app-container ">
-      <Header />
       <div className="left"></div>
       <div className="mid">
         <div className="threads">
