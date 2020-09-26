@@ -1,0 +1,15 @@
+#authorDiv {
+  color: #59236e;
+}
+#author {
+  margin-right: 10px;
+  color: black;
+}
+.threadIcon {
+  margin-right: 15px;
+}
+#iconDiv {
+  display: flex;
+  align-items: center;
+  color: #59236e;
+}
