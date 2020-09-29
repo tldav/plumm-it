@@ -2,7 +2,7 @@ const threadContents = [
   {
     id: 1,
     author: "Shape_Shifting_Jesus_32",
-    threadTitle: "Thread Title",
+    threadTitle: "California will house transgender inmates by gender identity",
     createdAt: "2 hours ago",
     upvotes: 12,
     downvotes: 1,
@@ -13,7 +13,8 @@ const threadContents = [
   {
     id: 2,
     author: "Not Nick Wuerz",
-    threadTitle: "Thread Title",
+    threadTitle:
+      "Louisville protesters march past curfew over Breonna Taylor decision",
     createdAt: "12 hours ago",
     upvotes: 10,
     downvotes: 4,
@@ -24,7 +25,7 @@ const threadContents = [
   {
     id: 3,
     author: "Not Nick Wuerz",
-    threadTitle: "Thread Title",
+    threadTitle: "6-year-old boy dies after suffering from brain-eating amoeba",
     createdAt: "1 day ago",
     upvotes: 8,
     downvotes: 3,
