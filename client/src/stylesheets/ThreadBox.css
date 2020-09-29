@@ -1,0 +1,26 @@
+#authorDiv {
+  color: #59236e;
+}
+
+#author {
+  margin-right: 10px;
+  color: black;
+}
+
+.iconCount {
+  margin-right: 15px;
+  margin-left: 5px;
+  color: black;
+}
+
+.icon:hover {
+  color: #2f6e23;
+  background-color: #caa8d8;
+}
+
+#iconDiv {
+  display: flex;
+  align-items: center;
+  color: #59236e;
+  margin-top: 15px;
+}
