@@ -1,7 +1,6 @@
 import React from "react";
-import ThreadBox from "../components/ThreadBox";
 import RandoBox from "../components/RandoBox";
-import threadContents from "../thread-contents.js";
+import ThreadContainer from "../containers/ThreadContainer";
 
 const Home = () => {
   return (
@@ -9,20 +8,7 @@ const Home = () => {
       <div className="left"></div>
       <div className="mid">
         <div className="threads">
-          {threadContents.map((thread) => {
-            return (
-              <ThreadBox
-                key={thread.id}
-                author={thread.author}
-                body={thread.body}
-                threadTitle={thread.threadTitle}
-                date={thread.createdAt}
-                upvotes={thread.upvotes}
-                downvotes={thread.downvotes}
-                comments={thread.comments}
-              />
-            );
-          })}
+          <ThreadContainer />
         </div>
       </div>
       <div className="right">

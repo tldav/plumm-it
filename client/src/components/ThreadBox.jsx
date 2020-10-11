@@ -1,39 +1,28 @@
 import React from "react";
-import ThumbUpOutlinedIcon from "@material-ui/icons/ThumbUpOutlined";
-import ThumbDownOutlinedIcon from "@material-ui/icons/ThumbDownOutlined";
-import ChatBubbleOutlineTwoToneIcon from "@material-ui/icons/ChatBubbleOutlineTwoTone";
+import Upvote from "../components/Upvote";
+import Downvote from "../components/Downvote";
+import Comment from "../components/Comment";
 import "../stylesheets/ThreadBox.css";
 
-const ThreadBox = (props) => {
+const ThreadBox = ({ threads }) => {
   return (
-    <div className="stage">
-      <p id="authorDiv">
-        <span id="author">{props.author}</span>
-        {props.date}
-      </p>
-      <h3>{props.threadTitle}</h3>
-      <p>{props.body}</p>
-      <div id="iconDiv">
-        <ThumbUpOutlinedIcon
-          className="icon"
-          fontSize="small"
-          onClick={() => console.log("add upvote to state")}
-        />
-        <span className="iconCount">{props.upvotes}</span>
-        <ThumbDownOutlinedIcon
-          className="icon"
-          fontSize="small"
-          onClick={() => console.log("add downvote to state")}
-        />
-        <span className="iconCount">{props.downvotes}</span>
-        <ChatBubbleOutlineTwoToneIcon
-          className="icon"
-          fontSize="small"
-          onClick={() => console.log("open comment threads")}
-        />
-        <span className="iconCount">{props.comments}</span>
-      </div>
-    </div>
+    <>
+      {threads.map((thread) => (
+        <div key={thread.id} {...thread} className="stage">
+          <p id="authorDiv">
+            <span id="author">{thread.author}</span>
+            {thread.date}
+          </p>
+          <h3>{thread.title}</h3>
+          <p>{thread.body}</p>
+          <div id="iconDiv">
+            <Upvote upvotes={thread.upvotes} />
+            <Downvote downvotes={thread.downvotes} />
+            <Comment comments={thread.comments} />
+          </div>
+        </div>
+      ))}
+    </>
   );
 };
 
