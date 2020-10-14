@@ -1,14 +1,11 @@
 import React from "react";
-import ThumbUpOutlinedIcon from "@material-ui/icons/ThumbUpOutlined";
+import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
+import "../stylesheets/Upvote.css";
 
-const Upvote = ({ upvotes }) => {
+const Upvote = ({ upvotes, onClick }) => {
   return (
     <>
-      <ThumbUpOutlinedIcon
-        className="icon"
-        fontSize="small"
-        // onClick={onClick}
-      />
+      <ArrowUpwardIcon className="icon" fontSize="small" onClick={onClick} />
       <span className="iconCount">{upvotes}</span>
     </>
   );

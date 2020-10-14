@@ -1,6 +1,6 @@
 import React from "react";
 import RandoBox from "../components/RandoBox";
-import ThreadContainer from "../containers/ThreadContainer";
+import ThreadPreviews from "../containers/ThreadPreviews";
 
 const Home = () => {
   return (
@@ -8,7 +8,7 @@ const Home = () => {
       <div className="left"></div>
       <div className="mid">
         <div className="threads">
-          <ThreadContainer />
+          <ThreadPreviews />
         </div>
       </div>
       <div className="right">

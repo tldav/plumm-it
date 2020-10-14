@@ -1,26 +1,39 @@
-#authorDiv {
+#threadHeader {
   color: #59236e;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 4px;
 }
 
-#author {
-  margin-right: 10px;
-  color: black;
+#avatar {
+  margin-right: 5px;
+  height: 20px;
+  width: 20px;
 }
 
-.iconCount {
-  margin-right: 15px;
-  margin-left: 5px;
-  color: black;
+#user {
+  color: #666;
 }
 
-.icon:hover {
-  color: #2f6e23;
-  background-color: #caa8d8;
+#category {
+  font-weight: bold;
+  margin-right: 4px;
 }
 
 #iconDiv {
   display: flex;
   align-items: center;
-  color: #59236e;
-  margin-top: 15px;
+  color: #666;
+  margin: 4px;
 }
+
+#preview {
+  cursor: pointer;
+}
+
+/* .icon:hover {
+  color: blue;
+  font-size: 21px;
+  cursor: pointer;
+} */

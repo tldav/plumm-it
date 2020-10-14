@@ -1,32 +1,35 @@
 [
   {
     "id": 1,
-    "author": "Shape_Shifting_Jesus_32",
+    "author": "ShapeShiftingJesus_22",
     "title": "California will house transgender inmates by gender entity",
     "date": "2 hours ago",
     "upvotes": 12,
     "downvotes": 1,
     "comments": 1,
+    "category": "news",
     "body": "A shadow government with assistance from Mooninites assassinated JFK after he announced plans to invade the moon during his speech at Rice University. "
   },
   {
     "id": 2,
-    "author": "Not Nick Wuerz",
+    "author": "shookqueen",
     "title": "Louisville protesters march past curfew over Breonna Taylor decision",
     "date": "12 hours ago",
     "upvotes": 10,
     "downvotes": 4,
     "comments": 2,
+    "category": "conspiracies",
     "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, inventore alias possimus, porro laboriosam molestias ratione, at dolore error aliquam minus illum ducimus. Architecto sint distinctio maxime quisquam tenetur error. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores vel perferendis eius voluptatem omnis! Amet consequatur blanditiis qui nemo maxime temporibus similique eum voluptates esse, necessitatibus ducimus alias eveniet possimus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore illum amet repudiandae ab porro fugiat blanditiis. Exercitationem perferendis consectetur repudiandae eligendi nesciunt qui dolore, dolorum inventore similique impedit, earum eum. Lorem ipsum dolor sit amet consectetur adipisicing elit. In natus voluptas quasi nostrum. Commodi saepe in molestiae velit deleniti temporibus sunt dolorem molestias architecto? Modi, ea possimus. Voluptates, rem quisquam?"
   },
   {
     "id": 3,
-    "author": "Not Nick Wuerz",
+    "author": "wokeTortoise",
     "title": "6-year-old boy dies after suffering from brain-eating amoeba",
     "date": "1 day ago",
     "upvotes": 8,
     "downvotes": 3,
     "comments": 5,
+    "category": "technology",
     "body": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, facere! Saepe quasi fugiat dolorem animi sed deleniti explicabo distinctio, expedita neque molestias praesentium dignissimos blanditiis voluptatibus facilis id pariatur eligendi."
   }
 ]

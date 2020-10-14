@@ -1,14 +1,10 @@
 import React from "react";
-import ThumbDownOutlinedIcon from "@material-ui/icons/ThumbDownOutlined";
+import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 
-const Downvote = ({ downvotes }) => {
+const Downvote = ({ downvotes, onClick }) => {
   return (
     <>
-      <ThumbDownOutlinedIcon
-        className="icon"
-        fontSize="small"
-        // onClick={addDownVote}
-      />
+      <ArrowDownwardIcon className="icon" fontSize="small" onClick={onClick} />
       <span className="iconCount">{downvotes}</span>
     </>
   );

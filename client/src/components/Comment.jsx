@@ -1,14 +1,10 @@
 import React from "react";
-import ChatBubbleOutlineTwoToneIcon from "@material-ui/icons/ChatBubbleOutlineTwoTone";
+import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 
-const Comment = ({ comments }) => {
+const Comment = ({ comments, onClick }) => {
   return (
     <>
-      <ChatBubbleOutlineTwoToneIcon
-        className="icon"
-        fontSize="small"
-        // onClick={() => console.log("open comment threads")}
-      />
+      <ChatBubbleIcon className="icon" fontSize="small" onClick={onClick} />
       <span className="iconCount">{comments}</span>
     </>
   );

@@ -1,0 +1,10 @@
+#inputRoot {
+  display: flex;
+  align-items: center;
+  padding: 2px 4px;
+}
+
+#divider {
+  height: 28px;
+  margin: 4px;
+}
