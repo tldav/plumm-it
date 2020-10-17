@@ -1,40 +1,49 @@
 import React from "react";
-import ThumbUpOutlinedIcon from "@material-ui/icons/ThumbUpOutlined";
-import ThumbDownOutlinedIcon from "@material-ui/icons/ThumbDownOutlined";
-import ChatBubbleOutlineTwoToneIcon from "@material-ui/icons/ChatBubbleOutlineTwoTone";
+import Upvote from "../components/Upvote";
+import Downvote from "../components/Downvote";
+import Comment from "../components/Comment";
 import "../stylesheets/ThreadBox.css";
+import { useHistory, withRouter } from "react-router-dom";
+import { Avatar } from "@material-ui/core";
 
-const ThreadBox = (props) => {
+const ThreadBox = ({ threads, onClick }) => {
+  let history = useHistory();
+
+  const handleClick = (thread) => {
+    let threadRoute = `/p/${thread.category}/${thread.title
+      .trim()
+      .split(" ")
+      .join("_")}`;
+    onClick(thread, threadRoute);
+    history.push(`${threadRoute}`);
+  };
+
   return (
-    <div className="stage">
-      <p id="authorDiv">
-        <span id="author">{props.author}</span>
-        {props.date}
-      </p>
-      <h3>{props.threadTitle}</h3>
-      <p>{props.body}</p>
-      <div id="iconDiv">
-        <ThumbUpOutlinedIcon
-          className="icon"
-          fontSize="small"
-          onClick={() => console.log("add upvote to state")}
-        />
-        <span className="iconCount">{props.upvotes}</span>
-        <ThumbDownOutlinedIcon
-          className="icon"
-          fontSize="small"
-          onClick={() => console.log("add downvote to state")}
-        />
-        <span className="iconCount">{props.downvotes}</span>
-        <ChatBubbleOutlineTwoToneIcon
-          className="icon"
-          fontSize="small"
-          onClick={() => console.log("open comment threads")}
-        />
-        <span className="iconCount">{props.comments}</span>
-      </div>
-    </div>
+    <>
+      {threads.map((thread) => (
+        <div
+          key={thread.id}
+          {...thread}
+          onClick={() => handleClick(thread)}
+          className="stage"
+          id="preview"
+        >
+          <div id="threadHeader">
+            <Avatar id="avatar" src={`/static/images/${thread.category}.jpg`} />
+            <span id="category">p/{thread.category}</span>
+            <span id="user">{`• ${thread.author} ${thread.date}`}</span>
+          </div>
+          <h3>{thread.title}</h3>
+          <p>{thread.body}</p>
+          <div id="iconDiv">
+            <Upvote upvotes={thread.upvotes} />
+            <Downvote downvotes={thread.downvotes} />
+            <Comment comments={thread.comments} />
+          </div>
+        </div>
+      ))}
+    </>
   );
 };
 
-export default ThreadBox;
+export default withRouter(ThreadBox);
