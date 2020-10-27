@@ -2,7 +2,7 @@ import React from "react";
 import { Paper, InputBase, Divider, IconButton } from "@material-ui/core";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import LinkIcon from "@material-ui/icons/Link";
-import "../stylesheets/input.css";
+import "../stylesheets/Input.css";
 
 const Input = () => {
   return (

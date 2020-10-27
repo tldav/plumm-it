@@ -1,11 +1,13 @@
 import React from "react";
 import Upvote from "../components/Upvote";
 import Downvote from "../components/Downvote";
-import Comment from "../components/Comment";
+import CommentIcon from "../components/CommentIcon";
 import Avatar from "@material-ui/core/Avatar";
 import Input from "../components/Input";
+import ThreadComments from "../containers/ThreadComments";
 
 const FeaturedThreadBox = ({
+  id,
   author,
   date,
   title,
@@ -24,13 +26,14 @@ const FeaturedThreadBox = ({
       </div>
       <h3>{title}</h3>
       <p>{body}</p>
-      <div id="iconDiv">
+      <div style={{ marginBottom: "30px" }} id="iconDiv">
         <Upvote upvotes={upvotes} />
         <Downvote downvotes={downvotes} />
-        <Comment comments={comments} />
+        <CommentIcon comments={comments} />
       </div>
-      <hr style={{ marginTop: "15px", marginBottom: "15px" }} />
       <Input />
+      <hr style={{ marginTop: "40px", marginBottom: "40px" }} />
+      <ThreadComments threadId={id} />
     </div>
   );
 };

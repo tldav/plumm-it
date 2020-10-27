@@ -1,25 +1,23 @@
-{
-  "categories": [
-    {
-      "id": 1,
-      "name": "news",
-      "image": "/images/news.jpg",
-      "description": "/p/news is: real news articles, primarily but not exclusively, news relating to the United States and the rest of the World. /p/news isn't: editorials, commercials, political minutiae, shouting, justin bieber updates, kitty pictures.",
-      "members": 911
-    },
-    {
-      "id": 2,
-      "name": "conspiracies",
-      "image": "/images/conspiracies.png",
-      "description": "dedicated to exploring a wide range of unconventional, suppressed, & esoteric topics with the brightest minds for our troubled times.",
-      "members": 666
-    },
-    {
-      "id": 3,
-      "name": "technology",
-      "image": "/images/technology.jpg",
-      "description": " dedicated to the news and discussions about the creation and use of technology and its surrounding issues.",
-      "members": 33
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "name": "news",
+    "image": "/images/news.jpg",
+    "description": "/p/news is: real news articles, primarily but not exclusively, news relating to the United States and the rest of the World. /p/news isn't: editorials, commercials, political minutiae, shouting, justin bieber updates, kitty pictures.",
+    "members": 911
+  },
+  {
+    "id": 2,
+    "name": "conspiracies",
+    "image": "/images/conspiracies.png",
+    "description": "dedicated to exploring a wide range of unconventional, suppressed, & esoteric topics with the brightest minds for our troubled times.",
+    "members": 666
+  },
+  {
+    "id": 3,
+    "name": "technology",
+    "image": "/images/technology.jpg",
+    "description": " dedicated to the news and discussions about the creation and use of technology and its surrounding issues.",
+    "members": 33
+  }
+]
