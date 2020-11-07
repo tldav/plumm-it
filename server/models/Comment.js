@@ -27,7 +27,27 @@ module.exports = {
 			});
 		});
 	},
-	upvote: () => {},
-	downvote: () => {},
+	upvote: (id) => {
+		const sql = `CALL upvoteComment(${id})`;
+		return new Promise((resolve, reject) => {
+			connection.query(sql, (err, results) => {
+				if (err) {
+					return reject(err);
+				}
+				return resolve(results);
+			});
+		});
+	},
+	downvote: (id) => {
+		const sql = `CALL downvoteComment(${id})`;
+		return new Promise((resolve, reject) => {
+			connection.query(sql, (err, results) => {
+				if (err) {
+					return reject(err);
+				}
+				return resolve(results);
+			});
+		});
+	},
 	delete: () => {}
 };

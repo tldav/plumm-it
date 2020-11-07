@@ -68,6 +68,34 @@ CREATE TABLE users
             (comment_id)
 );
 
+CREATE TABLE upvotes
+(
+    upvote_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    user_id INT UNSIGNED NOT NULL,
+    thread_id INT UNSIGNED,
+    comment_id INT UNSIGNED,
+    FOREIGN KEY (user_id) REFERENCES users (user_id),
+    FOREIGN KEY (thread_id) REFERENCES threads (thread_id),
+    FOREIGN KEY (comment_id) REFERENCES comments (comment_id),
+    UNIQUE thread_index(user_id, thread_id),
+    UNIQUE comment_index(user_id, comment_id),
+    PRIMARY KEY (upvote_id)
+);
+
+CREATE TABLE downvotes
+(
+    downvote_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    user_id INT UNSIGNED NOT NULL,
+    thread_id INT UNSIGNED,
+    comment_id INT UNSIGNED,
+    FOREIGN KEY (user_id) REFERENCES users (user_id),
+    FOREIGN KEY (thread_id) REFERENCES threads (thread_id),
+    FOREIGN KEY (comment_id) REFERENCES comments (comment_id),
+    UNIQUE thread_index(user_id, thread_id),
+    UNIQUE comment_index(user_id, comment_id),
+    PRIMARY KEY (downvote_id)
+);
+
 DELIMITER //
 
 CREATE PROCEDURE getAllThreads()
@@ -230,6 +258,74 @@ CREATE PROCEDURE updateComment(param_comment_id INT, param_body TEXT)
 BEGIN
 
     UPDATE comments SET body = param_body, is_edited = TRUE
+    WHERE comment_id = param_comment_id
+    LIMIT 1;
+
+
+END
+//
+
+
+
+
+DELIMITER //
+
+CREATE PROCEDURE upvoteThread(param_thread_id INT)
+
+BEGIN
+
+	UPDATE threads SET upvotes = upvotes + 1
+    WHERE thread_id = param_thread_id
+    LIMIT 1;
+
+
+END
+//
+
+
+
+
+DELIMITER //
+
+CREATE PROCEDURE downvoteThread(param_thread_id INT)
+
+BEGIN
+
+	UPDATE threads SET downvotes = downvotes + 1
+    WHERE thread_id = param_thread_id
+    LIMIT 1;
+
+
+END
+//
+
+
+
+
+DELIMITER //
+
+CREATE PROCEDURE upvoteComment(param_comment_id INT)
+
+BEGIN
+
+	UPDATE comments SET upvotes = upvotes + 1
+    WHERE comment_id = param_comment_id
+    LIMIT 1;
+
+
+END
+//
+
+
+
+
+DELIMITER //
+
+CREATE PROCEDURE downvoteComment(param_comment_id INT)
+
+BEGIN
+
+	UPDATE comments SET downvotes = downvotes + 1
     WHERE comment_id = param_comment_id
     LIMIT 1;
 

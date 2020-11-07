@@ -31,4 +31,27 @@ router.put("/:id", async (req, res) => {
 	}
 });
 
+router.put("/upvote/:id", async (req, res) => {
+	const id = req.params.id;
+
+	try {
+		let upvote = await db.Comment.upvote(id);
+		res.json(upvote);
+	} catch (err) {
+		console.log(err);
+		res.status(500).json(err);
+	}
+});
+
+router.put("/downvote/:id", async (req, res) => {
+	const id = req.params.id;
+
+	try {
+		let downvote = await db.Comment.downvote(id);
+		res.json(downvote);
+	} catch (err) {
+		console.log(err);
+		res.status(500).json(err);
+	}
+});
 module.exports = router;

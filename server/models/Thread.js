@@ -56,7 +56,27 @@ module.exports = {
 			});
 		});
 	},
-	upvote: () => {},
-	downvote: () => {},
+	upvote: (id) => {
+		const sql = `CALL upvoteThread(${id})`;
+		return new Promise((resolve, reject) => {
+			connection.query(sql, (err, results) => {
+				if (err) {
+					return reject(err);
+				}
+				return resolve(results);
+			});
+		});
+	},
+	downvote: (id) => {
+		const sql = `CALL downvoteThread(${id})`;
+		return new Promise((resolve, reject) => {
+			connection.query(sql, (err, results) => {
+				if (err) {
+					return reject(err);
+				}
+				return resolve(results);
+			});
+		});
+	},
 	delete: () => {}
 };
