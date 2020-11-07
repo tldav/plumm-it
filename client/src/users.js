@@ -11,7 +11,7 @@ const users = [
         email: "test@asdfasdf.com",
         firstName: "Jospeh",
         lastName: "Rogane",
-        online: false 
+        online: false
     },
     {
         id: 3,
