@@ -236,3 +236,71 @@ BEGIN
 
 END
 //
+
+
+
+
+DELIMITER //
+
+CREATE PROCEDURE upvoteThread(param_thread_id INT)
+
+BEGIN
+
+	UPDATE threads SET upvotes = upvotes + 1
+    WHERE thread_id = param_thread_id
+    LIMIT 1;
+
+
+END
+//
+
+
+
+
+DELIMITER //
+
+CREATE PROCEDURE downvoteThread(param_thread_id INT)
+
+BEGIN
+
+	UPDATE threads SET downvotes = downvotes + 1
+    WHERE thread_id = param_thread_id
+    LIMIT 1;
+
+
+END
+//
+
+
+
+
+DELIMITER //
+
+CREATE PROCEDURE upvoteComment(param_comment_id INT)
+
+BEGIN
+
+	UPDATE comments SET upvotes = upvotes + 1
+    WHERE comment_id = param_comment_id
+    LIMIT 1;
+
+
+END
+//
+
+
+
+
+DELIMITER //
+
+CREATE PROCEDURE downvoteComment(param_comment_id INT)
+
+BEGIN
+
+	UPDATE comments SET downvotes = downvotes + 1
+    WHERE comment_id = param_comment_id
+    LIMIT 1;
+
+
+END
+//
