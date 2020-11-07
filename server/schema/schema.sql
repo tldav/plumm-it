@@ -68,34 +68,6 @@ CREATE TABLE users
             (comment_id)
 );
 
-CREATE TABLE upvotes
-(
-    upvote_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    user_id INT UNSIGNED NOT NULL,
-    thread_id INT UNSIGNED,
-    comment_id INT UNSIGNED,
-    FOREIGN KEY (user_id) REFERENCES users (user_id),
-    FOREIGN KEY (thread_id) REFERENCES threads (thread_id),
-    FOREIGN KEY (comment_id) REFERENCES comments (comment_id),
-    UNIQUE thread_index(user_id, thread_id),
-    UNIQUE comment_index(user_id, comment_id),
-    PRIMARY KEY (upvote_id)
-);
-
-CREATE TABLE downvotes
-(
-    downvote_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    user_id INT UNSIGNED NOT NULL,
-    thread_id INT UNSIGNED,
-    comment_id INT UNSIGNED,
-    FOREIGN KEY (user_id) REFERENCES users (user_id),
-    FOREIGN KEY (thread_id) REFERENCES threads (thread_id),
-    FOREIGN KEY (comment_id) REFERENCES comments (comment_id),
-    UNIQUE thread_index(user_id, thread_id),
-    UNIQUE comment_index(user_id, comment_id),
-    PRIMARY KEY (downvote_id)
-);
-
 DELIMITER //
 
 CREATE PROCEDURE getAllThreads()
