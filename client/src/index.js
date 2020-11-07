@@ -10,7 +10,7 @@ const store = createStore(reducer);
 
 render(
   <Provider store={store}>
-    {console.log(store.getState())}
+    {console.log("Initial State: ", store.getState())}
     <Router>
       <App />
     </Router>

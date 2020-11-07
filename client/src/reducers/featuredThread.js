@@ -1,4 +1,4 @@
-export default (state = { featuredThread: "test", threadRoute: "/test" }, action) => {
+export default (state = { }, action) => {
     switch (action.type) {
         case "SET_FEATURED_THREAD":
             return {

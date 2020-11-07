@@ -1,10 +1,10 @@
 import React from "react";
 import Upvote from "../components/Upvote";
 import Downvote from "../components/Downvote";
-import Comment from "../components/Comment";
-import "../stylesheets/ThreadBox.css";
+import CommentIcon from "../components/CommentIcon";
 import { useHistory, withRouter } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
+import "../stylesheets/ThreadBox.css";
 
 const ThreadBox = ({ threads, onClick }) => {
   let history = useHistory();
@@ -38,7 +38,7 @@ const ThreadBox = ({ threads, onClick }) => {
           <div id="iconDiv">
             <Upvote upvotes={thread.upvotes} />
             <Downvote downvotes={thread.downvotes} />
-            <Comment comments={thread.comments} />
+            <CommentIcon comments={thread.comments} />
           </div>
         </div>
       ))}

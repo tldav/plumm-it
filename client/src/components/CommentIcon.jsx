@@ -1,7 +1,7 @@
 import React from "react";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 
-const Comment = ({ comments, onClick }) => {
+const CommentIcon = ({ comments, onClick }) => {
   return (
     <>
       <ChatBubbleIcon className="icon" fontSize="small" onClick={onClick} />
@@ -10,4 +10,4 @@ const Comment = ({ comments, onClick }) => {
   );
 };
 
-export default Comment;
+export default CommentIcon;

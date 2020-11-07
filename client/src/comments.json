@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "userId": 3,
+    "threadId": 1,
+    "parentCommentId": null,
+    "body": "In natus voluptas quasi nostrum. Commodi saepe in molestiae velit deleniti temporibus suntconsectetur, adipisicing elit. Maiores vel perferendis eius voluptatem omnis!",
+    "createdAt": "2020-07-19 07:16:08",
+    "upvotes": 12,
+    "downvotes": 5
+  },
+  {
+    "id": 2,
+    "userId": 4,
+    "threadId": 2,
+    "parentCommentId": null,
+    "body": "I don't believe retirement is included in the contract, Because then the contract would expire. If we rush at this time there will be fitting results, you are right. The supervisor is a fool.",
+    "createdAt": "2020-04-21 10:35:11",
+    "upvotes": 44,
+    "downvotes": 11
+  },
+  {
+    "id": 3,
+    "userId": 1,
+    "threadId": 3,
+    "parentCommentId": null,
+    "body": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+    "createdAt": "2020-08-21 10:35:11",
+    "upvotes": 7,
+    "downvotes": 30
+  }
+]
