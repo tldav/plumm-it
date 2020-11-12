@@ -23,6 +23,17 @@ module.exports = {
 			});
 		});
 	},
+	findCategoryThreads: (id) => {
+		const sql = `CALL getCategoryThreads(${id})`;
+		return new Promise((resolve, reject) => {
+			connection.query(sql, (err, results) => {
+				if (err) {
+					return reject(err);
+				}
+				return resolve(results);
+			});
+		});
+	},
 	findThreadComments: (id) => {
 		const sql = `CALL getThreadComments(${id})`;
 		return new Promise((resolve, reject) => {
@@ -34,15 +45,19 @@ module.exports = {
 			});
 		});
 	},
-	create: (title, body, userId) => {
-		const sql = `CALL createThread(?, ?, ?)`;
+	create: (title, body, userId, categoryId) => {
+		const sql = `CALL createThread(?, ?, ?, ?)`;
 		return new Promise((resolve, reject) => {
-			connection.query(sql, [title, body, userId], (err, results) => {
-				if (err) {
-					return reject(err);
+			connection.query(
+				sql,
+				[title, body, userId, categoryId],
+				(err, results) => {
+					if (err) {
+						return reject(err);
+					}
+					return resolve(results);
 				}
-				return resolve(results);
-			});
+			);
 		});
 	},
 	update: (id, title, body) => {

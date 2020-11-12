@@ -4,20 +4,33 @@ INSERT INTO users
     (user_id, email, username, first_name, last_name, user_password, created_at)
 
 VALUES
-    (1, "dave@email.com", "nameisDave", "Dave", "Davey", "password1", "2020-08-22 14:22:44"),
-    (2, "nwuerz@potato.com", "TruthLives", "Nick", "Wuerz", "password2", "2020-03-22 08:19:28"),
-    (3, "trucknuts69@murica.com", "everTrumper", "Buck", "White", "password3", "2018-05-12 14:27:09"),
-    (4, "sallystruthers@gmail.com", "SuperSayainSix", "Blue", "Sadness", "password4", "2014-12-29 01:34:56");
+    (1, "dave@email.com", "nameisDave", "Dave", "Davey", "password", "2020-08-22 14:22:44"),
+    (2, "nwuerz@potato.com", "TruthLives", "Nick", "Wuerz", "password", "2020-03-22 08:19:28"),
+    (3, "trucknuts69@murica.com", "everTrumper", "Buck", "White", "password", "2018-05-12 14:27:09"),
+    (4, "sallystruthers@gmail.com", "SuperSayainSix", "Blue", "Sadness", "password", "2014-12-29 01:34:56");
 
-INSERT INTO threads
-    (thread_id, user_id, title, body, created_at, upvotes, downvotes)
+INSERT INTO categories
+    (category_id, category_name, user_id)
 
 VALUES
-    (1, 4, "The world is ending", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, inventore alias possimus, porro laboriosam molestias ratione, at dolore error aliquam minus illum ducimus. Architecto sint distinctio maxime quisquam tenetur error. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores vel perferendis eius voluptatem omnis! Amet consequatur blanditiis qui nemo maxime temporibus similique eum voluptates esse, necessitatibus ducimus alias eveniet possimus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore illum amet repudiandae ab porro fugiat blanditiis. Exercitationem perferendis consectetur repudiandae eligendi nesciunt qui dolore, dolorum inventore similique impedit, earum eum. Lorem ipsum dolor sit amet consectetur adipisicing elit. In natus voluptas quasi nostrum. Commodi saepe in molestiae velit deleniti temporibus sunt dolorem molestias architecto? Modi, ea possimus. Voluptates, rem quisquam?", "2017-01-18 07:37:40", 17, 208
+    (1, "News", 1),
+    (2, "Sports", 1),
+    (3, "Technology", 1),
+    (4, "Gaming", 1),
+    (5, "Movies", 1),
+    (6, "Books", 1),
+    (7, "Food", 1),
+    (8, "Conspiracies", 1);
+
+INSERT INTO threads
+    (thread_id, user_id, category_id, title, body, created_at, upvotes, downvotes)
+
+VALUES
+    (1, 4, 1, "The world is ending", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, inventore alias possimus, porro laboriosam molestias ratione, at dolore error aliquam minus illum ducimus. Architecto sint distinctio maxime quisquam tenetur error. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores vel perferendis eius voluptatem omnis! Amet consequatur blanditiis qui nemo maxime temporibus similique eum voluptates esse, necessitatibus ducimus alias eveniet possimus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore illum amet repudiandae ab porro fugiat blanditiis. Exercitationem perferendis consectetur repudiandae eligendi nesciunt qui dolore, dolorum inventore similique impedit, earum eum. Lorem ipsum dolor sit amet consectetur adipisicing elit. In natus voluptas quasi nostrum. Commodi saepe in molestiae velit deleniti temporibus sunt dolorem molestias architecto? Modi, ea possimus. Voluptates, rem quisquam?", "2017-01-18 07:37:40", 17, 208
 ),
-    (2, 3, "reddit drumstick story", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem blanditiis odit quod accusantium tenetur in asperiores sequi quibusdam hic deleniti consectetur. consectetur, adipisicing elit. Maiores vel perferendis eius voluptatem omnis! Amet consequatur blanditiis qui nemo maxime temporibus similique eum voluptates esse, necessitatibus ducimus alias eveniet possimus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore illum amet repudiandae ab porro fugiat blanditiis. Exercitationem perferendis consectetur repudiandae eligendi nesciunt qui dolore, dolorum inventore similique impedit, earum eum. Lorem ipsum dolor sit amet consectetur adipisicing elit. In natus voluptas quasi nostrum. Commodi saepe in molestiae velit deleniti temporibus suntconsectetur, adipisicing elit. Maiores vel perferendis eius voluptatem omnis! Amet consequatur blanditiis qui nemo maxime temporibus similique eum voluptates esse, necessitatibus ducimus alias eveniet possimus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore illum amet repudiandae ab porro fugiat blanditiis. Exercitationem perferendis consectetur repudiandae eligendi nesciunt qui dolore, dolorum inventore similique impedit, earum eum. Lorem ipsum dolor sit amet consectetur adipisicing elit. In natus voluptas quasi nostrum. Commodi saepe in molestiae velit deleniti temporibus sunt", "2018-04-27 20:33:22", 182, 552),
-    (3, 2, "I season everything with cayenne pepper", "see title", "2018-02-18 08:39:09", 128, 4),
-    (4, 1, "my name is dave", "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, facere! Saepe quasi fugiat dolorem animi sed deleniti explicabo distinctio, expedita neque molestias praesentium dignissimos blanditiis voluptatibus facilis id pariatur eligendi.", "2019-09-17 22:01:19", 118, 44);
+    (2, 3, 2, "reddit drumstick story", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem blanditiis odit quod accusantium tenetur in asperiores sequi quibusdam hic deleniti consectetur. consectetur, adipisicing elit. Maiores vel perferendis eius voluptatem omnis! Amet consequatur blanditiis qui nemo maxime temporibus similique eum voluptates esse, necessitatibus ducimus alias eveniet possimus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore illum amet repudiandae ab porro fugiat blanditiis. Exercitationem perferendis consectetur repudiandae eligendi nesciunt qui dolore, dolorum inventore similique impedit, earum eum. Lorem ipsum dolor sit amet consectetur adipisicing elit. In natus voluptas quasi nostrum. Commodi saepe in molestiae velit deleniti temporibus suntconsectetur, adipisicing elit. Maiores vel perferendis eius voluptatem omnis! Amet consequatur blanditiis qui nemo maxime temporibus similique eum voluptates esse, necessitatibus ducimus alias eveniet possimus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore illum amet repudiandae ab porro fugiat blanditiis. Exercitationem perferendis consectetur repudiandae eligendi nesciunt qui dolore, dolorum inventore similique impedit, earum eum. Lorem ipsum dolor sit amet consectetur adipisicing elit. In natus voluptas quasi nostrum. Commodi saepe in molestiae velit deleniti temporibus sunt", "2018-04-27 20:33:22", 182, 552),
+    (3, 2, 7, "I season everything with cayenne pepper", "see title", "2018-02-18 08:39:09", 128, 4),
+    (4, 1, 6, "my name is dave", "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, facere! Saepe quasi fugiat dolorem animi sed deleniti explicabo distinctio, expedita neque molestias praesentium dignissimos blanditiis voluptatibus facilis id pariatur eligendi.", "2019-09-17 22:01:19", 118, 44);
 
 INSERT INTO comments
     (comment_id, user_id, thread_id, parent_comment_id, body, created_at, upvotes, downvotes)
