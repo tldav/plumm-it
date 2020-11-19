@@ -12,6 +12,7 @@ CREATE TABLE users
     last_name VARCHAR(50) NOT NULL,
     user_password VARCHAR(250) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    is_active BOOLEAN DEFAULT TRUE,
     PRIMARY KEY(user_id)
 );
 
@@ -34,8 +35,6 @@ CREATE TABLE threads
     title VARCHAR(200) NOT NULL,
     body TEXT NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    upvotes INT DEFAULT 0,
-    downvotes INT DEFAULT 0,
     is_edited BOOLEAN DEFAULT FALSE,
     FOREIGN KEY(user_id) REFERENCES users(user_id),
     FOREIGN KEY(category_id) REFERENCES categories(category_id),
@@ -51,8 +50,6 @@ CREATE TABLE comments
     is_active BOOLEAN DEFAULT TRUE,
     body TEXT NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    upvotes INT DEFAULT 0,
-    downvotes INT DEFAULT 0,
     is_edited BOOLEAN DEFAULT FALSE,
     FOREIGN KEY(user_id) REFERENCES users(user_id),
     FOREIGN KEY(thread_id) REFERENCES threads(thread_id),
@@ -86,34 +83,6 @@ CREATE TABLE comment_votes
 
 );
 
--- CREATE TABLE upvotes
--- (
---     upvote_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
---     user_id INT UNSIGNED NOT NULL,
---     thread_id INT UNSIGNED,
---     comment_id INT UNSIGNED,
---     FOREIGN KEY (user_id) REFERENCES users (user_id),
---     FOREIGN KEY (thread_id) REFERENCES threads (thread_id),
---     FOREIGN KEY (comment_id) REFERENCES comments (comment_id),
---     UNIQUE thread_index(user_id, thread_id),
---     UNIQUE comment_index(user_id, comment_id),
---     PRIMARY KEY (upvote_id)
--- );
-
--- CREATE TABLE downvotes
--- (
---     downvote_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
---     user_id INT UNSIGNED NOT NULL,
---     thread_id INT UNSIGNED,
---     comment_id INT UNSIGNED,
---     FOREIGN KEY (user_id) REFERENCES users (user_id),
---     FOREIGN KEY (thread_id) REFERENCES threads (thread_id),
---     FOREIGN KEY (comment_id) REFERENCES comments (comment_id),
---     UNIQUE thread_index(user_id, thread_id),
---     UNIQUE comment_index(user_id, comment_id),
---     PRIMARY KEY (downvote_id)
--- );
-
 
 
 
@@ -123,12 +92,15 @@ CREATE PROCEDURE getAllThreads()
 
 BEGIN
 
-    SELECT t.thread_id, t.title, t.body, t.created_at, t.upvotes, t.downvotes, u.user_id, u.username, t.category_id, cat.category_name, t.is_edited
+    SELECT t.thread_id, t.title, t.body, t.created_at, u.user_id, u.username, t.category_id, cat.category_name, t.is_edited, SUM(tv.vote = TRUE) AS upvotes, SUM(tv.vote = FALSE) AS downvotes, 
+    (SELECT COUNT(*) FROM comments c WHERE c.thread_id = t.thread_id) AS comment_count
     FROM threads t
         JOIN users u ON t.user_id = u.user_id
         JOIN categories cat ON t.category_id = cat.category_id
+        JOIN thread_votes tv ON t.thread_id = tv.thread_id 
     WHERE t.is_active = TRUE
-    ORDER BY t.created_at DESC;
+    GROUP BY t.thread_id, t.title, t.body, t.created_at, u.user_id, u.username, t.category_id, cat.category_name, t.is_edited
+    ORDER BY t.created_at DESC; 
 
 END
 //
@@ -142,11 +114,14 @@ CREATE PROCEDURE getCategoryThreads(param INT)
 
 BEGIN
 
-    SELECT t.thread_id, t.title, t.body, t.created_at, t.upvotes, t.downvotes, u.user_id, u.username, t.category_id, cat.category_name, t.is_edited
+    SELECT t.thread_id, t.title, t.body, t.created_at, u.user_id, u.username, t.category_id, cat.category_name, t.is_edited, SUM(tv.vote = TRUE) AS upvotes, SUM(tv.vote = FALSE) AS downvotes, 
+    (SELECT COUNT(*) FROM comments c WHERE c.thread_id = t.thread_id) AS comment_count
     FROM threads t
         JOIN users u ON t.user_id = u.user_id
         JOIN categories cat ON t.category_id = cat.category_id
+		JOIN thread_votes tv ON t.thread_id = tv.thread_id 
     WHERE cat.category_id = param AND t.is_active = TRUE
+    GROUP BY t.thread_id, t.title, t.body, t.created_at, u.user_id, u.username, t.category_id, cat.category_name, t.is_edited
     ORDER BY t.created_at DESC;
 
 END
@@ -161,11 +136,14 @@ CREATE PROCEDURE getOneThread(param INT)
 
 BEGIN
 
-    SELECT t.thread_id, t.title, t.body, t.created_at, t.upvotes, t.downvotes, u.user_id, u.username, t.category_id, cat.category_name, t.is_edited
+    SELECT t.thread_id, t.title, t.body, t.created_at, u.user_id, u.username, t.category_id, cat.category_name, t.is_edited, SUM(tv.vote = TRUE) AS upvotes, SUM(tv.vote = FALSE) AS downvotes, 
+    (SELECT COUNT(*) FROM comments c WHERE c.thread_id = t.thread_id) AS comment_count
     FROM threads t
         JOIN users u ON t.user_id = u.user_id
         JOIN categories cat ON t.category_id = cat.category_id
-    WHERE t.thread_id = param AND t.is_active = TRUE;
+		JOIN thread_votes tv ON t.thread_id = tv.thread_id 
+    WHERE t.thread_id = param AND t.is_active = TRUE
+    GROUP BY t.thread_id, t.title, t.body, t.created_at, u.user_id, u.username, t.category_id, cat.category_name, t.is_edited
 
 END
 //
@@ -179,7 +157,7 @@ CREATE PROCEDURE getThreadComments(param INT)
 
 BEGIN
 
-    SELECT c.comment_id, c.parent_comment_id, c.body, c.created_at, c.upvotes, c.downvotes, u.user_id, u.username, c.is_edited
+    SELECT c.comment_id, c.parent_comment_id, c.body, c.created_at, u.user_id, u.username, c.is_edited
     FROM comments c
         JOIN threads t ON t.thread_id = c.thread_id
         JOIN users u ON c.user_id = u.user_id
