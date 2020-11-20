@@ -5,6 +5,7 @@
 	"main": "server/server.js",
 	"dependencies": {
 		"axios": "^0.18.0",
+		"bcrypt": "^5.0.0",
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
 		"if-env": "^1.0.4",
@@ -21,7 +22,6 @@
 		"start:prod": "node server/server.js",
 		"start:dev": "concurrently \"nodemon --ignore 'client/*' && nodemon -r dotenv/config\" \"npm run client\"",
 		"client": "cd client && npm run start",
-		"seed": "node scripts/seedDB.js",
 		"install": "cd client && npm install",
 		"build": "cd client && npm run build",
 		"heroku-postbuild": "npm run build",

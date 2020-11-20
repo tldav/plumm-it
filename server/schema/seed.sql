@@ -7,7 +7,7 @@ VALUES
     (1, "dave@email.com", "nameisDave", "Dave", "Davey", "password", "2020-08-22 14:22:44"),
     (2, "nwuerz@potato.com", "TruthLives", "Nick", "Wuerz", "password", "2020-03-22 08:19:28"),
     (3, "trucknuts69@murica.com", "everTrumper", "Buck", "White", "password", "2018-05-12 14:27:09"),
-    (4, "sallystruthers@gmail.com", "SuperSayainSix", "Blue", "Sadness", "password", "2014-12-29 01:34:56");
+    (4, "sallystruthers@gmail.com", "SuperSaiyanSix", "Blue", "Sadness", "password", "2014-12-29 01:34:56");
 
 INSERT INTO categories
     (category_id, category_name, user_id)
@@ -62,7 +62,6 @@ INSERT INTO thread_votes
     (user_id, thread_id, vote)
 
 VALUES
-    (1, 1, false),
     (2, 1, true),
     (3, 1, true),
     (4, 1, false),
@@ -84,13 +83,12 @@ INSERT INTO comment_votes
     (user_id, comment_id, vote)
 
 VALUES
-    (1, 1, false),
     (2, 1, true),
     (3, 1, true),
     (4, 1, false),
     (1, 2, true),
     (2, 2, false),
-    (3, 2, true),
+    (3, 2, false),
     (4, 2, true),
     (1, 3, false),
     (2, 3, false),
@@ -99,7 +97,7 @@ VALUES
     (1, 4, false),
     (2, 4, true),
     (3, 4, false),
-    (4, 4, false),
+    (4, 4, true),
     (1, 5, false),
     (2, 5, true),
     (3, 5, true),
@@ -111,7 +109,7 @@ VALUES
     (1, 7, false),
     (2, 7, false),
     (3, 7, false),
-    (4, 7, true),
+    (4, 7, false),
     (1, 8, false),
     (2, 8, true),
     (3, 8, false),
@@ -131,13 +129,13 @@ VALUES
     (1, 12, false),
     (2, 12, true),
     (3, 12, false),
-    (4, 12, false),
-    (1, 13, false),
+    (4, 12, true),
+    (1, 13, true),
     (2, 13, true),
     (3, 13, true),
     (4, 13, false),
-    (1, 14, true),
-    (2, 14, false),
+    (1, 14, false),
+    (2, 14, true),
     (3, 14, true),
     (4, 14, true),
     (1, 15, false),
@@ -145,6 +143,6 @@ VALUES
     (3, 15, false),
     (4, 15, true),
     (1, 16, false),
-    (2, 16, true),
+    (2, 16, false),
     (3, 16, false),
     (4, 16, false);

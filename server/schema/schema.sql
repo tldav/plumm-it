@@ -157,11 +157,13 @@ CREATE PROCEDURE getThreadComments(param INT)
 
 BEGIN
 
-    SELECT c.comment_id, c.parent_comment_id, c.body, c.created_at, u.user_id, u.username, c.is_edited
+    SELECT c.comment_id, c.parent_comment_id, c.body, c.created_at, u.user_id, u.username, c.is_edited, SUM(cv.vote = TRUE) AS upvotes, SUM(cv.vote = FALSE) AS downvotes
     FROM comments c
         JOIN threads t ON t.thread_id = c.thread_id
         JOIN users u ON c.user_id = u.user_id
+        JOIN comment_votes cv ON c.comment_id = cv.comment_id 
     WHERE t.thread_id = param AND c.is_active = TRUE
+    GROUP BY c.comment_id, c.parent_comment_id, c.body, c.created_at, u.user_id, u.username, c.is_edited
     ORDER BY c.parent_comment_id, c.created_at;
 
 END
@@ -289,41 +291,9 @@ CREATE PROCEDURE upvoteThread(param_thread_id INT, param_user_id INT)
 
 BEGIN
 
-	UPDATE threads SET upvotes = upvotes + 1
-    WHERE thread_id = param_thread_id
-    LIMIT 1;
-
-END
-//
-
-
-
-
--- DELIMITER //
-
--- CREATE PROCEDURE upvoteThread(param_thread_id INT)
-
--- BEGIN
-
--- 	UPDATE threads SET upvotes = upvotes + 1
---     WHERE thread_id = param_thread_id
---     LIMIT 1;
-
--- END
--- //
-
-
-
-
-DELIMITER //
-
-CREATE PROCEDURE downvoteThread(param_thread_id INT)
-
-BEGIN
-
-	UPDATE threads SET downvotes = downvotes + 1
-    WHERE thread_id = param_thread_id
-    LIMIT 1;
+	INSERT INTO thread_votes(thread_id, user_id, vote)
+    VALUES (param_thread_id, param_user_id, TRUE)
+	ON DUPLICATE KEY UPDATE vote = TRUE;
 
 END
 //
@@ -333,13 +303,30 @@ END
 
 DELIMITER //
 
-CREATE PROCEDURE upvoteComment(param_comment_id INT)
+CREATE PROCEDURE downvoteThread(param_thread_id INT, param_user_id INT)
 
 BEGIN
 
-	UPDATE comments SET upvotes = upvotes + 1
-    WHERE comment_id = param_comment_id
-    LIMIT 1;
+	INSERT INTO thread_votes(thread_id, user_id, vote)
+    VALUES (param_thread_id, param_user_id, FALSE)
+	ON DUPLICATE KEY UPDATE vote = FALSE;
+
+END
+//
+
+
+
+
+
+DELIMITER //
+
+CREATE PROCEDURE upvoteComment(param_comment_id INT, param_user_id INT)
+
+BEGIN
+
+	INSERT INTO comment_votes(comment_id, user_id, vote)
+    VALUES (param_comment_id, param_user_id, TRUE)
+	ON DUPLICATE KEY UPDATE vote = TRUE;
 
 END
 //
@@ -349,13 +336,13 @@ END
 
 DELIMITER //
 
-CREATE PROCEDURE downvoteComment(param_comment_id INT)
+CREATE PROCEDURE downvoteComment(param_comment_id INT, param_user_id INT)
 
 BEGIN
 
-	UPDATE comments SET downvotes = downvotes + 1
-    WHERE comment_id = param_comment_id
-    LIMIT 1;
+	INSERT INTO comment_votes(comment_id, user_id, vote)
+    VALUES (param_comment_id, param_user_id, FALSE)
+	ON DUPLICATE KEY UPDATE vote = FALSE;
 
 END
 //

@@ -71,10 +71,10 @@ module.exports = {
 			});
 		});
 	},
-	upvote: (id) => {
-		const sql = `CALL upvoteThread(${id})`;
+	upvote: (id, userId) => {
+		const sql = `CALL upvoteThread(?, ?)`;
 		return new Promise((resolve, reject) => {
-			connection.query(sql, (err, results) => {
+			connection.query(sql, [id, userId], (err, results) => {
 				if (err) {
 					return reject(err);
 				}
@@ -82,10 +82,10 @@ module.exports = {
 			});
 		});
 	},
-	downvote: (id) => {
-		const sql = `CALL downvoteThread(${id})`;
+	downvote: (id, userId) => {
+		const sql = `CALL downvoteThread(?, ?)`;
 		return new Promise((resolve, reject) => {
-			connection.query(sql, (err, results) => {
+			connection.query(sql, [id, userId], (err, results) => {
 				if (err) {
 					return reject(err);
 				}
