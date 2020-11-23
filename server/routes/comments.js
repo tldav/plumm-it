@@ -32,11 +32,11 @@ router.put("/:id", async (req, res) => {
 });
 
 router.put("/upvote/:id", async (req, res) => {
-	const id = req.params.id;
+	const commentId = req.params.id;
 	const userId = req.body.userId;
 
 	try {
-		let upvote = await db.Comment.upvote(id, userId);
+		let upvote = await db.Comment.upvote(commentId, userId);
 		res.json(upvote);
 	} catch (err) {
 		console.log(err);
@@ -45,11 +45,11 @@ router.put("/upvote/:id", async (req, res) => {
 });
 
 router.put("/downvote/:id", async (req, res) => {
-	const id = req.params.id;
+	const commentId = req.params.id;
 	const userId = req.body.userId;
 
 	try {
-		let downvote = await db.Comment.downvote(id, userId);
+		let downvote = await db.Comment.downvote(commentId, userId);
 		res.json(downvote);
 	} catch (err) {
 		console.log(err);

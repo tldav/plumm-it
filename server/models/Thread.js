@@ -1,3 +1,4 @@
+const { threadId } = require("../config");
 const connection = require("../config");
 
 module.exports = {
@@ -71,10 +72,10 @@ module.exports = {
 			});
 		});
 	},
-	upvote: (id, userId) => {
+	upvote: (threadId, userId) => {
 		const sql = `CALL upvoteThread(?, ?)`;
 		return new Promise((resolve, reject) => {
-			connection.query(sql, [id, userId], (err, results) => {
+			connection.query(sql, [threadId, userId], (err, results) => {
 				if (err) {
 					return reject(err);
 				}
@@ -82,10 +83,10 @@ module.exports = {
 			});
 		});
 	},
-	downvote: (id, userId) => {
+	downvote: (threadId, userId) => {
 		const sql = `CALL downvoteThread(?, ?)`;
 		return new Promise((resolve, reject) => {
-			connection.query(sql, [id, userId], (err, results) => {
+			connection.query(sql, [threadId, userId], (err, results) => {
 				if (err) {
 					return reject(err);
 				}

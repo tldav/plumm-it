@@ -65,11 +65,11 @@ router.put("/:id", async (req, res) => {
 });
 
 router.put("/upvote/:id", async (req, res) => {
-	const id = req.params.id;
+	const threadId = req.params.id;
 	const userId = req.body.userId;
 
 	try {
-		let upvote = await db.Thread.upvote(id, userId);
+		let upvote = await db.Thread.upvote(threadId, userId);
 		res.json(upvote);
 	} catch (err) {
 		console.log(err);
@@ -78,11 +78,11 @@ router.put("/upvote/:id", async (req, res) => {
 });
 
 router.put("/downvote/:id", async (req, res) => {
-	const id = req.params.id;
+	const threadId = req.params.id;
 	const userId = req.body.userId;
 
 	try {
-		let downvote = await db.Thread.downvote(id, userId);
+		let downvote = await db.Thread.downvote(threadId, userId);
 		res.json(downvote);
 	} catch (err) {
 		console.log(err);

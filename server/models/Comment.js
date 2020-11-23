@@ -27,10 +27,10 @@ module.exports = {
 			});
 		});
 	},
-	upvote: (id, userId) => {
+	upvote: (commentId, userId) => {
 		const sql = `CALL upvoteComment(?, ?)`;
 		return new Promise((resolve, reject) => {
-			connection.query(sql, [id, userId], (err, results) => {
+			connection.query(sql, [commentId, userId], (err, results) => {
 				if (err) {
 					return reject(err);
 				}
@@ -38,10 +38,10 @@ module.exports = {
 			});
 		});
 	},
-	downvote: (id, userId) => {
+	downvote: (commentId, userId) => {
 		const sql = `CALL downvoteComment(?, ?)`;
 		return new Promise((resolve, reject) => {
-			connection.query(sql, [id, userId], (err, results) => {
+			connection.query(sql, [commentId, userId], (err, results) => {
 				if (err) {
 					return reject(err);
 				}
