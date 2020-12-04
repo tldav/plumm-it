@@ -1,6 +1,7 @@
 // Users Routes
 const db = require("../models");
 const router = require("express").Router();
+const bcrypt = require("bcrypt");
 
 router.get("/", async (req, res) => {
 	try {
@@ -14,14 +15,18 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
 	const { email, username, firstName, lastName, password } = req.body;
+	const hashedPassword = bcrypt.hashSync(password, 10);
 	try {
 		let newUser = await db.User.create(
 			email,
 			username,
 			firstName,
 			lastName,
-			password
+			hashedPassword
 		);
+
+		// newUser.password = bcrypt.hashSync(req.body.password, 10);
+
 		res.json(newUser);
 	} catch (err) {
 		console.log(err);
