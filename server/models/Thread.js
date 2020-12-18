@@ -6,9 +6,7 @@ module.exports = {
 		return new Promise((resolve, reject) => {
 			const sql = `CALL getAllThreads()`;
 			connection.query(sql, (err, results) => {
-				if (err) {
-					return reject(err);
-				}
+				if (err) reject(err);
 				return resolve(results);
 			});
 		});
@@ -17,9 +15,7 @@ module.exports = {
 		const sql = `CALL getOneThread(${id})`;
 		return new Promise((resolve, reject) => {
 			connection.query(sql, (err, results) => {
-				if (err) {
-					return reject(err);
-				}
+				if (err) reject(err);
 				return resolve(results);
 			});
 		});
@@ -28,9 +24,7 @@ module.exports = {
 		const sql = `CALL getCategoryThreads(${id})`;
 		return new Promise((resolve, reject) => {
 			connection.query(sql, (err, results) => {
-				if (err) {
-					return reject(err);
-				}
+				if (err) reject(err);
 				return resolve(results);
 			});
 		});
@@ -39,9 +33,7 @@ module.exports = {
 		const sql = `CALL getThreadComments(${id})`;
 		return new Promise((resolve, reject) => {
 			connection.query(sql, (err, results) => {
-				if (err) {
-					return reject(err);
-				}
+				if (err) reject(err);
 				return resolve(results);
 			});
 		});
@@ -53,9 +45,7 @@ module.exports = {
 				sql,
 				[title, body, userId, categoryId],
 				(err, results) => {
-					if (err) {
-						return reject(err);
-					}
+					if (err) reject(err);
 					return resolve(results);
 				}
 			);
@@ -65,9 +55,7 @@ module.exports = {
 		const sql = `CALL updateThread(?, ?, ?)`;
 		return new Promise((resolve, reject) => {
 			connection.query(sql, [id, title, body], (err, results) => {
-				if (err) {
-					return reject(err);
-				}
+				if (err) reject(err);
 				return resolve(results);
 			});
 		});
@@ -76,9 +64,7 @@ module.exports = {
 		const sql = `CALL upvoteThread(?, ?)`;
 		return new Promise((resolve, reject) => {
 			connection.query(sql, [threadId, userId], (err, results) => {
-				if (err) {
-					return reject(err);
-				}
+				if (err) reject(err);
 				return resolve(results);
 			});
 		});
@@ -87,9 +73,7 @@ module.exports = {
 		const sql = `CALL downvoteThread(?, ?)`;
 		return new Promise((resolve, reject) => {
 			connection.query(sql, [threadId, userId], (err, results) => {
-				if (err) {
-					return reject(err);
-				}
+				if (err) reject(err);
 				return resolve(results);
 			});
 		});

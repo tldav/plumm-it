@@ -5,7 +5,7 @@ const router = require("express").Router();
 router.post("/", async (req, res) => {
 	const { body, userId, threadId, parentCommentId } = req.body;
 	try {
-		let newComment = await db.Comment.create(
+		const newComment = await db.Comment.create(
 			body,
 			userId,
 			threadId,
@@ -23,7 +23,7 @@ router.put("/:id", async (req, res) => {
 	const { body } = req.body;
 
 	try {
-		let updatedComment = await db.Comment.update(id, body);
+		const updatedComment = await db.Comment.update(id, body);
 		res.json(updatedComment);
 	} catch (err) {
 		console.log(err);
@@ -36,7 +36,7 @@ router.put("/upvote/:id", async (req, res) => {
 	const userId = req.body.userId;
 
 	try {
-		let upvote = await db.Comment.upvote(commentId, userId);
+		const upvote = await db.Comment.upvote(commentId, userId);
 		res.json(upvote);
 	} catch (err) {
 		console.log(err);
@@ -49,7 +49,7 @@ router.put("/downvote/:id", async (req, res) => {
 	const userId = req.body.userId;
 
 	try {
-		let downvote = await db.Comment.downvote(commentId, userId);
+		const downvote = await db.Comment.downvote(commentId, userId);
 		res.json(downvote);
 	} catch (err) {
 		console.log(err);
