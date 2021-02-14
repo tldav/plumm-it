@@ -13,7 +13,6 @@ router.post("/", async (req, res) => {
 		);
 		res.json(newComment);
 	} catch (err) {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });
@@ -26,7 +25,6 @@ router.put("/:id", async (req, res) => {
 		const updatedComment = await db.Comment.update(id, body);
 		res.json(updatedComment);
 	} catch (err) {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });
@@ -39,7 +37,6 @@ router.put("/upvote/:id", async (req, res) => {
 		const upvote = await db.Comment.upvote(commentId, userId);
 		res.json(upvote);
 	} catch (err) {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });
@@ -52,7 +49,6 @@ router.put("/downvote/:id", async (req, res) => {
 		const downvote = await db.Comment.downvote(commentId, userId);
 		res.json(downvote);
 	} catch (err) {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });

@@ -7,7 +7,6 @@ router.get("/", async (req, res) => {
 		const allThreads = await db.Thread.findAll();
 		res.json(allThreads[0]);
 	} catch (err) {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });
@@ -35,7 +34,6 @@ router.get("/category/:id", async (req, res) => {
 		const allThreadsInCategory = await db.Thread.findCategoryThreads(id);
 		res.json(allThreadsInCategory[0]);
 	} catch {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });
@@ -51,7 +49,6 @@ router.post("/", async (req, res) => {
 		);
 		res.json(newThread);
 	} catch (err) {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });
@@ -64,7 +61,6 @@ router.put("/:id", async (req, res) => {
 		let updatedThread = await db.Thread.update(id, title, body);
 		res.json(updatedThread);
 	} catch (err) {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });
@@ -77,7 +73,6 @@ router.put("/upvote/:id", async (req, res) => {
 		const upvote = await db.Thread.upvote(threadId, userId);
 		res.json(upvote);
 	} catch (err) {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });
@@ -90,7 +85,6 @@ router.put("/downvote/:id", async (req, res) => {
 		const downvote = await db.Thread.downvote(threadId, userId);
 		res.json(downvote);
 	} catch (err) {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });

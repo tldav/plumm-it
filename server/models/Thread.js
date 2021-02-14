@@ -1,4 +1,3 @@
-const { threadId } = require("../config");
 const connection = require("../config");
 
 module.exports = {
