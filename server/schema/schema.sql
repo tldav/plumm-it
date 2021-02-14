@@ -6,7 +6,7 @@ USE plumm_db;
 CREATE TABLE users
 (
     user_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    email VARCHAR(320) NOT NULL UNIQUE,
+    email VARCHAR(320) UNIQUE,
     username VARCHAR(30) NOT NULL UNIQUE,
     first_name VARCHAR(50) NOT NULL, 
     last_name VARCHAR(50) NOT NULL,
@@ -143,7 +143,7 @@ BEGIN
         JOIN categories cat ON t.category_id = cat.category_id
 		JOIN thread_votes tv ON t.thread_id = tv.thread_id 
     WHERE t.thread_id = param AND t.is_active = TRUE
-    GROUP BY t.thread_id, t.title, t.body, t.created_at, u.user_id, u.username, t.category_id, cat.category_name, t.is_edited
+    GROUP BY t.thread_id, t.title, t.body, t.created_at, u.user_id, u.username, t.category_id, cat.category_name, t.is_edited;
 
 END
 //

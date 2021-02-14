@@ -1,30 +1,31 @@
 // Users Routes
 const db = require("../models");
 const router = require("express").Router();
+const bcrypt = require("bcrypt");
 
 router.get("/", async (req, res) => {
 	try {
-		let results = await db.User.findAll();
+		const results = await db.User.findAll();
 		res.json(results);
 	} catch (err) {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });
 
 router.post("/", async (req, res) => {
 	const { email, username, firstName, lastName, password } = req.body;
+	const hashedPassword = bcrypt.hashSync(password, 10);
 	try {
-		let newUser = await db.User.create(
+		const newUser = await db.User.create(
 			email,
 			username,
 			firstName,
 			lastName,
-			password
+			hashedPassword
 		);
+
 		res.json(newUser);
 	} catch (err) {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });
@@ -34,7 +35,7 @@ router.put("/:id", async (req, res) => {
 	const { email, username, firstName, lastName, password } = req.body;
 
 	try {
-		let updatedUser = await db.User.update(
+		const updatedUser = await db.User.update(
 			id,
 			email,
 			username,
@@ -44,7 +45,6 @@ router.put("/:id", async (req, res) => {
 		);
 		res.json(updatedUser);
 	} catch (err) {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });

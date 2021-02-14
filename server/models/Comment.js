@@ -8,9 +8,7 @@ module.exports = {
 				sql,
 				[body, userId, threadId, parentCommentId],
 				(err, results) => {
-					if (err) {
-						return reject(err);
-					}
+					if (err) reject(err);
 					return resolve(results);
 				}
 			);
@@ -20,31 +18,25 @@ module.exports = {
 		const sql = `CALL updateComment(?, ?)`;
 		return new Promise((resolve, reject) => {
 			connection.query(sql, [id, body], (err, results) => {
-				if (err) {
-					return reject(err);
-				}
+				if (err) reject(err);
 				return resolve(results);
 			});
 		});
 	},
-	upvote: (id, userId) => {
+	upvote: (commentId, userId) => {
 		const sql = `CALL upvoteComment(?, ?)`;
 		return new Promise((resolve, reject) => {
-			connection.query(sql, [id, userId], (err, results) => {
-				if (err) {
-					return reject(err);
-				}
+			connection.query(sql, [commentId, userId], (err, results) => {
+				if (err) reject(err);
 				return resolve(results);
 			});
 		});
 	},
-	downvote: (id, userId) => {
+	downvote: (commentId, userId) => {
 		const sql = `CALL downvoteComment(?, ?)`;
 		return new Promise((resolve, reject) => {
-			connection.query(sql, [id, userId], (err, results) => {
-				if (err) {
-					return reject(err);
-				}
+			connection.query(sql, [commentId, userId], (err, results) => {
+				if (err) reject(err);
 				return resolve(results);
 			});
 		});

@@ -4,24 +4,19 @@ module.exports = {
 	findAll: () => {
 		return new Promise((resolve, reject) => {
 			connection.query(`SELECT * FROM users`, (err, results) => {
-				if (err) {
-					return reject(err);
-				}
+				if (err) reject(err);
 				return resolve(results);
 			});
 		});
 	},
 	create: (email, username, firstName, lastName, password) => {
 		const sql = `CALL createUser(?, ?, ?, ?, ?)`;
-
 		return new Promise((resolve, reject) => {
 			connection.query(
 				sql,
 				[email, username, firstName, lastName, password],
 				(err, results) => {
-					if (err) {
-						return reject(err);
-					}
+					if (err) reject(err);
 					return resolve(results);
 				}
 			);
@@ -34,9 +29,7 @@ module.exports = {
 				sql,
 				[id, email, username, firstName, lastName, password],
 				(err, results) => {
-					if (err) {
-						return reject(err);
-					}
+					if (err) reject(err);
 					return resolve(results);
 				}
 			);
