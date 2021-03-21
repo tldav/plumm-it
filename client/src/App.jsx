@@ -11,7 +11,9 @@ const App = ({ threadRoute }) => {
     <>
       <Header />
       <Switch>
-        <Route exact path={["/", "/home"]} component={Home} />
+        <Route exact path={["/", "/home"]}>
+          <Home />
+        </Route>
         <Route exact path={`${threadRoute}`} component={Thread} />
       </Switch>
     </>

@@ -2,25 +2,40 @@
 const db = require("../models");
 const router = require("express").Router();
 
-router.get("/", async (req, res) => {
-	try {
-		let allThreads = await db.Thread.findAll();
-		res.json(allThreads[0]);
-	} catch (err) {
-		console.log(err);
-		res.status(500).json(err);
+const asyncHandler = cb => {
+	return async (req, res, next) => {
+		try {
+			await cb(req, res, next);
+		} catch (error) {
+			res.status(500).json(error);
+		}
 	}
-});
+}
+
+// router.get("/", async (req, res) => {
+// 	try {
+// 		const allThreads = await db.Thread.findAll();
+// 		res.json(allThreads[0]);
+
+// 	} catch (err) {
+// 		res.status(500).json(err);
+// 	}
+// });
+
+router.get("/", asyncHandler(async (req, res) => {
+	const allThreads = await db.Thread.findAll();
+	res.json(allThreads[0]);
+}));
 
 router.get("/:id", async (req, res) => {
 	const id = req.params.id;
 	const dbQueries = [db.Thread.findOne(id), db.Thread.findThreadComments(id)];
 
 	try {
-		const response = await Promise.all(dbQueries);
+		const threadsAndComments = await Promise.all(dbQueries);
 		const allResultsObj = {
-			thread: response[0][0],
-			comments: response[1][0]
+			thread: threadsAndComments[0][0],
+			comments: threadsAndComments[1][0]
 		};
 		res.json(allResultsObj);
 	} catch (err) {
@@ -35,7 +50,6 @@ router.get("/category/:id", async (req, res) => {
 		const allThreadsInCategory = await db.Thread.findCategoryThreads(id);
 		res.json(allThreadsInCategory[0]);
 	} catch {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });
@@ -43,10 +57,14 @@ router.get("/category/:id", async (req, res) => {
 router.post("/", async (req, res) => {
 	const { title, body, userId, categoryId } = req.body;
 	try {
-		let newThread = await db.Thread.create(title, body, userId, categoryId);
+		const newThread = await db.Thread.create(
+			title,
+			body,
+			userId,
+			categoryId
+		);
 		res.json(newThread);
 	} catch (err) {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });
@@ -59,33 +77,30 @@ router.put("/:id", async (req, res) => {
 		let updatedThread = await db.Thread.update(id, title, body);
 		res.json(updatedThread);
 	} catch (err) {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });
 
 router.put("/upvote/:id", async (req, res) => {
-	const id = req.params.id;
+	const threadId = req.params.id;
 	const userId = req.body.userId;
 
 	try {
-		let upvote = await db.Thread.upvote(id, userId);
+		const upvote = await db.Thread.upvote(threadId, userId);
 		res.json(upvote);
 	} catch (err) {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });
 
 router.put("/downvote/:id", async (req, res) => {
-	const id = req.params.id;
+	const threadId = req.params.id;
 	const userId = req.body.userId;
 
 	try {
-		let downvote = await db.Thread.downvote(id, userId);
+		const downvote = await db.Thread.downvote(threadId, userId);
 		res.json(downvote);
 	} catch (err) {
-		console.log(err);
 		res.status(500).json(err);
 	}
 });
