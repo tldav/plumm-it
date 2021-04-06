@@ -6,7 +6,7 @@ USE plumm_db;
 CREATE TABLE users
 (
     user_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    email VARCHAR(320) UNIQUE,
+    email VARCHAR(250) UNIQUE,
     username VARCHAR(30) NOT NULL UNIQUE,
     first_name VARCHAR(50), 
     last_name VARCHAR(50),
