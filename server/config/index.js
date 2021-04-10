@@ -1,16 +1,19 @@
 // DB Config Index
 const mysql = require("mysql");
 
-const connection = mysql.createConnection({
-	host: "localhost",
-	port: 3306,
-	user: "root",
-	password: "",
-	database: "plumm_db"
-});
+const connection = process.env.JAWSDB_URL
+	? mysql.createPool(process.env.JAWSDB_URL)
+	: mysql.createPool({
+			host: "localhost",
+			port: 3306,
+			user: "root",
+			password: "",
+			database: "plumm_db"
+	  });
 
-connection.connect((err) => {
-	if (err) console.log(err);
+connection.getConnection((err) => {
+	if (err) console.error(err);
 });
-
 module.exports = connection;
+
+// comment
