@@ -1,7 +1,7 @@
 {
 	"name": "plumm-it",
 	"version": "0.1.0",
-	"description": "backend",
+	"description": "",
 	"main": "server/server.js",
 	"dependencies": {
 		"axios": "^0.21.1",
