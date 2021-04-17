@@ -1,22 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import Upvote from "../components/Upvote";
 import Downvote from "../components/Downvote";
 import CommentIcon from "../components/CommentIcon";
-import { useHistory, withRouter } from "react-router-dom";
+// import { useHistory, withRouter } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 import "../stylesheets/ThreadBox.css";
+import Context from "../context";
 
-const ThreadBox = ({ threads, onClick }) => {
-  let history = useHistory();
+const ThreadBox = () => {
+  // let history = useHistory();
 
-  const handleClick = (thread) => {
-    let threadRoute = `/p/${thread.category}/${thread.title
-      .trim()
-      .split(" ")
-      .join("_")}`;
-    onClick(thread, threadRoute);
-    history.push(`${threadRoute}`);
-  };
+  const {
+    value: { threads, realThreads },
+  } = useContext(Context);
+
+  console.log(realThreads);
 
   return (
     <>
@@ -24,7 +22,7 @@ const ThreadBox = ({ threads, onClick }) => {
         <div
           key={thread.id}
           {...thread}
-          onClick={() => handleClick(thread)}
+          // onClick={() => handleClick(thread)}
           className="stage"
           id="preview"
         >
@@ -46,4 +44,4 @@ const ThreadBox = ({ threads, onClick }) => {
   );
 };
 
-export default withRouter(ThreadBox);
+export default ThreadBox;

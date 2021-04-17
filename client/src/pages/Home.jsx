@@ -1,6 +1,7 @@
 import React from "react";
 import RandoBox from "../components/RandoBox";
-import ThreadPreviews from "../containers/ThreadPreviews";
+// import ThreadPreviews from "../containers/ThreadPreviews";
+import ThreadBox from "../components/ThreadBox";
 
 const Home = () => {
   return (
@@ -8,7 +9,7 @@ const Home = () => {
       <div className="left"></div>
       <div className="mid">
         <div className="threads">
-          <ThreadPreviews />
+          <ThreadBox />
         </div>
       </div>
       <div className="right">
