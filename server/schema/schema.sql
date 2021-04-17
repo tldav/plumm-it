@@ -6,10 +6,10 @@ USE plumm_db;
 CREATE TABLE users
 (
     user_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    email VARCHAR(320) UNIQUE,
+    email VARCHAR(250) UNIQUE,
     username VARCHAR(30) NOT NULL UNIQUE,
-    first_name VARCHAR(50) NOT NULL, 
-    last_name VARCHAR(50) NOT NULL,
+    first_name VARCHAR(50), 
+    last_name VARCHAR(50),
     user_password VARCHAR(250) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     is_active BOOLEAN DEFAULT TRUE,

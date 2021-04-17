@@ -5,9 +5,9 @@ INSERT INTO users
 
 VALUES
     (1, "dave@email.com", "nameisDave", "Dave", "Davey", "password", "2020-08-22 14:22:44"),
-    (2, "nwuerz@potato.com", "TruthLives", "Nick", "Wuerz", "password", "2020-03-22 08:19:28"),
-    (3, "trucknuts69@murica.com", "everTrumper", "Buck", "White", "password", "2018-05-12 14:27:09"),
-    (4, "sallystruthers@gmail.com", "SuperSaiyanSix", "Blue", "Sadness", "password", "2014-12-29 01:34:56");
+    (2, "nedwartz@potato.com", "TruthLives", "Ned", "Wartz", "password", "2020-03-22 08:19:28"),
+    (3, "trucknuts@potato.com", "notClayton", "Tarzan", "Gorilla", "password", "2018-05-12 14:27:09"),
+    (4, "sallystruthers@gmail.com", "SuperSaiyanSix", "Shannon", "Santos", "password", "2014-12-29 01:34:56");
 
 INSERT INTO categories
     (category_id, category_name, user_id)
@@ -41,16 +41,16 @@ VALUES
     (3, 2, 2, null, "haha", "2020-04-21 10:35:11"),
     (4, 4, 2, 3, "yoyo", "2020-04-13 05:23:14"),
     (5, 2, 3, null, "Inventore illum amet repudiandae ab porro fugiat blanditiis.", "2020-07-03 00:42:18"),
-    (6, 1, 3, 5, "Quesadillas for breakfast?!??", "2020-08-08 14:35:50"),
+    (6, 1, 3, 5, "Quesadillas for breakfast", "2020-08-08 14:35:50"),
     (7, 1, 4, null, "he-man and beastman fanfic", "2020-08-30 15:41:54"),
     (8, 3, 4, 7, "et consectetur adipisicing elit. In natus voluptas quasi nostrum. Commodi saepe in molestiae velit deleniti temporibus suntconsectetur, adipisicing elit. Maiores vel perferendis eius voluptatem omnis! Amet consequatur blanditiis qui nemo maxime temporibus similique eum voluptates esse, necessitatibus ducimus alias eveniet possimus! Lorem ipsum dolor sit amet consectetur adipisicing elit.", "2020-07-03 00:42:18"),
-    (9, 3, 1, 1, "I think I'm turning Japanese", "2020-09-07 00:52:17"),
+    (9, 3, 1, 1, "I'm sleepy", "2020-09-07 00:52:17"),
     (10, 2, 1, 2, "Watch out for the wet walnuts", "2020-09-01 09:19:55"),
-    (11, 4, 1, 1, "Randy MacPhee really nailed the role of suspect", "2020-09-08 06:54:19"),
+    (11, 4, 1, 1, "Randy MacPhee, who is?", "2020-09-08 06:54:19"),
     (12, 1, 1, 1, "I'm baby cronut raw denim gastropub health goth truffaut. Art party viral kitsch gluten-free small batch chia woke mumblecore scenester unicorn. 90's fam art party pork belly pop-up chicharrones lomo marfa deep v kitsch. Humblebrag af banjo jianbing waistcoat succulents selvage gluten-free fam, helvetica chillwave gastropub glossier unicorn umami. Trust fund locavore live-edge aesthetic humblebrag hoodie, pok pok raclette flannel intelligentsia irony copper mug quinoa tumblr. Hoodie shaman tattooed palo santo, farm-to-table waistcoat chillwave. Knausgaard post-ironic viral, pop-up tumeric photo booth man bun cronut skateboard.", "2020-09-09 00:35:33"),
     (13, 2, 1, 1, "Eduardo wanted to go to Whataburger at 3 AM on a Tuesday during high pollen season.", "2020-09-02 16:23:23"),
     (14, 4, 2, 3, "I've heard it both ways", "2020-09-23 14:48:26"),
-    (15, 3, 2, 3, "eheheh Shabudie", "2020-09-29 00:50:01"),
+    (15, 3, 2, 3, "Shabudie", "2020-09-29 00:50:01"),
     (16, 1, 2, 3, "Jesse, just come look at what your brother did.", "2020-09-18 11:11:00"),
     (17, 2, 2, 4, "Secret secrets of sequential sectarian secretions for septugenarian seahorses in secular sectors separated by sextuplet sentimentalism", "2020-09-25 03:21:39"),
     (18, 4, 3, 5, "eh, oh well", "2020-09-16 03:21:45"),
