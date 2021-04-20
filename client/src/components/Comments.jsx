@@ -4,8 +4,13 @@ import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import IconButton from "@material-ui/core/IconButton";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import "../stylesheets/Comment.css";
+const comments = require("../comments.json");
 
-const Comments = ({ comments }) => {
+const Comments = () => {
+  // we should probably add a comments object to featuredThread in state,
+  // import it here, and map that sumbitch below. For now, I'm importing
+  // the comments.json file
+
   const votes = (a, b) => {
     return a - b;
   };

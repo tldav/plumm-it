@@ -6,7 +6,8 @@ const Context = React.createContext();
 
 export const ContextProvider = props => {
 
-    const [ realThreads, setRealThreads ] = useState();
+    const [ realThreads, setRealThreads ] = useState({});
+    const [ featuredThread, setFeaturedThread ] = useState({});
 
     useEffect(() => {
         const getDaThreads = async () => {
@@ -22,7 +23,11 @@ export const ContextProvider = props => {
 
     const value = {
         threads,
-        realThreads
+        realThreads,
+        featuredThread,
+        actions: {
+            setFeaturedThread
+        }
     }
 
     return (
