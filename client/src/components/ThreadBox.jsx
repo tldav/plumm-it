@@ -2,19 +2,29 @@ import React, { useContext } from "react";
 import Upvote from "../components/Upvote";
 import Downvote from "../components/Downvote";
 import CommentIcon from "../components/CommentIcon";
-// import { useHistory, withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 import "../stylesheets/ThreadBox.css";
 import Context from "../context";
 
 const ThreadBox = () => {
-  // let history = useHistory();
+  let history = useHistory();
 
   const {
-    value: { threads, realThreads },
+    value: {
+      threads,
+      realThreads,
+      actions: { setFeaturedThread },
+    },
   } = useContext(Context);
 
   console.log(realThreads);
+
+  const redirectToThread = (thread) => {
+    const path = thread.title.replace(/ /g, "_");
+    setFeaturedThread(thread);
+    history.push(path);
+  };
 
   return (
     <>
@@ -22,7 +32,7 @@ const ThreadBox = () => {
         <div
           key={thread.id}
           {...thread}
-          // onClick={() => handleClick(thread)}
+          onClick={() => redirectToThread(thread)}
           className="stage"
           id="preview"
         >

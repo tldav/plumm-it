@@ -1,22 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import Upvote from "../components/Upvote";
 import Downvote from "../components/Downvote";
 import CommentIcon from "../components/CommentIcon";
 import Avatar from "@material-ui/core/Avatar";
 import Input from "../components/Input";
-import ThreadComments from "../containers/ThreadComments";
+import Comments from "./Comments";
+import Context from "../context";
+import "../stylesheets/ThreadBox.css";
 
-const FeaturedThreadBox = ({
-  id,
-  author,
-  date,
-  title,
-  body,
-  upvotes,
-  downvotes,
-  category,
-  comments,
-}) => {
+const FeaturedThreadBox = () => {
+  const {
+    value: {
+      featuredThread: {
+        id,
+        author,
+        date,
+        title,
+        body,
+        upvotes,
+        downvotes,
+        category,
+        comments,
+      },
+    },
+  } = useContext(Context);
+
   return (
     <div className="stage">
       <div id="threadHeader">
@@ -33,7 +41,7 @@ const FeaturedThreadBox = ({
       </div>
       <Input />
       <hr style={{ marginTop: "40px", marginBottom: "40px" }} />
-      <ThreadComments threadId={id} />
+      <Comments />
     </div>
   );
 };

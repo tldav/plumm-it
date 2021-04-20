@@ -1,6 +1,5 @@
 import React from "react";
 import RandoBox from "../components/RandoBox";
-// import ThreadPreviews from "../containers/ThreadPreviews";
 import ThreadBox from "../components/ThreadBox";
 
 const Home = () => {
