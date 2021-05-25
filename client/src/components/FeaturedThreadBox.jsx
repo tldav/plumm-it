@@ -26,7 +26,7 @@ const FeaturedThreadBox = () => {
   } = useContext(Context);
 
   return (
-    <div className="stage">
+    <div key={id} className="stage">
       <div id="threadHeader">
         <Avatar id="avatar" src={`/static/images/${category}.jpg`} />
         <span id="category">p/{category}</span>

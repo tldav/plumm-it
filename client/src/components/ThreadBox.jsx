@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Upvote from "../components/Upvote";
 import Downvote from "../components/Downvote";
 import CommentIcon from "../components/CommentIcon";
@@ -9,7 +9,6 @@ import Context from "../context";
 
 const ThreadBox = () => {
   let history = useHistory();
-
   const {
     value: {
       threads,
@@ -17,6 +16,8 @@ const ThreadBox = () => {
       actions: { setFeaturedThread },
     },
   } = useContext(Context);
+
+  useEffect(() => {}, [realThreads]);
 
   console.log(realThreads);
 
@@ -28,7 +29,33 @@ const ThreadBox = () => {
 
   return (
     <>
-      {threads.map((thread) => (
+      {realThreads.map((thread) => (
+        <div
+          key={thread.id}
+          {...thread}
+          onClick={() => redirectToThread(thread)}
+          className="stage"
+          id="preview"
+        >
+          <div id="threadHeader">
+            <Avatar
+              id="avatar"
+              src={`/static/images/${thread.category_name}.jpg`}
+            />
+            <span id="category">p/{thread.category_name}</span>
+            <span id="user">{`• ${thread.username} ${thread.created_at}`}</span>
+          </div>
+          <h3>{thread.title}</h3>
+          <p>{thread.body}</p>
+          <div id="iconDiv">
+            <Upvote upvotes={thread.upvotes} />
+            <Downvote downvotes={thread.downvotes} />
+            <CommentIcon comments={thread.comment_count} />
+          </div>
+        </div>
+      ))}
+
+      {/* {threads.map((thread) => (
         <div
           key={thread.id}
           {...thread}
@@ -49,7 +76,7 @@ const ThreadBox = () => {
             <CommentIcon comments={thread.comments} />
           </div>
         </div>
-      ))}
+      ))} */}
     </>
   );
 };

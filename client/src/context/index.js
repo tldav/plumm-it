@@ -6,7 +6,7 @@ const Context = React.createContext();
 
 export const ContextProvider = props => {
 
-    const [ realThreads, setRealThreads ] = useState({});
+    const [ realThreads, setRealThreads ] = useState([]);
     const [ featuredThread, setFeaturedThread ] = useState({});
 
     useEffect(() => {
