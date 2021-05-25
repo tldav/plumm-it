@@ -51,5 +51,5 @@ export default {
 	},
 	downvoteComment: (commentId, userId) => {
 		return axios.put("/api/comments/downvote/" + commentId, userId);
-	}
+	},
 };
