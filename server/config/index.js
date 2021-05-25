@@ -8,7 +8,7 @@ const connection = process.env.JAWSDB_URL
 			port: 3306,
 			user: "root",
 			// added local password
-			password: "" || "root",
+			password: "",
 			database: "plumm_db"
 	  });
 

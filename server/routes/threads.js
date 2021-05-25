@@ -2,30 +2,14 @@
 const db = require("../models");
 const router = require("express").Router();
 
-const asyncHandler = cb => {
-	return async (req, res, next) => {
-		try {
-			await cb(req, res, next);
-		} catch (error) {
-			res.status(500).json(error);
-		}
+router.get("/", async (req, res) => {
+	try {
+		const allThreads = await db.Thread.findAll();
+		res.json(allThreads[0]);
+	} catch (err) {
+		res.status(500).json(err);
 	}
-}
-
-// router.get("/", async (req, res) => {
-// 	try {
-// 		const allThreads = await db.Thread.findAll();
-// 		res.json(allThreads[0]);
-
-// 	} catch (err) {
-// 		res.status(500).json(err);
-// 	}
-// });
-
-router.get("/", asyncHandler(async (req, res) => {
-	const allThreads = await db.Thread.findAll();
-	res.json(allThreads[0]);
-}));
+});
 
 router.get("/:id", async (req, res) => {
 	const id = req.params.id;
@@ -57,12 +41,7 @@ router.get("/category/:id", async (req, res) => {
 router.post("/", async (req, res) => {
 	const { title, body, userId, categoryId } = req.body;
 	try {
-		const newThread = await db.Thread.create(
-			title,
-			body,
-			userId,
-			categoryId
-		);
+		const newThread = await db.Thread.create(title, body, userId, categoryId);
 		res.json(newThread);
 	} catch (err) {
 		res.status(500).json(err);
