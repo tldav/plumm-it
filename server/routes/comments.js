@@ -1,16 +1,11 @@
 // Comments Routes
-const db = require("../models");
 const router = require("express").Router();
+const Comment = require("../models").Comment;
 
 router.post("/", async (req, res) => {
 	const { body, userId, threadId, parentCommentId } = req.body;
 	try {
-		const newComment = await db.Comment.create(
-			body,
-			userId,
-			threadId,
-			parentCommentId
-		);
+		const newComment = await Comment.create(body, userId, threadId, parentCommentId);
 		res.json(newComment);
 	} catch (err) {
 		res.status(500).json(err);
@@ -22,7 +17,7 @@ router.put("/:id", async (req, res) => {
 	const { body } = req.body;
 
 	try {
-		const updatedComment = await db.Comment.update(id, body);
+		const updatedComment = await Comment.update(id, body);
 		res.json(updatedComment);
 	} catch (err) {
 		res.status(500).json(err);
@@ -34,7 +29,7 @@ router.put("/upvote/:id", async (req, res) => {
 	const userId = req.body.userId;
 
 	try {
-		const upvote = await db.Comment.upvote(commentId, userId);
+		const upvote = await Comment.upvote(commentId, userId);
 		res.json(upvote);
 	} catch (err) {
 		res.status(500).json(err);
@@ -46,7 +41,7 @@ router.put("/downvote/:id", async (req, res) => {
 	const userId = req.body.userId;
 
 	try {
-		const downvote = await db.Comment.downvote(commentId, userId);
+		const downvote = await Comment.downvote(commentId, userId);
 		res.json(downvote);
 	} catch (err) {
 		res.status(500).json(err);
