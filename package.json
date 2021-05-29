@@ -8,6 +8,8 @@
     "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-mysql-session": "^2.1.6",
+    "express-session": "^1.17.2",
     "if-env": "^1.0.4",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
