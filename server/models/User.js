@@ -1,4 +1,4 @@
-const connection = require("../config");
+const connection = require("../config").database;
 
 module.exports = {
 	findAll: () => {
@@ -36,5 +36,5 @@ module.exports = {
 		});
 	},
 	login: () => {},
-	delete: () => {}
+	delete: () => {},
 };
