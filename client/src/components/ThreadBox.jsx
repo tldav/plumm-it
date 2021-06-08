@@ -22,7 +22,7 @@ const ThreadBox = () => {
   console.log(realThreads);
 
   const redirectToThread = (thread) => {
-    const path = thread.title.replace(/ /g, "_");
+    const path = `p/${thread.category_name}/${thread.thread_id}/${thread.title.replace(/ /g, "_")}`
     setFeaturedThread(thread);
     history.push(path);
   };
@@ -31,7 +31,7 @@ const ThreadBox = () => {
     <>
       {realThreads.map((thread) => (
         <div
-          key={thread.id}
+          key={thread.thread_id}
           {...thread}
           onClick={() => redirectToThread(thread)}
           className="stage"

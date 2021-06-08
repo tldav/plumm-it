@@ -3,15 +3,6 @@ import axios from "axios";
 export default {
 	createUser: (newUser) => {
 		return axios.post("/api/users", newUser);
-
-		// newUser object. email, firstName, and lastName are optional
-		// {
-		//     username: "inquisitiveEnchilada",
-		//     firstName: "Equis",
-		//     lastName: "Pantos",
-		//     password: "password",
-		//     email: "spicyemail@email.com"
-		// }
 	},
 	userLogin: (credentials) => {
 		return axios.post("/api/users", credentials);
@@ -51,5 +42,5 @@ export default {
 	},
 	downvoteComment: (commentId, userId) => {
 		return axios.put("/api/comments/downvote/" + commentId, userId);
-	}
+	},
 };

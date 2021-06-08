@@ -9,12 +9,10 @@ const connection = process.env.JAWSDB_URL
 			user: "root",
 			// added local password
 			password: "" || "root",
-			database: "plumm_db"
+			database: "plumm_db",
 	  });
 
 connection.getConnection((err) => {
 	if (err) console.error(err);
 });
 module.exports = connection;
-
-// comment

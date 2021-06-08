@@ -17,13 +17,7 @@ router.post("/", async (req, res) => {
 	// *add await to hashedPassword if the line below breaks*
 	const hashedPassword = bcrypt.hashSync(password, 10);
 	try {
-		const newUser = await db.User.create(
-			email,
-			username,
-			firstName,
-			lastName,
-			hashedPassword
-		);
+		const newUser = await db.User.create(email, username, firstName, lastName, hashedPassword);
 
 		res.json(newUser);
 	} catch (err) {
