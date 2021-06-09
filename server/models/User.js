@@ -1,3 +1,4 @@
+// User Model
 const connection = require("../config").database;
 
 module.exports = {
@@ -35,6 +36,25 @@ module.exports = {
 			);
 		});
 	},
-	login: () => {},
+	findByName: (username) => {
+		const sql = `CALL getUserByName(?)`;
+		return new Promise((resolve, reject) => {
+			connection.query(sql, username, (err, results) => {
+				if (err) {
+					reject(err);
+				}
+				return resolve(results);
+			});
+		});
+	},
+	findById: (id) => {
+		const sql = `CALL getUserById(?)`;
+		return new Promise((resolve, reject) => {
+			connection.query(sql, id, (err, results) => {
+				if (err) reject(err);
+				return resolve(results);
+			});
+		});
+	},
 	delete: () => {},
 };
