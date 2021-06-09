@@ -31,3 +31,7 @@
 #preview {
   cursor: pointer;
 }
+
+#avatar {
+  z-index: 0;
+}

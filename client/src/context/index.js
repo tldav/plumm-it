@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import api from "../utils/API";
-const threads = require("../thread-contents.json");
 
 const Context = React.createContext();
 
@@ -21,7 +20,6 @@ export const ContextProvider = (props) => {
 	}, []);
 
 	const value = {
-		threads,
 		realThreads,
 		featuredThread,
 		actions: {
