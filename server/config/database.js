@@ -15,4 +15,5 @@ const connection = process.env.JAWSDB_URL
 connection.getConnection((err) => {
 	if (err) console.error(err);
 });
+
 module.exports = connection;
