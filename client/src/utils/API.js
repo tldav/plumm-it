@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
 	createUser: (newUser) => {
-		return axios.post("/api/users", newUser);
+		return axios.post("/api/users/register", newUser);
 	},
 	userLogin: (credentials) => {
 		return axios.post("/api/users", credentials);

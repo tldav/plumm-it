@@ -1,17 +1,14 @@
-const connection = require("../config");
+// Comment Model
+const connection = require("../config").database;
 
 module.exports = {
 	create: (body, userId, threadId, parentCommentId) => {
 		const sql = `CALL createComment(?, ?, ?, ?)`;
 		return new Promise((resolve, reject) => {
-			connection.query(
-				sql,
-				[body, userId, threadId, parentCommentId],
-				(err, results) => {
-					if (err) reject(err);
-					return resolve(results);
-				}
-			);
+			connection.query(sql, [body, userId, threadId, parentCommentId], (err, results) => {
+				if (err) reject(err);
+				return resolve(results);
+			});
 		});
 	},
 	update: (id, body) => {
@@ -41,5 +38,5 @@ module.exports = {
 			});
 		});
 	},
-	delete: () => {}
+	delete: () => {},
 };

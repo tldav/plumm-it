@@ -1,6 +1,12 @@
+// Server
 const express = require("express");
+const session = require("express-session");
 const logger = require("morgan");
+const passport = require("./config/passport");
+const MySQLStore = require("express-mysql-session")(session);
+require("dotenv").config();
 const routes = require("./routes");
+const connection = require("./config").database;
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -14,10 +20,38 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(logger("dev"));
 
+// express-session middleware
+// const sessionStore = new MySQLStore(connection);
+
+app.use(
+	session({
+		// key: "plummit cookie",
+		secret: process.env.SESSION_SECRET,
+		// store: sessionStore,
+		resave: false,
+		saveUninitialized: true,
+		cookie: {
+			maxAge: 1000 * 60 * 60 * 24,
+		},
+	})
+);
+
 // Serve static assets
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
 }
+
+// Passport middleware
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use((req, res, next) => {
+	console.log("***req.session: ", req.session);
+	console.log("***req.user: ", req.user);
+	console.log("\n", "\n");
+	next();
+});
 
 app.use("/api", routes);
 

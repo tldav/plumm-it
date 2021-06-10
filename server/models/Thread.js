@@ -1,4 +1,5 @@
-const connection = require("../config");
+// Thread Model
+const connection = require("../config").database;
 
 module.exports = {
 	findAll: () => {
@@ -40,14 +41,10 @@ module.exports = {
 	create: (title, body, userId, categoryId) => {
 		const sql = `CALL createThread(?, ?, ?, ?)`;
 		return new Promise((resolve, reject) => {
-			connection.query(
-				sql,
-				[title, body, userId, categoryId],
-				(err, results) => {
-					if (err) reject(err);
-					return resolve(results);
-				}
-			);
+			connection.query(sql, [title, body, userId, categoryId], (err, results) => {
+				if (err) reject(err);
+				return resolve(results);
+			});
 		});
 	},
 	update: (id, title, body) => {
@@ -77,5 +74,5 @@ module.exports = {
 			});
 		});
 	},
-	delete: () => {}
+	delete: () => {},
 };

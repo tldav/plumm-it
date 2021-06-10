@@ -175,7 +175,7 @@ END
 DELIMITER //
 
 CREATE PROCEDURE createUser(param_email VARCHAR
-(320), param_username VARCHAR
+(250), param_username VARCHAR
 (30), param_first_name VARCHAR
 (50), param_last_name VARCHAR
 (50), param_password VARCHAR
@@ -233,7 +233,7 @@ DELIMITER //
 
 CREATE PROCEDURE updateUser(param_user_id INT, 
 param_email VARCHAR
-(320), param_username VARCHAR
+(250), param_username VARCHAR
 (30), param_first_name VARCHAR
 (50), param_last_name VARCHAR
 (50), param_password VARCHAR
@@ -343,6 +343,35 @@ BEGIN
 	INSERT INTO comment_votes(comment_id, user_id, vote)
     VALUES (param_comment_id, param_user_id, FALSE)
 	ON DUPLICATE KEY UPDATE vote = FALSE;
+
+END
+//
+
+
+
+
+DELIMITER //
+
+CREATE PROCEDURE getUserByName(param_username VARCHAR(30))
+
+BEGIN
+
+	SELECT u.user_id, u.email, u.username, u.user_password, u.first_name, u.last_name, u.created_at, u.is_active FROM users u WHERE u.username = param_username;
+
+END
+//
+
+
+
+
+
+DELIMITER //
+
+CREATE PROCEDURE getUserById(param_user_id INT)
+
+BEGIN
+
+	SELECT u.user_id, u.email, u.username, u.first_name, u.last_name, u.created_at, u.is_active FROM users u WHERE u.user_id = param_user_id;
 
 END
 //
