@@ -48,7 +48,9 @@ const ThreadBox = () => {
             )}`}</span>
           </div>
           <h3>{thread.title}</h3>
-          <p>{thread.body}</p>
+          <div className="fade-text-or-whatever">
+            <p>{thread.body}</p>
+          </div>
           <div id="iconDiv">
             <Upvote upvotes={thread.upvotes} />
             <Downvote downvotes={thread.downvotes} />
