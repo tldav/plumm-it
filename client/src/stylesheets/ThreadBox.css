@@ -35,3 +35,13 @@
 #avatar {
   z-index: 0;
 }
+
+.fade-text-or-whatever {
+  -webkit-mask-image: -webkit-gradient(
+    linear,
+    left 50%,
+    left bottom,
+    from(rgba(0, 0, 0, 1)),
+    to(rgba(0, 0, 0, 0))
+  );
+}
