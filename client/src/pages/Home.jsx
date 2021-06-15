@@ -14,8 +14,6 @@ const Home = () => {
       <div className="right">
         <div className="boxes">
           <RandoBox />
-          <RandoBox />
-          <RandoBox />
         </div>
       </div>
     </div>
