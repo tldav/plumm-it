@@ -13,7 +13,6 @@ const Thread = () => {
       <div className="right">
         <div className="boxes">
           <RandoBox />
-          <RandoBox />
         </div>
       </div>
     </div>

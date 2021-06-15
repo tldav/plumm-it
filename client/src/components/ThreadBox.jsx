@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 import "../stylesheets/ThreadBox.css";
 import Context from "../context";
-var dateFormat = require("dateformat");
+const dateFormat = require("dateformat");
 
 const ThreadBox = () => {
   let history = useHistory();
@@ -18,8 +18,6 @@ const ThreadBox = () => {
   } = useContext(Context);
 
   useEffect(() => {}, [realThreads]);
-
-  console.log(realThreads);
 
   const redirectToThread = (thread) => {
     const path = `p/${thread.category_name}/${thread.thread_id}/${thread.title.replace(/ /g, "_")}`;
@@ -48,7 +46,6 @@ const ThreadBox = () => {
               thread.created_at,
               "dddd, mmmm dS, yyyy, h:MM:ss TT"
             )}`}</span>
-            {console.log(dateFormat(thread.created_at))}
           </div>
           <h3>{thread.title}</h3>
           <p>{thread.body}</p>

@@ -7,6 +7,7 @@ import Thread from "./pages/Thread";
 
 const App = ({ location }) => {
   const { pathname } = location;
+  let forwardSlashCount = pathname.split("").filter((letter) => letter === "/");
 
   return (
     <>
@@ -15,7 +16,9 @@ const App = ({ location }) => {
         <Route exact path={["/", "/home"]}>
           <Home />
         </Route>
-        <Route exact path={pathname} component={Thread} />
+        <Route exact path={pathname}>
+          {forwardSlashCount.length === 2 ? null : <Thread />}
+        </Route>
       </Switch>
     </>
   );
