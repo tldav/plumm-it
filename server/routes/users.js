@@ -18,10 +18,19 @@ router.post("/register", async (req, res) => {
 
 	try {
 		const hashedPassword = await bcrypt.hash(password, 10);
-		const newUser = await User.create(email, username, firstName, lastName, hashedPassword);
+		await User.create(email, username, firstName, lastName, hashedPassword);
+		const loginUser = await User.findByName(username);
 
-		res.json(newUser);
+		// res.json(newUser);
 		// res.redirect("/login");
+
+		req.login(loginUser[0][0], (err) => {
+			if (err) throw err;
+			res.json("Successfully logged in as " + username);
+			// res.json(loginUser[0][0]);
+			// console.log("***loginUser from req.login within /register route", loginUser);
+			// console.log("***req.body from req.login within /register route", req.body);
+		});
 	} catch (err) {
 		res.status(500).json(err);
 	}
