@@ -32,6 +32,7 @@ VALUES
   (3, 2, 7, "I season everything with cayenne pepper", "see title", "2018-02-18 08:39:09"),
   (4, 1, 6, "my name is dave", "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, facere! Saepe quasi fugiat dolorem animi sed deleniti explicabo distinctio, expedita neque molestias praesentium dignissimos blanditiis voluptatibus facilis id pariatur eligendi.", "2019-09-17 22:01:19");
 
+
 INSERT INTO comments
   (comment_id, user_id, thread_id, parent_comment_id, body, created_at)
 
@@ -146,3 +147,27 @@ VALUES
   (2, 16, false),
   (3, 16, false),
   (4, 16, false);
+
+INSERT INTO threads
+  (user_id, category_id, title, body)
+VALUES
+  (2, 8, "Thread to end all threads", "Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+
+Incidunt sapiente doloribus inventore. Quis dolorem veniam magnam quos in nemo doloribus, vel, nobis quia cupiditate consequuntur corporis incidunt ut deserunt soluta. 
+
+Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+Provident delectus accusamus fugit atque possimus, quod nemo commodi eveniet hic neque repellendus harum ullam odit inventore, quidem vitae nam suscipit dicta! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat doloremque reiciendis beatae porro temporibus vel tempora! Accusamus rem facilis, molestias facere, aspernatur quas optio veniam vitae, quasi veritatis natus? Ab? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, numquam laudantium nostrum temporibus provident est, commodi illo eligendi fugiat quo nihil harum atque pariatur incidunt illum totam exercitationem voluptatem necessitatibus? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates earum sequi sit molestias dolores, beatae atque consequatur eius laboriosam fuga aut consequuntur dicta aperiam nisi, nihil et aliquam, similique id? 
+
+Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus libero ullam deleniti facilis inventore iste unde quia itaque accusantium nulla eius, nisi doloremque obcaecati expedita, perferendis voluptatum laboriosam quis accusamus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus iusto ipsa iste dolorem quod, beatae, ut reprehenderit dicta nesciunt culpa fuga exercitationem aliquid? Nemo illum rerum, inventore optio ipsam sunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus culpa iste dolor ratione impedit quam excepturi consectetur, ex, modi iusto distinctio laudantium, vero praesentium odio. Voluptate at nesciunt earum exercitationem? Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, dolorum unde? Perferendis minus quia ipsum maxime! Veniam neque magni esse minima, autem, facere sint ut a laboriosam, aspernatur maxime praesentium. 
+
+Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, odit, aliquid fugit reiciendis debitis quos sint, a consectetur accusantium soluta libero id deserunt quibusdam autem reprehenderit inventore quo in totam. 
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam, sunt harum! Tempora laboriosam, harum debitis ex quia ipsam porro animi, voluptatum cupiditate accusamus quidem dolorem obcaecati? Praesentium reprehenderit velit tenetur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut dolore, non enim cumque ipsa inventore velit laborum unde eligendi molestiae praesentium optio fuga nisi deleniti architecto incidunt et, ab soluta? Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem aperiam repellendus cum nesciunt nisi culpa perspiciatis placeat amet rem officia dicta iste ex consectetur ducimus tempore, asperiores error. Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus illum minus quasi. At, labore hic accusantium in harum repellat ipsum impedit ipsam voluptatibus tempore sequi rerum recusandae quod veniam ducimus? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae earum itaque, voluptas nesciunt ipsam asperiores? Dolore cumque expedita doloremque fuga. Quod eum ipsa illo aspernatur veniam maxime distinctio ipsam saepe. 
+Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+
+Atque dolore quia ex culpa necessitatibus facilis quidem veritatis quos fugit accusantium magnam, id quam doloremque, dicta dolorem, esse ducimus molestias! Quos.");
+
+
+INSERT INTO comments
+  (user_id, thread_id, body)
+VALUES
+  (3, 5, "Look at switch");

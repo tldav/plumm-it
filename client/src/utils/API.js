@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default {
+const API = {
 	createUser: (newUser) => {
 		return axios.post("/api/users/register", newUser);
 	},
@@ -44,3 +44,5 @@ export default {
 		return axios.put("/api/comments/downvote/" + commentId, userId);
 	},
 };
+
+export default API;
