@@ -1,47 +1,47 @@
 #threadHeader {
-  color: #59236e;
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-  margin-bottom: 4px;
+	color: #59236e;
+	display: flex;
+	align-items: center;
+	font-size: 12px;
+	margin-bottom: 4px;
 }
 
 #avatar {
-  margin-right: 5px;
-  height: 20px;
-  width: 20px;
+	margin-right: 5px;
+	height: 20px;
+	width: 20px;
 }
 
 #user {
-  color: #666;
+	color: #666;
 }
 
 #category {
-  font-weight: bold;
-  margin-right: 4px;
+	font-weight: bold;
+	margin-right: 4px;
 }
 
 #iconDiv {
-  display: flex;
-  align-items: center;
-  color: #666;
-  margin: 4px;
+	display: flex;
+	align-items: center;
+	color: #666;
+	margin: 4px;
 }
 
 #preview {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 #avatar {
-  z-index: 0;
+	z-index: 0;
 }
 
 .fade-text-or-whatever {
-  -webkit-mask-image: -webkit-gradient(
-    linear,
-    left 50%,
-    left bottom,
-    from(rgba(0, 0, 0, 1)),
-    to(rgba(0, 0, 0, 0))
-  );
+	-webkit-mask-image: -webkit-gradient(
+		linear,
+		left 50%,
+		left bottom,
+		from(rgba(0, 0, 0, 1)),
+		to(rgba(0, 0, 0, 0))
+	);
 }

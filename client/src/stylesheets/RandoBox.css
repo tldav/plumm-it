@@ -1,27 +1,43 @@
 .rando-box {
-  /* position: fixed; */
-  margin-left: 10px;
-  border: #59236e 2px solid;
-  border-radius: 4px;
-  border-width: 1px;
-  height: 300px;
-  width: 250px;
-  margin-top: 10px;
-  background-color: #dac2e4;
-  padding: 10px;
+	position: fixed;
+	margin-left: 10px;
+	border: #59236e 2px solid;
+	border-radius: 4px;
+	border-width: 1px;
+	/* height: 300px; */
+	min-width: 250px;
+	/* margin-top: 10px; */
+	background-color: #dac2e4;
+	/* padding: 10px; */
+}
+
+.categories-title {
+	background: #59236e;
+	color: #ffffff;
+	font-family: "Ultra", serif;
+	font-weight: normal;
+	font-size: 1.25rem;
+	padding: 5px 0 5px 10px;
+	border-bottom: black 1px solid;
 }
 
 .list-item {
-  display: flex;
-  align-items: center;
-  margin: 10px 0 10px 0;
-  font-weight: bold;
+	display: flex;
+	align-items: center;
+	margin: 10px 0 10px 0;
+	font-weight: bold;
+	padding: 5px;
 }
 
 .list-item:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 li {
-  margin-left: 10px;
+	margin-left: 10px;
+}
+
+#Avatar {
+	height: 2rem;
+	width: 2rem;
 }
