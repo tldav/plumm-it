@@ -22,37 +22,37 @@
   },
   {
     "id": 4,
-    "name": "sports",
-    "image": "/images/news.jpg",
-    "description": "/p/news is: real news articles, primarily but not exclusively, news relating to the United States and the rest of the World. /p/news isn't: editorials, commercials, political minutiae, shouting, justin bieber updates, kitty pictures.",
-    "members": 911
+    "name": "food",
+    "image": "/images/food.jpg",
+    "description": "food is good.",
+    "members": 420
   },
   {
     "id": 5,
-    "name": "gaming",
-    "image": "/images/conspiracies.jpg",
-    "description": "dedicated to exploring a wide range of unconventional, suppressed, & esoteric topics with the brightest minds for our troubled times.",
-    "members": 666
+    "name": "sports",
+    "image": "/images/sports.jpg",
+    "description": "sports and stuff or whatever.",
+    "members": 100
   },
   {
     "id": 6,
-    "name": "movies",
-    "image": "/images/technology.jpg",
-    "description": " dedicated to the news and discussions about the creation and use of technology and its surrounding issues.",
-    "members": 33
-  },
+    "name": "books",
+    "image": "/images/books.jpg",
+    "description": "books r cool.",
+    "members": 100
+  }, 
   {
     "id": 7,
-    "name": "books",
-    "image": "/images/conspiracies.jpg",
-    "description": "dedicated to exploring a wide range of unconventional, suppressed, & esoteric topics with the brightest minds for our troubled times.",
-    "members": 666
-  },
+    "name": "gaming",
+    "image": "/images/books.jpg",
+    "description": "books r cool.",
+    "members": 100
+  }, 
   {
     "id": 8,
-    "name": "food",
-    "image": "/images/technology.jpg",
-    "description": " dedicated to the news and discussions about the creation and use of technology and its surrounding issues.",
-    "members": 33
+    "name": "movies",
+    "image": "/images/books.jpg",
+    "description": "books r cool.",
+    "members": 100
   }
 ]

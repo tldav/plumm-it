@@ -44,4 +44,5 @@
 		from(rgba(0, 0, 0, 1)),
 		to(rgba(0, 0, 0, 0))
 	);
+	mask-image: linear, left 50%, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0));
 }
