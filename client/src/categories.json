@@ -19,5 +19,26 @@
     "image": "/images/technology.jpg",
     "description": " dedicated to the news and discussions about the creation and use of technology and its surrounding issues.",
     "members": 33
+  },
+  {
+    "id": 4,
+    "name": "food",
+    "image": "/images/food.jpg",
+    "description": "food is good.",
+    "members": 420
+  },
+  {
+    "id": 5,
+    "name": "sports",
+    "image": "/images/sports.jpg",
+    "description": "sports and stuff or whatever.",
+    "members": 100
+  },
+  {
+    "id": 6,
+    "name": "books",
+    "image": "/images/books.jpg",
+    "description": "books r cool.",
+    "members": 100
   }
 ]
