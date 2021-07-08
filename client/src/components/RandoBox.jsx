@@ -9,9 +9,8 @@ const RandoBox = () => {
 
   return (
     <div className="rando-box">
-      <h1>Categories</h1>
+      <h2 className="categories-title">categories</h2>
       <ul>
-        <hr />
         {categories.map((category) => {
           return (
             <>
@@ -19,7 +18,7 @@ const RandoBox = () => {
                 <Avatar id="Avatar" src={`/static/${category.image}`} />
                 <li key={category.id}>p/{category.name}</li>
               </div>
-              <hr />
+              {/* <hr /> */}
             </>
           );
         })}

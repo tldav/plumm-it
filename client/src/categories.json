@@ -40,5 +40,19 @@
     "image": "/images/books.jpg",
     "description": "books r cool.",
     "members": 100
+  }, 
+  {
+    "id": 7,
+    "name": "gaming",
+    "image": "/images/books.jpg",
+    "description": "books r cool.",
+    "members": 100
+  }, 
+  {
+    "id": 8,
+    "name": "movies",
+    "image": "/images/books.jpg",
+    "description": "books r cool.",
+    "members": 100
   }
 ]

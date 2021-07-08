@@ -7,9 +7,9 @@ const Header = () => {
   return (
     <div className="header">
       <div className="header-flex-container">
-        <h2 id="plumm-title" onClick={() => history.push("/")}>
+        <h1 id="plumm-title" onClick={() => history.push("/")}>
           plumm.it
-        </h2>
+        </h1>
         <div className="header-buttons">
           <button>Log In</button>
           <button>Sign Up</button>
