@@ -2,36 +2,41 @@
 const express = require("express");
 const session = require("express-session");
 const logger = require("morgan");
+const cors = require("cors");
 const passport = require("./config/passport");
-const MySQLStore = require("express-mysql-session")(session);
+const sessionStore = require("./config/session");
 require("dotenv").config();
 const routes = require("./routes");
-const connection = require("./config").database;
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use((req, res, next) => {
-	res.header("Access-Control-Allow-Origin", "https://localhost/3000");
-	next();
-});
+// app.use((req, res, next) => {
+// 	res.header("Access-Control-Allow-Origin", "https://localhost/3000");
+// 	next();
+// });
+app.use(
+	cors({
+		origin: "http://localhost/3000",
+		methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
+		credentials: true,
+	})
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(logger("dev"));
 
-// express-session middleware
-// const sessionStore = new MySQLStore(connection);
-
 app.use(
 	session({
-		// key: "plummit cookie",
 		secret: process.env.SESSION_SECRET,
-		// store: sessionStore,
+		store: sessionStore,
 		resave: false,
-		saveUninitialized: true,
+		saveUninitialized: false,
 		cookie: {
-			maxAge: 1000 * 60 * 60 * 24,
+			// maxAge: 1000 * 60 * 60 * 24, // cookie expires in 24 hours
+			maxAge: 3600000, // cookie expires in 1 hour
+			sameSite: true,
 		},
 	})
 );
@@ -42,7 +47,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Passport middleware
-
 app.use(passport.initialize());
 app.use(passport.session());
 
