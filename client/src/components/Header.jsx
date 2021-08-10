@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import FormDialog from "./FormDialog"
 import "../stylesheets/Header.css";
 
 const Header = () => {
@@ -11,8 +12,8 @@ const Header = () => {
           plumm.it
         </h1>
         <div className="header-buttons">
-          <button>Log In</button>
-          <button>Sign Up</button>
+          <FormDialog purpose="signup"/>
+          <FormDialog purpose="login"/>
         </div>
       </div>
     </div>
