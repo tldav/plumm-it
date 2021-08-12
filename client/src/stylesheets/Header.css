@@ -26,3 +26,23 @@
 .header button {
 	padding: 5px 10px;
 }
+
+/* for pill buttons  */
+
+/* .header-buttons {
+	display: flex;
+	width: 165px;
+	justify-content: space-between;
+	align-self: center;
+	margin-right: 50px;
+} */
+
+/* for text buttons  */
+
+.header-buttons {
+	display: flex;
+	width: 185px;
+	justify-content: space-between;
+	align-items: center;
+	margin-right: 40px;
+}

@@ -13,8 +13,8 @@ html {
 }
 body {
 	/* background-color: #effffa; */
-	/* font-family: "Montserrat", Arial, Helvetica, sans-serif; */
-	font-family: "Raleway", sans-serif;
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
+	/* font-family: "Raleway", sans-serif; */
 	line-height: 1.71429;
 }
 p {
@@ -38,6 +38,7 @@ ul {
 }
 .mid {
 	max-width: 840px;
+	margin-bottom: 30px;
 }
 .stage {
 	margin: 10px;
@@ -49,7 +50,6 @@ ul {
 	overflow: hidden;
 	white-space: unset;
 	background-color: #dac2e4;
-	/* max-height: 325px; */
 }
 
 .stage p {
@@ -63,23 +63,6 @@ ul {
 .boxes {
 	margin-top: 100px;
 }
-
-/* SCROLLBAR STYLE  */
-/* ::-webkit-scrollbar {
-	width: 10px;
-}
-::-webkit-scrollbar-track-piece {
-
-}
-::-webkit-scrollbar-thumb {
-	background-color: #59236e;
-	outline: 2px solid #effffa;
-	outline-offset: -2px;
-	border: 0.1px solid #b7b7b7;
-}
-::-webkit-scrollbar-thumb:hover {
-	background-color: rgb(53, 53, 53);
-} */
 
 /* FOOTER SECTION  */
 .footer {
@@ -127,10 +110,11 @@ ul {
 
 @media (max-width: 678px) {
 	.stage {
-		margin: 0;
+		margin: 5px 0;
 		border-radius: 0;
 		border: none;
-		border-bottom: #59236e 4px solid;
+		border-bottom: #59236e 1.5px solid;
+		border-top: #59236e 1.5px solid;
 	}
 }
 /* *************Need to do something with RandoBox once width is 910 or lower */

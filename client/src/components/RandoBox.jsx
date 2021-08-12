@@ -18,7 +18,6 @@ const RandoBox = () => {
                 <Avatar id="Avatar" src={`/static/${category.image}`} />
                 <li key={category.id}>p/{category.name}</li>
               </div>
-              {/* <hr /> */}
             </>
           );
         })}

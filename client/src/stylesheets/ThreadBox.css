@@ -37,6 +37,7 @@
 }
 
 .fade-text-or-whatever {
+	max-height: 325px;
 	-webkit-mask-image: -webkit-gradient(
 		linear,
 		left 50%,

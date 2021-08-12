@@ -9,7 +9,7 @@ const verifyCallback = async (username, password, done) => {
 	console.log("\n", "\n");
 	try {
 		const user = await User.findByName(username);
-		// console.log("***destructured user from verifyCallback", user[0][0]);
+		console.log("***destructured user from verifyCallback", user);
 		console.log("\n", "\n");
 
 		if (!user) return done(null, false, { message: "Invalid Username!" });
@@ -29,13 +29,13 @@ const strategy = new LocalStrategy(verifyCallback);
 passport.use(strategy);
 
 passport.serializeUser((user, done) => {
-	// console.log("***user argument from SERIALIZE", user);
+	console.log("***user argument from SERIALIZE", user);
 	console.log("\n", "\n");
 	done(null, user);
 });
 
 passport.deserializeUser(async (user, done) => {
-	// console.log("***user argument from DESERIALIZE: ", user);
+	console.log("***userId argument from DESERIALIZE: ", user);
 	console.log("\n", "\n");
 	try {
 		const dbUser = await User.findById(user.user_id);
