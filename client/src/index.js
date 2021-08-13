@@ -4,13 +4,13 @@ import { BrowserRouter as Router } from "react-router-dom";
 // import { Provider } from "react-redux";
 import App from "./App";
 // import store from "./store";
-import { ContextProvider } from './context';
+import ThreadContextProvider from "./context";
 
 render(
-  <ContextProvider>
-    <Router>
-      <App />
-    </Router>
-  </ContextProvider>,
-  document.getElementById("root")
+	<ThreadContextProvider>
+		<Router>
+			<App />
+		</Router>
+	</ThreadContextProvider>,
+	document.getElementById("root")
 );

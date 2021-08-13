@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import api from "../utils/API";
+import API from "../utils/API";
 
-const Context = React.createContext();
+export const ThreadContext = React.createContext();
 
-export const ContextProvider = (props) => {
+const ThreadContextProvider = (props) => {
 	const [realThreads, setRealThreads] = useState([]);
 	const [featuredThread, setFeaturedThread] = useState({});
 
 	useEffect(() => {
 		const getDaThreads = async () => {
 			try {
-				const response = await api.findAllThreads();
+				const response = await API.findAllThreads();
 				setRealThreads(response.data);
 			} catch (error) {
 				console.error(error);
@@ -27,7 +27,7 @@ export const ContextProvider = (props) => {
 		},
 	};
 
-	return <Context.Provider value={{ value }}>{props.children}</Context.Provider>;
+	return <ThreadContext.Provider value={{ value }}>{props.children}</ThreadContext.Provider>;
 };
 
-export default Context;
+export default ThreadContextProvider;

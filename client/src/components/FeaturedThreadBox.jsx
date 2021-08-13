@@ -6,9 +6,9 @@ import CommentIcon from "../components/CommentIcon";
 import Avatar from "@material-ui/core/Avatar";
 import Input from "../components/Input";
 import Comments from "./Comments";
-import Context from "../context";
+import {ThreadContext} from "../context";
 import "../stylesheets/ThreadBox.css";
-import api from "../utils/API";
+import API from "../utils/API";
 const dateFormat = require("dateformat");
 
 const FeaturedThreadBox = ({ location }) => {
@@ -16,7 +16,7 @@ const FeaturedThreadBox = ({ location }) => {
   useEffect(() => {
     const threadId = pathname.split("/")[3];
     console.log(threadId);
-    // api.findOneThread(threadId).then((data) => console.log(data));
+    // API.findOneThread(threadId).then((data) => console.log(data));
   });
 
   const {
@@ -33,7 +33,7 @@ const FeaturedThreadBox = ({ location }) => {
         comment_count,
       },
     },
-  } = useContext(Context);
+  } = useContext(ThreadContext);
 
   return (
     <div key={thread_id} className="stage">

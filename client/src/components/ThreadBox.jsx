@@ -5,7 +5,7 @@ import CommentIcon from "../components/CommentIcon";
 import { useHistory } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 import "../stylesheets/ThreadBox.css";
-import Context from "../context";
+import {ThreadContext} from "../context";
 const dateFormat = require("dateformat");
 
 const ThreadBox = () => {
@@ -15,7 +15,7 @@ const ThreadBox = () => {
       realThreads,
       actions: { setFeaturedThread },
     },
-  } = useContext(Context);
+  } = useContext(ThreadContext);
 
   useEffect(() => {}, [realThreads]);
 
