@@ -13,12 +13,10 @@ const RandoBox = () => {
       <ul>
         {categories.map((category) => {
           return (
-            <>
-              <div onClick={() => history.push(`/p/${category.name}`)} className="list-item">
+              <div key={category.id} onClick={() => history.push(`/p/${category.name}`)} className="list-item">
                 <Avatar id="Avatar" src={`/static/${category.image}`} />
-                <li key={category.id}>p/{category.name}</li>
+                <li>p/{category.name}</li>
               </div>
-            </>
           );
         })}
       </ul>
