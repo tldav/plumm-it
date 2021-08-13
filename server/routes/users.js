@@ -57,8 +57,20 @@ router.post("/login", (req, res, next) => {
 		else {
 			req.login(user, (err) => {
 				if (err) res.status(500).json(err);
-				res.send("Successfully logged in!");
-				console.log(req.user);
+				console.log("req.user from login route", req.user);
+
+				const { user_id, email, username, first_name, last_name, created_at, is_active } =
+					req.user;
+
+				res.json({
+					user_id,
+					email,
+					username,
+					first_name,
+					last_name,
+					created_at,
+					is_active,
+				});
 			});
 		}
 	})(req, res, next);
@@ -72,6 +84,7 @@ router.get("/logout", (req, res) => {
 
 router.get("/current", (req, res) => {
 	const { user_id, email, username, first_name, last_name, created_at, is_active } = req.user;
+	console.log("req.user from /current", req.user);
 
 	res.json({ user_id, email, username, first_name, last_name, created_at, is_active });
 });
