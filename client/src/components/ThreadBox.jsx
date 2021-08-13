@@ -5,7 +5,7 @@ import CommentIcon from "../components/CommentIcon";
 import { useHistory } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 import "../stylesheets/ThreadBox.css";
-import {ThreadContext} from "../context";
+import { ThreadContext } from "../context/ThreadContext";
 const dateFormat = require("dateformat");
 
 const ThreadBox = () => {

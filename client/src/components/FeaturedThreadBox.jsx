@@ -6,7 +6,7 @@ import CommentIcon from "../components/CommentIcon";
 import Avatar from "@material-ui/core/Avatar";
 import Input from "../components/Input";
 import Comments from "./Comments";
-import {ThreadContext} from "../context";
+import { ThreadContext } from "../context/ThreadContext";
 import "../stylesheets/ThreadBox.css";
 import API from "../utils/API";
 const dateFormat = require("dateformat");
