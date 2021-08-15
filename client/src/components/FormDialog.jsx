@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -6,84 +6,75 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { UserContext } from '../context/UserContext';
 import API from "../utils/API"
 import "../stylesheets/FormDialog.css"
 
 const FormDialog = ({purpose}) => {
+  const {user, handleLogin, handleSignup, handleLogout} = useContext(UserContext)
   const [open, setOpen] = useState(false);
   const [userCredentials, setUserCredentials] = useState({
     username: "", 
     password: ""
   })
-  const [currentUser, setCurrentUser] = useState({userInfo: {}})
+  // const [currentUser, setCurrentUser] = useState({userInfo: {}})
 
+  const onLoginSubmit = (e) => {
+    e.preventDefault()
+    setOpen(false)
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+    const loggedUser = handleLogin(userCredentials)
+    console.log("user from login modal", loggedUser);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+    setUserCredentials({username: "", password: ""})
+  }
+
+  const onSignupSubmit = (e) => {
+    e.preventDefault()
+    setOpen(false)
+
+    const newUser = handleSignup(userCredentials)
+    console.log("user from signup modal", newUser);
+
+    setUserCredentials({username: "", password: ""})
+
+  }
+
+  const onLogoutClick = () => {
+    handleLogout()
+  }
+
+  // console.log("state User from FormDialog", user);
+
 
   const handleInputChange = (e) => {
     const {value, name} = e.target;
     setUserCredentials({...userCredentials, [name]: value})
   }
 
-  const handleLogin = async (e) => {
-    e.preventDefault()
-    handleClose();
-    const user = await API.userLogin(userCredentials);
-    // clg below shows no user data bc of res.send in the login post route. Need to send user info to view in front end
-    console.log("logged in user.data from front end", user.data);
-    setUserCredentials({username: "", password: ""})
-  }
-
-  const handleSignup = async (e) => {
-    e.preventDefault()
-    handleClose();
-    const newUser = await API.createUser(userCredentials);
-    console.log(newUser.data);
-    setUserCredentials({username: "", password: ""})
-  }
-
-  const renderUsername = async () => {
-    console.log("clicked!");
-    const theUser = await API.getCurrentUser()
-    console.log("axios.get(/api/users/current)", theUser.data);
-    setCurrentUser({...currentUser, userInfo: theUser.data})
-  }
-
   const dialogConfig = {
     login: {
       titleText: "Log in",
-      axiosHandler: handleLogin,
+      axiosHandler: onLoginSubmit,
       contentText: "Please enter your username and password to log in."
     }, 
     signup: {
       titleText: "Sign up",
-      axiosHandler: handleSignup,
+      axiosHandler: onSignupSubmit,
       contentText: "To create an account, please enter a username and password."
     }
   }
   
-  const configSelector = (purposeProp) => {
-      return purposeProp === "signup" ? dialogConfig.signup : dialogConfig.login
-  }
 
-  const dialogPurpose = configSelector(purpose);
+  const dialogPurpose = purpose === "signup" ? dialogConfig.signup : dialogConfig.login
+
 
   return ( 
     <div>
-      {/* {currentUser ? <h1 style={{color: "#fff"}}>{currentUser.userInfo.username}</h1> : null}
-      <button onClick={renderUsername}>GIMME USER</button> */}
-        <button className="no-style-button" onClick={handleClickOpen}>{dialogPurpose.titleText}</button>
-
-      {/* <Button variant="outlined" color="primary" className="dialog-button" onClick={handleClickOpen}>
-        {dialogPurpose.titleText}
-      </Button> */}
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" >
+      <button onClick={() => console.log("button click in formdialog", user)}>log user</button>
+      <button onClick={onLogoutClick}>LOG OUT</button>
+      <button className="no-style-button" onClick={() => setOpen(true)}>{dialogPurpose.titleText}</button>
+      <Dialog open={open} onClose={() => setOpen(false)} aria-labelledby="form-dialog-title" >
         <DialogTitle id="form-dialog-title" className="dialog-box-bg">{dialogPurpose.titleText}</DialogTitle>
         <DialogContent className="dialog-box-bg">
           <DialogContentText>
@@ -96,6 +87,7 @@ const FormDialog = ({purpose}) => {
               label="Username"
               type="text"
               fullWidth
+              required
               name="username"
               value={userCredentials.username}
               onChange={handleInputChange}
@@ -104,15 +96,16 @@ const FormDialog = ({purpose}) => {
             <TextField
               margin="dense"
               label="Password"
-              type="text"
+              type="password"
               fullWidth
+              required
               name="password"
               value={userCredentials.password}
               onChange={handleInputChange}
               onSubmit={dialogPurpose.axiosHandler}
             />
             <DialogActions className="dialog-box-bg">
-              <Button onClick={handleClose} color="primary">
+              <Button onClick={() => setOpen(false)} color="primary">
                 Cancel
               </Button>
               <Button type="submit" color="primary">

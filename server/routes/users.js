@@ -23,7 +23,18 @@ router.post("/register", async (req, res) => {
 
 		req.login(loginUser[0][0], (err) => {
 			if (err) throw err;
-			res.send("Successfully signed up and logged in as " + loginUser[0][0].username);
+			const { user_id, email, username, first_name, last_name, created_at, is_active } =
+				req.user;
+
+			res.json({
+				user_id,
+				email,
+				username,
+				first_name,
+				last_name,
+				created_at,
+				is_active,
+			});
 		});
 	} catch (err) {
 		res.status(500).json(err);
@@ -57,7 +68,6 @@ router.post("/login", (req, res, next) => {
 		else {
 			req.login(user, (err) => {
 				if (err) res.status(500).json(err);
-				console.log("req.user from login route", req.user);
 
 				const { user_id, email, username, first_name, last_name, created_at, is_active } =
 					req.user;
@@ -79,14 +89,17 @@ router.post("/login", (req, res, next) => {
 router.get("/logout", (req, res) => {
 	req.logout();
 	res.json("Successfully logged out");
-	console.log("***req.user from logout route", req.user);
 });
 
-router.get("/current", (req, res) => {
-	const { user_id, email, username, first_name, last_name, created_at, is_active } = req.user;
-	console.log("req.user from /current", req.user);
+router.post("/current", (req, res) => {
+	if (!req.user) {
+		res.send("No one is currently logged in");
+	} else {
+		const { user_id, email, username, first_name, last_name, created_at, is_active } = req.user;
+		console.log("req.user from /current", req.user);
 
-	res.json({ user_id, email, username, first_name, last_name, created_at, is_active });
+		res.json({ user_id, email, username, first_name, last_name, created_at, is_active });
+	}
 });
 
 module.exports = router;

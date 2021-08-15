@@ -4,8 +4,14 @@ const API = {
 	createUser: (newUser) => {
 		return axios.post("/api/users/register", newUser);
 	},
-	userLogin: (credentials) => {
+	loginUser: (credentials) => {
 		return axios.post("/api/users/login", credentials);
+	},
+	logoutUser: () => {
+		return axios.get("/api/users/logout");
+	},
+	getCurrentUser: () => {
+		return axios.post("/api/users/current");
 	},
 	updateUser: (id, updatedUser) => {
 		return axios.put("/api/users/" + id, updatedUser);
@@ -43,9 +49,6 @@ const API = {
 	},
 	downvoteComment: (commentId, userId) => {
 		return axios.put("/api/comments/downvote/" + commentId, userId);
-	},
-	getCurrentUser: () => {
-		return axios.get("/api/users/current");
 	},
 };
 
