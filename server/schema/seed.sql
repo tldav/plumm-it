@@ -13,14 +13,14 @@ INSERT INTO categories
   (category_id, category_name, user_id)
 
 VALUES
-  (1, "News", 1),
-  (2, "Sports", 1),
-  (3, "Technology", 1),
-  (4, "Gaming", 1),
-  (5, "Movies", 1),
-  (6, "Books", 1),
-  (7, "Food", 1),
-  (8, "Conspiracies", 1);
+  (1, "news", 1),
+  (2, "sports", 1),
+  (3, "technology", 1),
+  (4, "gaming", 1),
+  (5, "movies", 1),
+  (6, "books", 1),
+  (7, "food", 1),
+  (8, "conspiracies", 1);
 
 INSERT INTO threads
   (thread_id, user_id, category_id, title, body, created_at)

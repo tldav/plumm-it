@@ -50,12 +50,12 @@ if (process.env.NODE_ENV === "production") {
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use((req, res, next) => {
-	console.log("***req.session: ", req.session);
-	console.log("***req.user: ", req.user);
-	console.log("\n", "\n");
-	next();
-});
+// app.use((req, res, next) => {
+// 	console.log("***req.session: ", req.session);
+// 	console.log("***req.user: ", req.user);
+// 	console.log("\n", "\n");
+// 	next();
+// });
 
 app.use("/api", routes);
 

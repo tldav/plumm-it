@@ -18,7 +18,7 @@ router.get("/:id", async (req, res) => {
 	try {
 		const threadsAndComments = await Promise.all(dbQueries);
 		const allResultsObj = {
-			thread: threadsAndComments[0][0],
+			thread: threadsAndComments[0][0][0],
 			comments: threadsAndComments[1][0],
 		};
 		res.json(allResultsObj);

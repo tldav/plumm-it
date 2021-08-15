@@ -4,6 +4,7 @@ const passport = require("passport");
 const bcrypt = require("bcrypt");
 const User = require("../models").User;
 
+// for development only
 router.get("/", async (req, res) => {
 	try {
 		const results = await User.findAll();
@@ -60,7 +61,6 @@ router.put("/:id", async (req, res) => {
 // 	res.json({ user_id, email, username, first_name, last_name, created_at, is_active });
 // });
 
-// TEST LOGIN ROUTE
 router.post("/login", (req, res, next) => {
 	passport.authenticate("local", (err, user, info) => {
 		if (err) res.status(500).json(err);
