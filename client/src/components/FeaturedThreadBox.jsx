@@ -8,7 +8,6 @@ import Input from "../components/Input";
 import Comments from "./Comments";
 import { ThreadContext } from "../context/ThreadContext";
 import "../stylesheets/ThreadBox.css";
-import API from "../utils/API";
 const dateFormat = require("dateformat");
 
 const FeaturedThreadBox = ({ location }) => {
