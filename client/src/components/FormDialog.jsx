@@ -10,13 +10,12 @@ import { UserContext } from '../context/UserContext';
 import "../stylesheets/FormDialog.css"
 
 const FormDialog = ({purpose}) => {
-  const {user, handleLogin, handleSignup, handleLogout} = useContext(UserContext)
+  const {user, handleLogin, handleSignup, handleLogout, isLoggedIn} = useContext(UserContext)
   const [open, setOpen] = useState(false);
   const [userCredentials, setUserCredentials] = useState({
     username: "", 
     password: ""
   })
-  // const [currentUser, setCurrentUser] = useState({userInfo: {}})
 
   const onLoginSubmit = (e) => {
     e.preventDefault()
@@ -64,14 +63,12 @@ const FormDialog = ({purpose}) => {
     }
   }
   
-
   const dialogPurpose = purpose === "signup" ? dialogConfig.signup : dialogConfig.login
 
-
   return ( 
-    <div>
-      <button onClick={() => console.log("button click in formdialog", user)}>log user</button>
-      <button onClick={onLogoutClick}>LOG OUT</button>
+
+    !isLoggedIn && !user.username ? (
+      <div>
       <button className="no-style-button" onClick={() => setOpen(true)}>{dialogPurpose.titleText}</button>
       <Dialog open={open} onClose={() => setOpen(false)} aria-labelledby="form-dialog-title" >
         <DialogTitle id="form-dialog-title" className="dialog-box-bg">{dialogPurpose.titleText}</DialogTitle>
@@ -95,7 +92,8 @@ const FormDialog = ({purpose}) => {
             <TextField
               margin="dense"
               label="Password"
-              type="password"
+              // type="password"
+              type="text"
               fullWidth
               required
               name="password"
@@ -115,6 +113,12 @@ const FormDialog = ({purpose}) => {
         </DialogContent>
       </Dialog>
     </div>
+    ) :  <div>
+      Hello {user.username}
+      <button onClick={() => console.log("button click in formdialog", user)}>log user</button>
+      <button onClick={onLogoutClick}>LOG OUT</button>
+    </div>
+    
   );
 }
 
