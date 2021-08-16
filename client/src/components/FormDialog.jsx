@@ -1,41 +1,28 @@
 import React, {useState, useContext} from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { UserContext } from '../context/UserContext';
 import "../stylesheets/FormDialog.css"
+import useRenderCount from '../hooks/useRenderCount';
+import LogSignForm from './LogSignForm';
 
 const FormDialog = ({purpose}) => {
   const {user, handleLogin, handleSignup, handleLogout, isLoggedIn} = useContext(UserContext)
   const [open, setOpen] = useState(false);
-  const [userCredentials, setUserCredentials] = useState({
-    username: "", 
-    password: ""
-  })
 
-  const onLoginSubmit = (e) => {
-    e.preventDefault()
+
+  useRenderCount("FormDialog")
+
+  const onLoginSubmit = (userCredentials) => {
     setOpen(false)
-
-    const loggedUser = handleLogin(userCredentials)
-    console.log("user from login modal", loggedUser);
-
-    setUserCredentials({username: "", password: ""})
+    handleLogin(userCredentials)
   }
 
-  const onSignupSubmit = (e) => {
-    e.preventDefault()
+  const onSignupSubmit = (userCredentials) => {
     setOpen(false)
-
-    const newUser = handleSignup(userCredentials)
-    console.log("user from signup modal", newUser);
-
-    setUserCredentials({username: "", password: ""})
-
+    handleSignup(userCredentials)
   }
 
   const onLogoutClick = () => {
@@ -44,10 +31,8 @@ const FormDialog = ({purpose}) => {
 
   // console.log("state User from FormDialog", user);
 
-
-  const handleInputChange = (e) => {
-    const {value, name} = e.target;
-    setUserCredentials({...userCredentials, [name]: value})
+  const handleModalClose = () => {
+    setOpen(false)
   }
 
   const dialogConfig = {
@@ -69,53 +54,20 @@ const FormDialog = ({purpose}) => {
 
     !isLoggedIn && !user.username ? (
       <div>
-      <button className="no-style-button" onClick={() => setOpen(true)}>{dialogPurpose.titleText}</button>
+      <button className="dialog-button-2" onClick={() => setOpen(true)}>{dialogPurpose.titleText}</button>
       <Dialog open={open} onClose={() => setOpen(false)} aria-labelledby="form-dialog-title" >
         <DialogTitle id="form-dialog-title" className="dialog-box-bg">{dialogPurpose.titleText}</DialogTitle>
         <DialogContent className="dialog-box-bg">
           <DialogContentText>
             {dialogPurpose.contentText}
           </DialogContentText>
-          <form action="" onSubmit={dialogPurpose.axiosHandler}>
-            <TextField
-              autoFocus
-              margin="dense"
-              label="Username"
-              type="text"
-              fullWidth
-              required
-              name="username"
-              value={userCredentials.username}
-              onChange={handleInputChange}
-              onSubmit={dialogPurpose.axiosHandler}
-            />
-            <TextField
-              margin="dense"
-              label="Password"
-              // type="password"
-              type="text"
-              fullWidth
-              required
-              name="password"
-              value={userCredentials.password}
-              onChange={handleInputChange}
-              onSubmit={dialogPurpose.axiosHandler}
-            />
-            <DialogActions className="dialog-box-bg">
-              <Button onClick={() => setOpen(false)} color="primary">
-                Cancel
-              </Button>
-              <Button type="submit" color="primary">
-                {dialogPurpose.titleText}
-              </Button>
-            </DialogActions>
-          </form>
+          <LogSignForm dialogPurpose={dialogPurpose} handleModalClose={handleModalClose} />
         </DialogContent>
       </Dialog>
     </div>
     ) :  <div>
       Hello {user.username}
-      <button onClick={() => console.log("button click in formdialog", user)}>log user</button>
+      <button onClick={() => console.log("check user button click in formdialog", user)}>check user</button>
       <button onClick={onLogoutClick}>LOG OUT</button>
     </div>
     
