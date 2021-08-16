@@ -19,15 +19,30 @@ const ThreadContextProvider = (props) => {
 		getDaThreads();
 	}, []);
 
-	const value = {
-		realThreads,
-		featuredThread,
-		actions: {
-			setFeaturedThread,
-		},
+	console.log("redundant fetch? ", realThreads);
+
+	const handleThreadSelect = async (id) => {
+		const selectedThread = await API.findOneThread(id);
+		setFeaturedThread(selectedThread.data);
 	};
 
-	return <ThreadContext.Provider value={{ value }}>{props.children}</ThreadContext.Provider>;
+	const handleCategorySelect = async (id) => {
+		const selectedCategory = await API.findAllThreadsInCategory(id);
+		console.log(selectedCategory.data);
+	};
+
+	return (
+		<ThreadContext.Provider
+			value={{
+				realThreads,
+				featuredThread,
+				handleThreadSelect,
+				handleCategorySelect,
+			}}
+		>
+			{props.children}
+		</ThreadContext.Provider>
+	);
 };
 
 export default ThreadContextProvider;

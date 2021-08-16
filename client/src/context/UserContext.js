@@ -12,23 +12,22 @@ const UserContextProvider = (props) => {
 	// });
 
 	const [user, setUser] = useState({});
-	console.log("REAL user state from context", user);
-
-	const checkLoginStatus = async () => {
-		const checkedUser = await API.getCurrentUser();
-
-		if (checkedUser.data.username && !isLoggedIn) {
-			setUser(checkedUser.data);
-			setIsLoggedIn(true);
-		} else if (!checkedUser.data.username && isLoggedIn) {
-			setUser({});
-			setIsLoggedIn(false);
-		}
-	};
+	// console.log("REAL user state from context", user);
 
 	useEffect(() => {
+		const checkLoginStatus = async () => {
+			const checkedUser = await API.getCurrentUser();
+
+			if (checkedUser.data.username && !isLoggedIn) {
+				setUser(checkedUser.data);
+				setIsLoggedIn(true);
+			} else if (!checkedUser.data.username && isLoggedIn) {
+				setUser({});
+				setIsLoggedIn(false);
+			}
+		};
 		checkLoginStatus();
-	});
+	}, [isLoggedIn]);
 
 	const handleLogin = async (credentials) => {
 		try {
@@ -40,7 +39,7 @@ const UserContextProvider = (props) => {
 		}
 	};
 
-	console.log("is logged in?", isLoggedIn);
+	// console.log("is logged in?", isLoggedIn);
 
 	const handleSignup = async (credentials) => {
 		try {
@@ -70,6 +69,8 @@ const UserContextProvider = (props) => {
 };
 
 export default UserContextProvider;
+
+// below uses local storage instead of getCurrentUser route. Will delete if issues with the above method can be resolved.
 
 // import React, { createContext, useEffect, useState } from "react";
 // import API from "../utils/API";
