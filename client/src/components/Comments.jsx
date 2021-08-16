@@ -4,12 +4,8 @@ import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import IconButton from "@material-ui/core/IconButton";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import "../stylesheets/Comment.css";
-const comments = require("../comments.json");
 
-const Comments = () => {
-  // we should probably add a comments object to featuredThread in state,
-  // import it here, and map that below. For now, I'm importing
-  // the comments.json file
+const Comments = ({comments}) => {
 
   const votes = (a, b) => {
     return a - b;
@@ -18,7 +14,7 @@ const Comments = () => {
   return (
     <>
       {comments.map((comment) => (
-        <div key={comment.id} {...comment} className="convo-container">
+        <div key={comment.comment_id} className="convo-container">
           <div className="column-1">
             <IconButton id="upvote" size="small">
               <ArrowUpwardIcon className="arrow-button" />
@@ -30,7 +26,7 @@ const Comments = () => {
           </div>
           <div className="column-2">
             <p className="heading">
-              {comment.userId} • {comment.createdAt} • ⤮{" "}
+              {comment.username} • {comment.created_at} • ⤮{" "}
               {votes(comment.upvotes, comment.downvotes)}
             </p>
             <p>{comment.body}</p>
