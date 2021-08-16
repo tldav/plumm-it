@@ -1,20 +1,22 @@
 import React, { useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import dateFormat from "dateformat";
+import { Avatar } from "@material-ui/core";
 import Upvote from "../components/Upvote";
 import Downvote from "../components/Downvote";
 import CommentIcon from "../components/CommentIcon";
-import { useHistory } from "react-router-dom";
-import { Avatar } from "@material-ui/core";
-import "../stylesheets/ThreadBox.css";
 import { ThreadContext } from "../context/ThreadContext";
-import useRenderCount from "../hooks/useRenderCount";
-const dateFormat = require("dateformat");
+import "../stylesheets/ThreadBox.css";
+// import useRenderCount from "../hooks/useRenderCount";
 
 const ThreadBox = () => {
   let history = useHistory();
 
   const {realThreads, handleThreadSelect } = useContext(ThreadContext)
 
-  useRenderCount("ThreadBox.jsx")
+
+  // un-comment to track number of re-renders
+  // useRenderCount("ThreadBox.jsx")
 
   useEffect(() => {}, [realThreads]);
 

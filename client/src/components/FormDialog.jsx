@@ -4,16 +4,13 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { UserContext } from '../context/UserContext';
-import "../stylesheets/FormDialog.css"
-import useRenderCount from '../hooks/useRenderCount';
 import LogSignForm from './LogSignForm';
+import "../stylesheets/FormDialog.css"
+
 
 const FormDialog = ({purpose}) => {
   const {user, handleLogin, handleSignup, handleLogout, isLoggedIn} = useContext(UserContext)
   const [open, setOpen] = useState(false);
-
-
-  useRenderCount("FormDialog")
 
   const onLoginSubmit = (userCredentials) => {
     setOpen(false)
@@ -28,8 +25,6 @@ const FormDialog = ({purpose}) => {
   const onLogoutClick = () => {
     handleLogout()
   }
-
-  // console.log("state User from FormDialog", user);
 
   const handleModalClose = () => {
     setOpen(false)

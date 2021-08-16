@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
-import useRenderCount from "../hooks/useRenderCount";
+// import useRenderCount from "../hooks/useRenderCount";
 
 export const ThreadContext = React.createContext();
 
@@ -8,7 +8,8 @@ const ThreadContextProvider = (props) => {
 	const [realThreads, setRealThreads] = useState([]);
 	const [featuredThread, setFeaturedThread] = useState({});
 
-	useRenderCount("ThreadContext.jsx");
+	// un-comment to track number of re-renders
+	// useRenderCount("ThreadContext.jsx");
 
 	useEffect(() => {
 		const getDaThreads = async () => {
@@ -22,7 +23,7 @@ const ThreadContextProvider = (props) => {
 		getDaThreads();
 	}, []);
 
-	console.log("redundant fetch? ", realThreads);
+	// console.log("redundant fetch? ", realThreads);
 
 	const handleThreadSelect = async (id) => {
 		try {

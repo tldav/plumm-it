@@ -15,9 +15,6 @@ const FeaturedThreadBox = ({location}) => {
   const { handleThreadSelect, featuredThread: {thread, comments}} = useContext(ThreadContext)
   const { pathname } = location;
 
-  console.log("thread from FeaturedThreadBox", thread);
-  console.log("comments from FeaturedThreadBox", comments);
-
   useEffect(() => {
     const threadId = pathname.split("/")[3];
     handleThreadSelect(threadId)
