@@ -11,7 +11,7 @@
 	/* padding: 10px; */
 }
 
-.categories-title {
+.categories-header {
 	background: #59236e;
 	color: #ffffff;
 	font-family: "Ultra", serif;
@@ -34,11 +34,10 @@
 	cursor: pointer;
 }
 
-li {
-	margin-left: 10px;
-}
-
 #Avatar {
 	height: 2rem;
 	width: 2rem;
+	margin-right: 10px;
 }
+
+/* categories font is 20 px */

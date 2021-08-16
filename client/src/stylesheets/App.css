@@ -20,7 +20,8 @@ body {
 p {
 	line-height: 1.71429;
 	font-size: 14px;
-	color: rgb(53, 53, 53);
+	/* color: rgb(53, 53, 53); */
+	color: #000;
 }
 h1 {
 	font-size: 28px;

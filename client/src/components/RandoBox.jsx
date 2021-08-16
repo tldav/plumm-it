@@ -9,14 +9,14 @@ const RandoBox = () => {
 
   return (
     <div className="rando-box">
-      <h2 className="categories-title">categories</h2>
+      <h3 className="categories-header">categories</h3>
       <ul>
         {categories.map((category) => {
           return (
-              <div key={category.id} onClick={() => history.push(`/p/${category.name}`)} className="list-item">
-                <Avatar id="Avatar" src={`/static/${category.image}`} />
-                <li>p/{category.name}</li>
-              </div>
+              <li key={category.id} onClick={() => history.push(`/p/${category.name}`)} className="list-item">
+                <Avatar id="Avatar" src={`/static/${category.image}`} alt={category.name} />
+                p/{category.name}
+              </li>
           );
         })}
       </ul>
