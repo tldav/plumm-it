@@ -65,7 +65,6 @@ const FormDialog = ({purpose}) => {
       <button onClick={() => console.log("check user button click in formdialog", user)}>check user</button>
       <button onClick={onLogoutClick}>LOG OUT</button>
     </div>
-    
   );
 }
 

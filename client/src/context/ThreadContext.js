@@ -5,6 +5,7 @@ import API from "../utils/API";
 export const ThreadContext = React.createContext();
 
 const ThreadContextProvider = (props) => {
+	// may separate these into two contexts in the future
 	const [realThreads, setRealThreads] = useState([]);
 	const [featuredThread, setFeaturedThread] = useState({});
 

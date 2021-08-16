@@ -7,19 +7,24 @@ import Downvote from "../components/Downvote";
 import CommentIcon from "../components/CommentIcon";
 import Input from "../components/Input";
 import Comments from "./Comments";
+import FormDialog from "./FormDialog"
 import { ThreadContext } from "../context/ThreadContext";
+import { UserContext } from "../context/UserContext";
 import "../stylesheets/ThreadBox.css";
 
 
 const FeaturedThreadBox = ({location}) => {
   const { handleThreadSelect, featuredThread: {thread, comments}} = useContext(ThreadContext)
+  const { user, isLoggedIn } = useContext(UserContext)
   const { pathname } = location;
 
   useEffect(() => {
     const threadId = pathname.split("/")[3];
     handleThreadSelect(threadId)
-    
   }, []);
+
+
+  const renderCommentInput = !user.username && !isLoggedIn ? <div><FormDialog purpose="signup" /> to leave a comment. Already signed up? <FormDialog purpose="login"/> here.</div> : <Input />
 
   if (!thread) return null;
   return (
@@ -39,7 +44,7 @@ const FeaturedThreadBox = ({location}) => {
         <Downvote downvotes={thread.downvotes} />
         <CommentIcon comments={thread.comment_count} />
       </div>
-      <Input />
+      {renderCommentInput}
       <hr style={{ marginTop: "40px", marginBottom: "40px" }} />
       <Comments comments={comments} />
     </div>
