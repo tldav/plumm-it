@@ -1,59 +1,50 @@
 import React, { useContext, useEffect } from "react";
 import { withRouter } from "react-router-dom";
+import Avatar from "@material-ui/core/Avatar";
+import dateFormat from "dateformat"
 import Upvote from "../components/Upvote";
 import Downvote from "../components/Downvote";
 import CommentIcon from "../components/CommentIcon";
-import Avatar from "@material-ui/core/Avatar";
 import Input from "../components/Input";
 import Comments from "./Comments";
 import { ThreadContext } from "../context/ThreadContext";
 import "../stylesheets/ThreadBox.css";
-const dateFormat = require("dateformat");
 
-const FeaturedThreadBox = ({ location }) => {
+
+const FeaturedThreadBox = ({location}) => {
+  const { handleThreadSelect, featuredThread: {thread, comments}} = useContext(ThreadContext)
   const { pathname } = location;
+
+  console.log("thread from FeaturedThreadBox", thread);
+  console.log("comments from FeaturedThreadBox", comments);
+
   useEffect(() => {
     const threadId = pathname.split("/")[3];
-    console.log(threadId);
-    // API.findOneThread(threadId).then((data) => console.log(data));
-  });
+    handleThreadSelect(threadId)
+    
+  }, []);
 
-  const {
-    value: {
-      featuredThread: {
-        thread_id,
-        title,
-        body,
-        category_name,
-        created_at,
-        downvotes,
-        upvotes,
-        username,
-        comment_count,
-      },
-    },
-  } = useContext(ThreadContext);
-
+  if (!thread) return null;
   return (
-    <div key={thread_id} className="stage">
+    <div key={thread.thread_id} className="stage">
       <div id="threadHeader">
-        <Avatar id="avatar" src={`/static/images/${category_name}.jpg`} />
-        <span id="category">p/{category_name}</span>
-        <span id="user">{`• ${username} ${dateFormat(
-          created_at,
+        <Avatar id="avatar" src={`/static/images/${thread.category_name}.jpg`} />
+        <span id="category">p/{thread.category_name}</span>
+        <span id="user">{`• ${thread.username} ${dateFormat(
+          thread.created_at,
           "dddd, mmmm dS, yyyy, h:MM TT"
         )}`}</span>
       </div>
-      <h3>{title}</h3>
-      <p>{body}</p>
+      <h3 className="thread-title">{thread.title}</h3>
+      <p>{thread.body}</p>
       <div style={{ marginBottom: "30px" }} id="iconDiv">
-        <Upvote upvotes={upvotes} />
-        <Downvote downvotes={downvotes} />
-        <CommentIcon comments={comment_count} />
+        <Upvote upvotes={thread.upvotes} />
+        <Downvote downvotes={thread.downvotes} />
+        <CommentIcon comments={thread.comment_count} />
       </div>
       <Input />
       <hr style={{ marginTop: "40px", marginBottom: "40px" }} />
-      <Comments />
+      <Comments comments={comments} />
     </div>
   );
 };

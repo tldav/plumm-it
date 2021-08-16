@@ -6,22 +6,21 @@ import { useHistory } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 import "../stylesheets/ThreadBox.css";
 import { ThreadContext } from "../context/ThreadContext";
+import useRenderCount from "../hooks/useRenderCount";
 const dateFormat = require("dateformat");
 
 const ThreadBox = () => {
   let history = useHistory();
-  const {
-    value: {
-      realThreads,
-      actions: { setFeaturedThread },
-    },
-  } = useContext(ThreadContext);
+
+  const {realThreads, handleThreadSelect } = useContext(ThreadContext)
+
+  useRenderCount("ThreadBox.jsx")
 
   useEffect(() => {}, [realThreads]);
 
-  const redirectToThread = (thread) => {
+  const redirectToThread = async (thread) => {
+    await handleThreadSelect(thread.thread_id)
     const path = `p/${thread.category_name}/${thread.thread_id}/${thread.title.replace(/ /g, "_")}`;
-    setFeaturedThread(thread);
     history.push(path);
   };
 
@@ -47,7 +46,7 @@ const ThreadBox = () => {
               "dddd, mmmm dS, yyyy, h:MM TT"
             )}`}</span>
           </div>
-          <h3>{thread.title}</h3>
+          <h2 className="thread-title">{thread.title}</h2>
           <div className="fade-text-or-whatever">
             <p>{thread.body}</p>
           </div>
