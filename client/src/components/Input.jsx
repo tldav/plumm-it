@@ -12,7 +12,7 @@ const Input = () => {
           fullWidth
           multiline
           rows={4}
-          placeholder="Add a Comment"
+          placeholder="Leave a Comment"
         />
         <IconButton>
           <LinkIcon />

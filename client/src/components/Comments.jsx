@@ -4,17 +4,19 @@ import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import IconButton from "@material-ui/core/IconButton";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import "../stylesheets/Comment.css";
+import useRenderCount from "../hooks/useRenderCount";
 
 const Comments = ({comments}) => {
-
   const votes = (a, b) => {
     return a - b;
   };
 
+  useRenderCount("Comments.jsx")
+
   return (
     <>
       {comments.map((comment) => (
-        <div key={comment.comment_id} className="convo-container">
+        <div key={comment.comment_id} className="convo-container" >
           <div className="column-1">
             <IconButton id="upvote" size="small">
               <ArrowUpwardIcon className="arrow-button" />
