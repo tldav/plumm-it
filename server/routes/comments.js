@@ -48,4 +48,15 @@ router.put("/downvote/:id", async (req, res) => {
 	}
 });
 
+router.put("/remove/:id", async (req, res) => {
+	const commentId = req.params.id;
+
+	try {
+		const removedComment = await Comment.remove(commentId);
+		res.json(removedComment);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
 module.exports = router;

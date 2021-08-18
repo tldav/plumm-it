@@ -375,3 +375,21 @@ BEGIN
 
 END
 //
+
+
+
+
+
+
+DELIMITER //
+
+CREATE PROCEDURE unpublishComment(param_comment_id INT)
+
+BEGIN
+
+    UPDATE comments SET is_active = FALSE
+    WHERE comment_id = param_comment_id
+    LIMIT 1;
+
+END
+//
