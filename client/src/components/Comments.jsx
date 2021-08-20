@@ -2,16 +2,14 @@ import React from "react";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import IconButton from "@material-ui/core/IconButton";
+import dateFormat from "dateformat"
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import "../stylesheets/Comment.css";
-import useRenderCount from "../hooks/useRenderCount";
 
 const Comments = ({comments}) => {
   const votes = (a, b) => {
     return a - b;
   };
-
-  useRenderCount("Comments.jsx")
 
   return (
     <>
@@ -28,8 +26,9 @@ const Comments = ({comments}) => {
           </div>
           <div className="column-2">
             <p className="heading">
-              {comment.username} • {comment.created_at} • ⤮{" "}
-              {votes(comment.upvotes, comment.downvotes)}
+            {`${comment.username} • ${dateFormat(comment.created_at,
+              "dddd, mmmm dS, yyyy, h:MM TT"
+            )} • ⤮ ${votes(comment.upvotes, comment.downvotes)}`}
             </p>
             <p>{comment.body}</p>
             <IconButton className="reply-button" size="small">
