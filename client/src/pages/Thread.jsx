@@ -1,5 +1,4 @@
 import React from "react";
-import FeaturedThreadBox from "../components/FeaturedThreadBox";
 import FeaturedThreadContent from "../components/FeaturedThreadContent";
 import RandoBox from "../components/RandoBox";
 

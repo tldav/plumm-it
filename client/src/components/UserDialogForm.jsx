@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import DialogActions from '@material-ui/core/DialogActions';
 
-const LogSignForm = ({ dialogPurpose, handleModalClose }) => {
+const UserDialogForm = ({ dialogPurpose, handleModalClose }) => {
   const [userCredentials, setUserCredentials] = useState({
     username: "", 
     password: ""
@@ -57,4 +57,4 @@ const LogSignForm = ({ dialogPurpose, handleModalClose }) => {
   );
 }
 
-export default LogSignForm;
+export default UserDialogForm;

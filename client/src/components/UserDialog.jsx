@@ -3,12 +3,12 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import UserDialogForm from './UserDialogForm';
 import { UserContext } from '../context/UserContext';
-import LogSignForm from './LogSignForm';
-import "../stylesheets/FormDialog.css"
+import "../stylesheets/UserDialog.css"
 
 
-const FormDialog = ({purpose}) => {
+const UserDialog = ({buttonTheme, purpose}) => {
   const {user, handleLogin, handleSignup, handleLogout, isLoggedIn} = useContext(UserContext)
   const [open, setOpen] = useState(false);
 
@@ -49,23 +49,23 @@ const FormDialog = ({purpose}) => {
 
     !isLoggedIn && !user.username ? (
       <div>
-      <button className="dialog-button-2" onClick={() => setOpen(true)}>{dialogPurpose.titleText}</button>
+      <button className={buttonTheme} onClick={() => setOpen(true)}>{dialogPurpose.titleText}</button>
       <Dialog open={open} onClose={() => setOpen(false)} aria-labelledby="form-dialog-title" >
         <DialogTitle id="form-dialog-title" className="dialog-box-bg">{dialogPurpose.titleText}</DialogTitle>
         <DialogContent className="dialog-box-bg">
           <DialogContentText>
             {dialogPurpose.contentText}
           </DialogContentText>
-          <LogSignForm dialogPurpose={dialogPurpose} handleModalClose={handleModalClose} />
+          <UserDialogForm dialogPurpose={dialogPurpose} handleModalClose={handleModalClose} />
         </DialogContent>
       </Dialog>
     </div>
     ) :  <div>
       Hello {user.username}
-      <button onClick={() => console.log("check user button click in formdialog", user)}>check user</button>
-      <button onClick={onLogoutClick}>LOG OUT</button>
+      <button className={buttonTheme} onClick={() => console.log("check user button click in UserDialog", user)}>check user</button>
+      <button className={buttonTheme} onClick={onLogoutClick}>LOG OUT</button>
     </div>
   );
 }
 
-export default FormDialog;
+export default UserDialog;

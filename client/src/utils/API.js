@@ -22,7 +22,7 @@ const API = {
 	findAllThreadsInCategory: (id) => {
 		return axios.get("/api/threads/category/" + id);
 	},
-	// responds with an object containing the thread by id and all comments belonging to the thread id
+	// responds with an object containing the thread by id and all comments belonging to that thread
 	findOneThread: (id) => {
 		return axios.get("/api/threads/" + id);
 	},

@@ -56,5 +56,5 @@ module.exports = {
 			});
 		});
 	},
-	delete: () => {},
+	remove: () => {},
 };

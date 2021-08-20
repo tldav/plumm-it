@@ -2,3 +2,4 @@ node_modules
 debug.log
 .env
 /notes.yml
+/pseudo-components.jsx

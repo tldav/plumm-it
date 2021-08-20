@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import FormDialog from "./FormDialog"
+import UserDialog from "./UserDialog"
 import "../stylesheets/Header.css";
 
 const Header = () => {
@@ -12,8 +12,8 @@ const Header = () => {
           plummit
         </h1>
         <div className="header-buttons">
-          <FormDialog purpose="signup"/>
-          <FormDialog purpose="login"/>
+            <UserDialog purpose="signup" buttonTheme="dialog-button-2"/>
+            <UserDialog purpose="login" buttonTheme="dialog-button-2"/>
         </div>
       </div>
     </div>
