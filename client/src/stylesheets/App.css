@@ -40,6 +40,7 @@ ul {
 .mid {
 	max-width: 840px;
 	margin-bottom: 30px;
+	width: 100%;
 }
 .stage {
 	margin: 10px;
@@ -65,7 +66,6 @@ ul {
 	margin-top: 100px;
 }
 
-/* FOOTER SECTION  */
 .footer {
 	text-align: center;
 	opacity: 0.7;
