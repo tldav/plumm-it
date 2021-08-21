@@ -39,9 +39,9 @@ module.exports = {
 		});
 	},
 	remove: (commentId) => {
-		const sql = `CALL unpublishComment(${commentId})`;
+		const sql = `CALL unpublishComment(?)`;
 		return new Promise((resolve, reject) => {
-			connection.query(sql, (err, results) => {
+			connection.query(sql, commentId, (err, results) => {
 				if (err) reject(err);
 				return resolve(results);
 			});
