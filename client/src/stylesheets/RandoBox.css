@@ -28,10 +28,15 @@
 	font-weight: bold;
 	padding: 5px;
 	font-family: "Raleway", sans-serif;
+	transition-duration: 0.3s;
+	transition-property: transform;
 }
 
-.list-item:hover {
+.list-item:hover,
+.list-item:focus,
+.list-item:active {
 	cursor: pointer;
+	transform: scale(1.1) translateX(11px);
 }
 
 #Avatar {
