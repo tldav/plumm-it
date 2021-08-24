@@ -5,11 +5,8 @@ import Upvote from "../components/Upvote";
 import Downvote from "../components/Downvote";
 import CommentIcon from "../components/CommentIcon";
 import "../stylesheets/ThreadBox.css";
-// import useRenderCount from "../hooks/useRenderCount";
 
 const FeaturedThreadBox = ({thread}) => {
-
-  // useRenderCount("alkdjfksdjfldskjfkdsf FEATUREDTHREADBOX")
 
   return (
     <div key={thread.thread_id} >

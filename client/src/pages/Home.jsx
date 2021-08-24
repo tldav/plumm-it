@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import RandoBox from "../components/RandoBox";
-import ThreadBox from "../components/ThreadBox";
+import ThreadList from "../components/ThreadList";
+import { ThreadContext } from "../context/ThreadContext";
 
 const Home = () => {
+  const { realThreads } = useContext(ThreadContext)
   return (
     <div className="app-container ">
       <div className="left"></div>
       <div className="mid">
         <div className="threads">
-          <ThreadBox />
+          <ThreadList threads={realThreads} />
         </div>
       </div>
       <div className="right">

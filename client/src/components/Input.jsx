@@ -2,15 +2,13 @@ import React, { useState, useContext } from "react";
 import { Paper, InputBase, Divider, IconButton } from "@material-ui/core";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import LinkIcon from "@material-ui/icons/Link";
-import "../stylesheets/Input.css";
 import API from "../utils/API"
 import { ThreadContext } from "../context/ThreadContext";
-
+import "../stylesheets/Input.css";
 
 const Input = ({thread, user}) => {
   const { handleThreadSelect } = useContext(ThreadContext)
   const [body, setBody] = useState("")
-
 
   const hanldeInputChange = (e) => {
     setBody(e.target.value)
@@ -23,12 +21,8 @@ const Input = ({thread, user}) => {
     } catch (err) {
       console.log(err);
     }
-    
     handleThreadSelect(thread.thread_id)
     setBody("")
-    if (e.keyCode === 13 && e.shiftKey) {
-      console.log("shift enter was pressed");
-    }
   }
 
   return (
@@ -41,6 +35,7 @@ const Input = ({thread, user}) => {
           placeholder="Leave a Comment"
           onChange={hanldeInputChange}
           value={body}
+          required
         />
         <IconButton>
           <LinkIcon />

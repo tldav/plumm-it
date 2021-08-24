@@ -43,23 +43,22 @@ const UserDialog = ({buttonTheme, purpose}) => {
     }
   }
   
-  const dialogPurpose = purpose === "signup" ? dialogConfig.signup : dialogConfig.login
+  let dialogPurpose = purpose === "signup" ? dialogConfig.signup : dialogConfig.login;
 
   return ( 
-
     !isLoggedIn && !user.username ? (
       <div>
-      <button className={buttonTheme} onClick={() => setOpen(true)}>{dialogPurpose.titleText}</button>
-      <Dialog open={open} onClose={() => setOpen(false)} aria-labelledby="form-dialog-title" >
-        <DialogTitle id="form-dialog-title" className="dialog-box-bg">{dialogPurpose.titleText}</DialogTitle>
-        <DialogContent className="dialog-box-bg">
-          <DialogContentText>
-            {dialogPurpose.contentText}
-          </DialogContentText>
-          <UserDialogForm dialogPurpose={dialogPurpose} handleModalClose={handleModalClose} />
-        </DialogContent>
-      </Dialog>
-    </div>
+        <button className={buttonTheme} onClick={() => setOpen(true)}>{dialogPurpose.titleText}</button>
+        <Dialog open={open} onClose={() => setOpen(false)} aria-labelledby="form-dialog-title" >
+          <DialogTitle id="form-dialog-title" className="dialog-box-bg">{dialogPurpose.titleText}</DialogTitle>
+          <DialogContent className="dialog-box-bg">
+            <DialogContentText>
+              {dialogPurpose.contentText}
+            </DialogContentText>
+            <UserDialogForm dialogPurpose={dialogPurpose} handleModalClose={handleModalClose} />
+          </DialogContent>
+        </Dialog>
+      </div>
     ) :  <div>
       Hello {user.username}
       <button className={buttonTheme} onClick={() => console.log("check user button click in UserDialog", user)}>check user</button>

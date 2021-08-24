@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import API from "../utils/API";
-// import useRenderCount from "../hooks/useRenderCount";
 
 export const ThreadContext = React.createContext();
 
@@ -8,39 +8,63 @@ const ThreadContextProvider = (props) => {
 	// may separate these into two contexts in the future
 	const [realThreads, setRealThreads] = useState([]);
 	const [featuredThread, setFeaturedThread] = useState({});
+	const [categoryThreads, setCategoryThreads] = useState([]);
 
-	// un-comment to track number of re-renders
-	// useRenderCount("ThreadContext.jsx");
+	const {
+		location: { pathname },
+	} = useHistory();
+
+	const forwardSlashCount = pathname.split("").filter((letter) => letter === "/");
 
 	useEffect(() => {
-		const getDaThreads = async () => {
+		const reloadContent = async () => {
 			try {
-				const response = await API.findAllThreads();
-				setRealThreads(response.data);
+				if (forwardSlashCount.length === 1) {
+					const response = await API.findAllThreads();
+					setRealThreads(response.data);
+				}
+
+				if (forwardSlashCount.length === 3) {
+					const response = await API.findAllThreadsInCategory(pathname.split("/")[3]);
+					setCategoryThreads(response.data);
+				}
+
+				if (forwardSlashCount.length === 5) {
+					const response = await API.findOneThread(pathname.split("/")[5]);
+					setFeaturedThread(response.data);
+				}
+				return;
 			} catch (error) {
 				console.error(error);
 			}
 		};
-		getDaThreads();
-	}, []);
-
-	// console.log("redundant fetch? ", realThreads);
+		reloadContent();
+	}, [forwardSlashCount.length, pathname]);
 
 	const handleThreadSelect = async (id) => {
 		try {
 			const selectedThread = await API.findOneThread(id);
 			setFeaturedThread(selectedThread.data);
 		} catch (error) {
-			console.log(error);
+			console.error(error);
 		}
 	};
 
 	const handleCategorySelect = async (id) => {
 		try {
 			const selectedCategory = await API.findAllThreadsInCategory(id);
-			console.log(selectedCategory.data);
+			setCategoryThreads(selectedCategory.data);
 		} catch (error) {
-			console.log(error);
+			console.error(error);
+		}
+	};
+
+	const handleReturnHome = async () => {
+		try {
+			const response = await API.findAllThreads();
+			setRealThreads(response.data);
+		} catch (error) {
+			console.error(error);
 		}
 	};
 
@@ -51,6 +75,8 @@ const ThreadContextProvider = (props) => {
 				featuredThread,
 				handleThreadSelect,
 				handleCategorySelect,
+				categoryThreads,
+				handleReturnHome,
 			}}
 		>
 			{props.children}
