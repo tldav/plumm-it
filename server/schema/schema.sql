@@ -108,6 +108,8 @@ END
 
 
 
+
+
 DELIMITER //
 
 CREATE PROCEDURE getAllCategories()
