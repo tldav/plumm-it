@@ -22,7 +22,7 @@ router.post("/register", async (req, res) => {
 		await User.create(email, username, firstName, lastName, hashedPassword);
 		const loginUser = await User.findByName(username);
 
-		req.login(loginUser[0][0], (err) => {
+		req.login(loginUser, (err) => {
 			if (err) throw err;
 			const { user_id, email, username, first_name, last_name, created_at, is_active } =
 				req.user;
@@ -54,13 +54,6 @@ router.put("/:id", async (req, res) => {
 	}
 });
 
-// LOGIN USER &  SEND USER DATA
-// router.post("/login", passport.authenticate("local"), (req, res) => {
-// 	const { user_id, email, username, first_name, last_name, created_at, is_active } = req.user;
-
-// 	res.json({ user_id, email, username, first_name, last_name, created_at, is_active });
-// });
-
 router.post("/login", (req, res, next) => {
 	passport.authenticate("local", (err, user, info) => {
 		if (err) res.status(500).json(err);
@@ -91,6 +84,7 @@ router.get("/logout", (req, res) => {
 	res.json("Successfully logged out");
 });
 
+// for persisting req.user on the front end.
 router.post("/current", (req, res) => {
 	if (!req.user) {
 		res.send("No one is currently logged in");

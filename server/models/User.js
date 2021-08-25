@@ -43,7 +43,7 @@ module.exports = {
 				if (err) {
 					reject(err);
 				}
-				return resolve(results);
+				return resolve(results[0][0]);
 			});
 		});
 	},
@@ -52,7 +52,7 @@ module.exports = {
 		return new Promise((resolve, reject) => {
 			connection.query(sql, id, (err, results) => {
 				if (err) reject(err);
-				return resolve(results);
+				return resolve(results[0][0]);
 			});
 		});
 	},

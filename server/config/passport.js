@@ -14,11 +14,11 @@ const verifyCallback = async (username, password, done) => {
 
 		if (!user) return done(null, false, { message: "Invalid Username!" });
 
-		const validPassword = await bcrypt.compare(password, user[0][0].user_password);
+		const validPassword = await bcrypt.compare(password, user.user_password);
 
 		if (!validPassword) return done(null, false, { message: "Invalid Password!" });
 
-		return done(null, user[0][0]);
+		return done(null, user);
 	} catch (err) {
 		done(err);
 	}
@@ -40,7 +40,7 @@ passport.deserializeUser(async (user, done) => {
 	try {
 		const dbUser = await User.findById(user.user_id);
 		// console.log("dbUser from DESERIALIZE", dbUser);
-		return done(null, dbUser[0][0]);
+		return done(null, dbUser);
 	} catch (err) {
 		done(err);
 	}

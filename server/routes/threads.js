@@ -5,7 +5,7 @@ const Thread = require("../models").Thread;
 router.get("/", async (req, res) => {
 	try {
 		const allThreads = await Thread.findAll();
-		res.json(allThreads[0]);
+		res.json(allThreads);
 	} catch (err) {
 		res.status(500).json(err);
 	}
@@ -18,8 +18,8 @@ router.get("/:id", async (req, res) => {
 	try {
 		const threadsAndComments = await Promise.all(dbQueries);
 		const allResultsObj = {
-			thread: threadsAndComments[0][0][0],
-			comments: threadsAndComments[1][0],
+			thread: threadsAndComments[0],
+			comments: threadsAndComments[1],
 		};
 		res.json(allResultsObj);
 	} catch (err) {
@@ -32,7 +32,17 @@ router.get("/categories/:id", async (req, res) => {
 
 	try {
 		const allThreadsInCategory = await Thread.findCategoryThreads(id);
-		res.json(allThreadsInCategory[0]);
+		res.json(allThreadsInCategory);
+	} catch {
+		res.status(500).json(err);
+	}
+});
+
+router.get("/comments/:id", async (req, res) => {
+	const id = req.params.id;
+	try {
+		const allThreadComments = await Thread.findThreadComments(id);
+		res.json(allThreadComments[0]);
 	} catch {
 		res.status(500).json(err);
 	}
