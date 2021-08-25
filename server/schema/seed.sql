@@ -7,7 +7,8 @@ VALUES
   (1, "daveperson@davemail.com", "nameisDave", "Dave", "Davey", "password", "2020-08-22 14:22:44"),
   (2, "nedwartz@potato.com", "TruthLives", "Ned", "Wartz", "password", "2020-03-22 08:19:28"),
   (3, "trucknuts@potato.com", "notClayton", "Tarzan", "Gorilla", "password", "2018-05-12 14:27:09"),
-  (4, "sallystruthers@potato.com", "SuperSaiyanSix", "Shannon", "Santos", "password", "2014-12-29 01:34:56");
+  (4, "sallystruthers@potato.com", "SuperSaiyanSix", "Shannon", "Santos", "password", "2014-12-29 01:34:56"),
+  (5, "theTrunster@trunt.com", "TruntTruntkinson", "Trunt", "Truntkinson", "password", "2017-12-29 13:34:56" );
 
 INSERT INTO categories
   (category_id, category_name, user_id)
@@ -42,7 +43,7 @@ VALUES
   (3, 2, 2, null, "haha", "2020-04-21 10:35:11"),
   (4, 4, 2, 3, "yoyo", "2020-04-13 05:23:14"),
   (5, 2, 3, null, "Inventore illum amet repudiandae ab porro fugiat blanditiis.", "2020-07-03 00:42:18"),
-  (6, 1, 3, 5, "Quesadillas for breakfast", "2020-08-08 14:35:50"),
+  (6, 1, 3, 5, "breakfast quesadillas", "2020-08-08 14:35:50"),
   (7, 1, 4, null, "he-man and beastman fanfic", "2020-08-30 15:41:54"),
   (8, 3, 4, 7, "et consectetur adipisicing elit. In natus voluptas quasi nostrum. Commodi saepe in molestiae velit deleniti temporibus suntconsectetur, adipisicing elit. Maiores vel perferendis eius voluptatem omnis! Amet consequatur blanditiis qui nemo maxime temporibus similique eum voluptates esse, necessitatibus ducimus alias eveniet possimus! Lorem ipsum dolor sit amet consectetur adipisicing elit.", "2020-07-03 00:42:18"),
   (9, 3, 1, 1, "I'm sleepy", "2020-09-07 00:52:17"),
@@ -165,7 +166,10 @@ Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam, sunt harum! Te
 Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
 
 Atque dolore quia ex culpa necessitatibus facilis quidem veritatis quos fugit accusantium magnam, id quam doloremque, dicta dolorem, esse ducimus molestias! Quos."),
-(2, 1, "The world is saved", "lorem ipsum etc.");
+(2, 1, "The world is saved", "lorem ipsum etc."),
+(5, 5, "Idiocracy is the only movie I've seen.", "I reference it all the time."),
+(4, 3, "something about tesla or whatever", "is tech related"),
+(5, 4, "my titan can only go up", "whooooooooosshhhh");
 
 
 INSERT INTO comments
