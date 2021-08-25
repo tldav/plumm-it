@@ -61,7 +61,6 @@ const UserDialog = ({buttonTheme, purpose}) => {
       </div>
     ) :  <div>
       Hello {user.username}
-      <button className={buttonTheme} onClick={() => console.log("check user button click in UserDialog", user)}>check user</button>
       <button className={buttonTheme} onClick={onLogoutClick}>LOG OUT</button>
     </div>
   );

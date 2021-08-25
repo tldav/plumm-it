@@ -30,6 +30,13 @@
 	color: #e6d0f0;
 }
 
+.no-style-button-alt {
+	color: #fff;
+	text-decoration: underline;
+	text-decoration-thickness: 15%;
+	text-underline-offset: 3px;
+}
+
 .dialog-button-2 {
 	color: #59236e;
 	background: #fff;
@@ -50,4 +57,18 @@
 	/* background: #dac2e4; */
 	font-family: "Ultra", serif;
 	color: #59236e;
+}
+
+.logged-out-banner {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	background: #59236e;
+	padding: 20px 0;
+	border-radius: 5px;
+}
+
+.logged-out-banner p {
+	font-size: 1rem;
+	color: #fff;
 }
