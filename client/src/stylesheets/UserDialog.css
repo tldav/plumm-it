@@ -1,4 +1,4 @@
-.header .dialog-button {
+.dialog-button {
 	color: #59236e;
 	background: #dac2e4;
 	border-radius: 16px;
@@ -11,7 +11,7 @@
 	padding: 2px 6px;
 }
 
-.header .dialog-button:hover {
+.dialog-button:hover {
 	background: #e6d0f0;
 }
 
@@ -71,4 +71,23 @@
 .logged-out-banner p {
 	font-size: 1rem;
 	color: #fff;
+}
+
+.invalid-username label {
+	color: red;
+	font-weight: bold;
+}
+
+.invalid-username:focus-within label {
+	color: red;
+	font-weight: bold;
+}
+
+.valid-username label {
+	color: limegreen;
+	font-weight: bold;
+}
+.valid-username:focus-within label {
+	color: limegreen;
+	font-weight: bold;
 }

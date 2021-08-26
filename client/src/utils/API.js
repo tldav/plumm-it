@@ -13,6 +13,9 @@ const API = {
 	getCurrentUser: () => {
 		return axios.post("/api/users/current");
 	},
+	validateUsername: (username) => {
+		return axios.post("/api/users/validate", username);
+	},
 	updateUser: (id, updatedUser) => {
 		return axios.put("/api/users/" + id, updatedUser);
 	},
