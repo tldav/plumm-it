@@ -169,7 +169,7 @@ Atque dolore quia ex culpa necessitatibus facilis quidem veritatis quos fugit ac
 (2, 1, "The world is saved", "lorem ipsum etc."),
 (5, 5, "Idiocracy is the only movie I've seen.", "I reference it all the time."),
 (4, 3, "something about tesla or whatever", "is tech related"),
-(5, 4, "my titan can only go up", "whooooooooosshhhh");
+(5, 4, "my titan only flies upward", "whooooooooosshhhh");
 
 
 INSERT INTO comments

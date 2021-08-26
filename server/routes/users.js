@@ -15,7 +15,6 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-	console.log("but req.body is different for register route???", req.body);
 	const { email, username, firstName, lastName, password } = req.body;
 
 	try {
@@ -23,7 +22,6 @@ router.post("/register", async (req, res) => {
 
 		if (validateUser)
 			res.json("A user by that name already exists. Please choose an available username.");
-		console.log("USER FROM VALIDATE USER IN REGISTER ROUTE", validateUser);
 
 		if (!validateUser) {
 			const hashedPassword = await bcrypt.hash(password, 10);

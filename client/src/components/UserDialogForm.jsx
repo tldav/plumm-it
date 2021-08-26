@@ -10,7 +10,7 @@ const UserDialogForm = ({ dialogPurpose, handleModalClose }) => {
     username: "", 
     password: ""
   })
-  const [label, setLabel] = useState({text: "Username", theme: "", available: true})
+  const [label, setLabel] = useState({text: "Username", theme: "", disable: true})
 
   const handleInputChange = (e) => {
     const {value, name} = e.target;
@@ -23,24 +23,33 @@ const UserDialogForm = ({ dialogPurpose, handleModalClose }) => {
     setUserCredentials({username: "", password: ""})
   }
 
-  const validate = async () => {
+  const validateSubmit = async () => {
+    if (userCredentials.username.length > 0 && userCredentials.username.length < 6) {
+      setLabel({
+        ...label, 
+        text: "Username must be at least 6 characters long.", 
+        theme: "invalid-username", 
+        disable: true
+      })
+      return
+    }
+
     try {
       const nameCheck = await API.validateUsername(userCredentials)
-
-      if (nameCheck.data === "unavailable") {
+      if (nameCheck.data === "unavailable" && userCredentials.username.length >= 6) {
         setLabel({
           ...label, 
           text: "Username - That username is unavailable", 
           theme: "invalid-username", 
-          available: false
+          disable: true
         })
       } 
-      if (nameCheck.data === "available") {
+      if (nameCheck.data === "available" && userCredentials.username.length >= 6) {
         setLabel({
           ...label, 
           text: "Username - That username is available",
           theme: "valid-username",
-          available: true
+          disable: false
         })
       }
     } catch (error) {
@@ -48,8 +57,34 @@ const UserDialogForm = ({ dialogPurpose, handleModalClose }) => {
     }
   }
 
-  // if (dialogPurpose.titleText === "Sign Up")
-  console.log(dialogPurpose.titleText);
+  const validateLogin = async () => {
+    try {
+      const nameCheck = await API.validateUsername(userCredentials)
+      if (nameCheck.data === "unavailable") {
+        setLabel({
+          ...label, 
+          text: "Username", 
+          theme: "", 
+          disable: false
+        })
+      } 
+      if (nameCheck.data === "available") {
+        setLabel({
+          ...label, 
+          text: "Username - Invalid username",
+          theme: "invalid-username",
+          disable: true
+        })
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  // need pw validation
+  // const validatePassword = () => {
+
+  // }
 
   return ( 
     <form action="" onSubmit={onFormSubmit}>
@@ -65,20 +100,20 @@ const UserDialogForm = ({ dialogPurpose, handleModalClose }) => {
           name="username"
           value={userCredentials.username}
           onChange={handleInputChange}
-          onBlur={validate}
+          onBlur={validateSubmit}
         />: 
         <TextField
-          // className={label.theme}
+          className={label.theme}
           autoFocus
           margin="dense"
-          label="Username"
+          label={label.text}
           type="text"
           fullWidth
           required
           name="username"
           value={userCredentials.username}
           onChange={handleInputChange}
-          // onBlur={validate}
+          onBlur={validateLogin}
         />
       }
       
@@ -97,7 +132,7 @@ const UserDialogForm = ({ dialogPurpose, handleModalClose }) => {
         <Button onClick={handleModalClose} color="primary">
           Cancel
         </Button>
-        <Button type="submit" color="primary">
+        <Button type="submit" color="primary" disabled={label.disable}>
           {dialogPurpose.titleText}
         </Button>
       </DialogActions>
