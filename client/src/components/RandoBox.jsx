@@ -9,7 +9,6 @@ const RandoBox = () => {
   const { handleCategorySelect } = useContext(ThreadContext)
   let history = useHistory();
 
-
   const onCategorySelect = (category) => {
     handleCategorySelect(category.id)
     history.push(`/p/${category.name}/${category.id}`)

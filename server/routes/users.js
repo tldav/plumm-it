@@ -50,7 +50,6 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/validate", async (req, res) => {
-	console.log("req.body for some reason....?", req.body);
 	try {
 		const validateUser = await User.findByName(req.body.username);
 		console.log("validateUser???", validateUser);
