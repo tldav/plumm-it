@@ -6,6 +6,8 @@ export const UserContext = createContext();
 const UserContextProvider = (props) => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [user, setUser] = useState({});
+	const [isSignupOpen, setIsSignupOpen] = useState(false);
+	const [isLoginOpen, setIsLoginOpen] = useState(false);
 
 	useEffect(() => {
 		const checkLoginStatus = async () => {
@@ -44,7 +46,6 @@ const UserContextProvider = (props) => {
 	const handleLogout = async () => {
 		try {
 			await API.logoutUser();
-			console.log("user logged out!!");
 			setUser({});
 			if (isLoggedIn) setIsLoggedIn(false);
 		} catch (error) {
@@ -52,8 +53,22 @@ const UserContextProvider = (props) => {
 		}
 	};
 
+	// const openSignupModal = () => {};
+
 	return (
-		<UserContext.Provider value={{ user, handleLogin, handleSignup, handleLogout, isLoggedIn }}>
+		<UserContext.Provider
+			value={{
+				user,
+				handleLogin,
+				handleSignup,
+				handleLogout,
+				isLoggedIn,
+				isSignupOpen,
+				setIsSignupOpen,
+				isLoginOpen,
+				setIsLoginOpen,
+			}}
+		>
 			{props.children}
 		</UserContext.Provider>
 	);

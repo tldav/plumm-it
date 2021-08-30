@@ -1,12 +1,22 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import UserDialog from "./UserDialog"
-import "../stylesheets/Header.css";
+import Modal from "./Modal"
 import { ThreadContext } from "../context/ThreadContext";
+import { UserContext } from "../context/UserContext";
+import "../stylesheets/Header.css";
 
 const Header = () => {
   let history = useHistory();
   const { handleReturnHome } = useContext(ThreadContext)
+  const {
+    isSignupOpen, 
+    setIsSignupOpen, 
+    isLoginOpen, 
+    setIsLoginOpen, 
+    isLoggedIn, 
+    user, 
+    handleLogout 
+  } = useContext(UserContext)
 
   const onHomeClick = () => {
     handleReturnHome()
@@ -20,8 +30,17 @@ const Header = () => {
           plummit
         </h1>
         <div className="header-buttons">
-            <UserDialog purpose="signup" buttonTheme="no-style-button"/>
-            <UserDialog purpose="login" buttonTheme="dialog-button-2"/>
+          {!isLoggedIn && !user.username ? 
+          <>
+            <button className="no-style-button" onClick={() => setIsSignupOpen(true)}>Sign Up</button>
+            <Modal open={isSignupOpen} setOpen={setIsSignupOpen} purpose="signup" />
+            <button className="dialog-button-2" onClick={() => setIsLoginOpen(true)}>Log In</button>
+            <Modal open={isLoginOpen} setOpen={setIsLoginOpen} purpose="login" />
+          </> : 
+          <>
+            Hello {user.username}
+            <button className="dialog-button" onClick={handleLogout}>LOG OUT</button>
+          </> }
         </div>
       </div>
     </div>

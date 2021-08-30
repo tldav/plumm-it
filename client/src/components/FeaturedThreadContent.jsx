@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { withRouter } from "react-router-dom";
 import FeaturedThreadBox from "./FeaturedThreadBox";
 import Comments from "./Comments"
@@ -14,7 +14,7 @@ const FeaturedThreadContent = () => {
 
   const renderInputIfLoggedIn = !user.username && !isLoggedIn ? 
   <LoggedOutBanner /> : <Input thread={thread} user={user} />
-  
+
   if (!thread) return null;
   return (
     <div className="stage">

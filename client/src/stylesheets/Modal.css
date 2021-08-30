@@ -31,7 +31,6 @@
 }
 
 .no-style-button-alt {
-	color: #fff;
 	text-decoration: underline;
 	text-decoration-thickness: 15%;
 	text-underline-offset: 3px;
@@ -62,10 +61,14 @@
 .logged-out-banner {
 	display: flex;
 	justify-content: center;
-	align-items: flex-end;
+	align-items: flex-start;
 	background: #59236e;
 	padding: 20px 0;
 	border-radius: 5px;
+}
+
+.logged-out-banner button {
+	margin-top: 1.5px;
 }
 
 .logged-out-banner p {

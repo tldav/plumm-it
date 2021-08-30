@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import DialogActions from '@material-ui/core/DialogActions';
 import API from "../utils/API"
 
-const UserDialogForm = ({ dialogPurpose, handleModalClose }) => {
+const LogSignForm = ({ dialogPurpose, handleModalClose }) => {
   const [userCredentials, setUserCredentials] = useState({
     username: "", 
     password: ""
@@ -14,7 +14,8 @@ const UserDialogForm = ({ dialogPurpose, handleModalClose }) => {
 
   const handleInputChange = (e) => {
     const {value, name} = e.target;
-    setUserCredentials({...userCredentials, [name]: value})
+    const shouldSetState = value.length < 20
+    if (shouldSetState) setUserCredentials({...userCredentials, [name]: value})
   }
 
   const onFormSubmit = (e) => {
@@ -68,7 +69,7 @@ const UserDialogForm = ({ dialogPurpose, handleModalClose }) => {
           disable: false
         })
       } 
-      if (nameCheck.data === "available") {
+      if (nameCheck.data === "available" && userCredentials.username.length) {
         setLabel({
           ...label, 
           text: "Username - Invalid username",
@@ -101,6 +102,7 @@ const UserDialogForm = ({ dialogPurpose, handleModalClose }) => {
           value={userCredentials.username}
           onChange={handleInputChange}
           onBlur={validateSubmit}
+          maxLength={2}
         />: 
         <TextField
           className={label.theme}
@@ -140,4 +142,4 @@ const UserDialogForm = ({ dialogPurpose, handleModalClose }) => {
   );
 }
 
-export default UserDialogForm;
+export default LogSignForm;

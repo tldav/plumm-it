@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import UserDialog from './UserDialog';
+import React, {useState, useEffect, useContext} from 'react';
+import { UserContext } from '../context/UserContext';
 
 const LoggedOutBanner = () => {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 520)
+  const { setIsSignupOpen, setIsLoginOpen } = useContext(UserContext)
 
   const updateSize = () => setIsDesktop(window.innerWidth > 520)
 
@@ -12,21 +13,22 @@ const LoggedOutBanner = () => {
   })
 
   return (
-    <div className="logged-out-banner">
-      {isDesktop ? (
-        <>
-          <UserDialog purpose="signup" buttonTheme="no-style-button no-style-button-alt" /> 
-          <p> to leave a comment. Already a member? </p>
-          <UserDialog purpose="login" buttonTheme="no-style-button no-style-button-alt"/> 
-        </>
-      ) : <> 
-            <UserDialog purpose="signup" buttonTheme="no-style-button no-style-button-alt" /> 
-            <p> or </p>
-            <UserDialog purpose="login" buttonTheme="no-style-button no-style-button-alt"/> 
-            <p> to leave a comment.</p>
-          </>
-        }     
-    </div>
+
+<div className="logged-out-banner">
+{isDesktop ? (
+  <>
+    <button className="no-style-button no-style-button-alt" onClick={() => setIsSignupOpen(true)}>Sign up</button>
+    <p> to leave a comment. Already a member? </p>
+    <button className="no-style-button no-style-button-alt" onClick={() => setIsLoginOpen(true)}>Log in</button>
+  </>
+) : <> 
+    <button className="no-style-button no-style-button-alt" onClick={() => setIsSignupOpen(true)}>Sign up</button>
+    <p> or </p>
+    <button className="no-style-button no-style-button-alt" onClick={() => setIsLoginOpen(true)}>Log in</button>
+    <p> to leave a comment.</p>
+    </>
+  }     
+</div>
   );
 }
 
