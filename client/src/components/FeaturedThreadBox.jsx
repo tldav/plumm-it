@@ -10,10 +10,10 @@ const FeaturedThreadBox = ({thread}) => {
 
   return (
     <div key={thread.thread_id} >
-      <div id="threadHeader">
+      <div className="thread-header">
         <Avatar id="avatar" src={`/static/images/${thread.category_name}.jpg`} />
-        <span id="category">p/{thread.category_name}</span>
-        <span id="user">{`• ${thread.username} ${dateFormat(
+        <span className="category">p/{thread.category_name}</span>
+        <span>{`• ${thread.username} ${dateFormat(
           thread.created_at,
           "dddd, mmmm dS, yyyy, h:MM TT"
         )}`}</span>

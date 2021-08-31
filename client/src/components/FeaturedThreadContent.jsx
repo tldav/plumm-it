@@ -21,13 +21,9 @@ const FeaturedThreadContent = () => {
       <FeaturedThreadBox thread={thread} />
       {renderInputIfLoggedIn}
       <hr style={{ marginTop: "40px", marginBottom: "40px" }} />
-      <CommentList comments={comments} />
+      <CommentList comments={comments} originalPoster={thread.username} />
     </div>
   );
 };
 
 export default withRouter(FeaturedThreadContent);
-
-
-
-// *****change COMMENTS to COMMENTLIST here 

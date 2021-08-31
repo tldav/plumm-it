@@ -8,7 +8,7 @@ import Input from "./Input"
 import { UserContext } from "../context/UserContext";
 import "../stylesheets/Comment.css";
 
-const CommentItem = ({ comment }) => {
+const CommentItem = ({ comment, originalPoster }) => {
   const {setIsSignupOpen, user, isLoggedIn} = useContext(UserContext)
   const [isInputVisible, setIsInputVisible] = useState(false)
   const refWrapper = useRef(null)
@@ -16,7 +16,6 @@ const CommentItem = ({ comment }) => {
   const votes = (a, b) => {
     return a - b;
   };
-
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -32,6 +31,8 @@ const CommentItem = ({ comment }) => {
     !user.username && !isLoggedIn ? setIsSignupOpen(true) : setIsInputVisible(true)
   }
 
+  const OPRender = originalPoster === comment.username ? "op-flag" : "hidden";
+
   return (
     <>
         <div className="convo-container" >
@@ -46,7 +47,7 @@ const CommentItem = ({ comment }) => {
           </div>
           <div className="column-2">
             <p className="heading">
-            {`${comment.username} • ${dateFormat(comment.created_at,
+            {<span className={OPRender}>OP </span>}{`${comment.username} • ${dateFormat(comment.created_at,
               "dddd, mmmm dS, yyyy, h:MM TT"
             )} • ⤮ ${votes(comment.upvotes, comment.downvotes)}`}
             </p>
@@ -63,8 +64,3 @@ const CommentItem = ({ comment }) => {
 };
 
 export default CommentItem;
-
-
-
-
-// *******change this component to COMMENT singular 

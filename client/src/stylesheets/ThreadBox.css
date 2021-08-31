@@ -1,24 +1,23 @@
-#threadHeader {
+.thread-header {
 	color: #59236e;
 	display: flex;
 	align-items: center;
-	font-size: 12px;
 	margin-bottom: 4px;
+	font-size: 0.825rem;
+	font-style: italic;
 }
 
 #avatar {
 	margin-right: 5px;
-	height: 20px;
-	width: 20px;
+	height: 30px;
+	width: 30px;
+	z-index: 0;
 }
 
-#user {
-	color: #444;
-}
-
-#category {
+.category {
 	font-weight: bold;
 	margin-right: 4px;
+	font-style: normal;
 }
 
 #iconDiv {
@@ -34,10 +33,6 @@
 
 .thread-title {
 	font-size: 1.17rem;
-}
-
-#avatar {
-	z-index: 0;
 }
 
 .fade-text-or-whatever {

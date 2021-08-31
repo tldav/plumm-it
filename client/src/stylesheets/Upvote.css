@@ -1,9 +1,11 @@
 .iconCount {
-  margin: 4px;
-  padding: 4px;
-  color: #666;
-  font-size: 12px;
+	margin: 4px;
+	padding: 4px;
+	color: #59236e;
+	font-size: 0.75rem;
+	font-weight: 600;
 }
 .icon {
-  font-size: 5px;
+	font-size: 0.313rem;
+	font-weight: 600;
 }
