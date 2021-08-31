@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { withRouter } from "react-router-dom";
 import FeaturedThreadBox from "./FeaturedThreadBox";
-import Comments from "./Comments"
+import CommentList from "./CommentList"
 import Input from "./Input";
 import LoggedOutBanner from "./LoggedOutBanner"
 import { UserContext } from "../context/UserContext";
@@ -21,9 +21,13 @@ const FeaturedThreadContent = () => {
       <FeaturedThreadBox thread={thread} />
       {renderInputIfLoggedIn}
       <hr style={{ marginTop: "40px", marginBottom: "40px" }} />
-      <Comments comments={comments} />
+      <CommentList comments={comments} />
     </div>
   );
 };
 
 export default withRouter(FeaturedThreadContent);
+
+
+
+// *****change COMMENTS to COMMENTLIST here 

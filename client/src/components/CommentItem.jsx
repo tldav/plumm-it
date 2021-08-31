@@ -1,20 +1,28 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import IconButton from "@material-ui/core/IconButton";
-import dateFormat from "dateformat"
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
+import dateFormat from "dateformat"
+import Input from "./Input"
+import { UserContext } from "../context/UserContext";
 import "../stylesheets/Comment.css";
 
-const Comments = ({comments}) => {
+const CommentItem = ({ comment }) => {
+  const {setIsSignupOpen, user, isLoggedIn} = useContext(UserContext)
+  const [isInput, setisInput] = useState(false)
+
   const votes = (a, b) => {
     return a - b;
   };
 
+  const onReplyClick = () => {
+    !user.username && !isLoggedIn ? setIsSignupOpen(true) : setisInput(true)
+  }
+
   return (
     <>
-      {comments.map((comment) => (
-        <div key={comment.comment_id} className="convo-container" >
+        <div className="convo-container" >
           <div className="column-1">
             <IconButton id="upvote" size="small">
               <ArrowUpwardIcon className="arrow-button" />
@@ -31,15 +39,20 @@ const Comments = ({comments}) => {
             )} • ⤮ ${votes(comment.upvotes, comment.downvotes)}`}
             </p>
             <p>{comment.body}</p>
-            <IconButton className="reply-button" size="small">
+            {isInput ? <Input className="reply-input" /> : null}            
+            <IconButton onClick={onReplyClick} className="reply-button" size="small">
               <ChatBubbleIcon className="reply-icon" />
               <p id="reply-text">Reply</p>
             </IconButton>
           </div>
         </div>
-      ))}
     </>
   );
 };
 
-export default Comments;
+export default CommentItem;
+
+
+
+
+// *******change this component to COMMENT singular 
