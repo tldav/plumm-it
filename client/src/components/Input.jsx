@@ -29,6 +29,7 @@ const Input = ({thread, user}) => {
     <>
       <Paper id="inputRoot" component="form" onSubmit={onCommentSubmit} >
         <InputBase
+          autoFocus
           fullWidth
           multiline
           rows={4}

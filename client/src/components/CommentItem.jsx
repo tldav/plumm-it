@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import IconButton from "@material-ui/core/IconButton";
@@ -10,14 +10,26 @@ import "../stylesheets/Comment.css";
 
 const CommentItem = ({ comment }) => {
   const {setIsSignupOpen, user, isLoggedIn} = useContext(UserContext)
-  const [isInput, setisInput] = useState(false)
+  const [isInputVisible, setIsInputVisible] = useState(false)
+  const refWrapper = useRef(null)
 
   const votes = (a, b) => {
     return a - b;
   };
 
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (refWrapper.current && !refWrapper.current.contains(e.target) && isInputVisible) {
+        setIsInputVisible(false)
+      }
+    }
+    document.addEventListener("click", handleClickOutside, false );
+    return () => document.removeEventListener("click", handleClickOutside, false)
+  }, [isInputVisible])
+
   const onReplyClick = () => {
-    !user.username && !isLoggedIn ? setIsSignupOpen(true) : setisInput(true)
+    !user.username && !isLoggedIn ? setIsSignupOpen(true) : setIsInputVisible(true)
   }
 
   return (
@@ -39,7 +51,7 @@ const CommentItem = ({ comment }) => {
             )} • ⤮ ${votes(comment.upvotes, comment.downvotes)}`}
             </p>
             <p>{comment.body}</p>
-            {isInput ? <Input className="reply-input" /> : null}            
+            {isInputVisible ? <div ref={refWrapper}><Input className="reply-input" /> </div> : null}            
             <IconButton onClick={onReplyClick} className="reply-button" size="small">
               <ChatBubbleIcon className="reply-icon" />
               <p id="reply-text">Reply</p>

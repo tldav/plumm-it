@@ -56,14 +56,14 @@ const Modal = ({ purpose, open, setOpen }) => {
               {dialogPurpose.contentText}
             </DialogContentText>
             <LogSignForm dialogPurpose={dialogPurpose} handleModalClose={() => setOpen(false)} open={open} />
-            {purpose === "signup" ? 
-            <div>
-              Already a member? Login <button onClick={modalSwitch}>login</button> 
-            </div> : 
-            <div>
-              Need an account? Sign up <button onClick={modalSwitch}>signup</button>
-            </div>}
           </DialogContent>
+          {purpose === "signup" ? 
+            <div className="modal-footer" >
+              <p>Already a member? </p><button className="no-style-button no-style-button-alt" onClick={modalSwitch}> log in</button> 
+            </div> : 
+            <div className="modal-footer" >
+              <p>Not a member?</p><button className="no-style-button no-style-button-alt" onClick={modalSwitch}>sign up</button>
+            </div>}
         </Dialog>
       </div>
   );
