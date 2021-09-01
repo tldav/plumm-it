@@ -172,23 +172,53 @@ END
 
 
 
+
+
+-- DELIMITER //
+
+-- CREATE PROCEDURE getThreadComments(param INT)
+
+-- BEGIN
+
+--     SELECT c.comment_id, c.parent_comment_id, c.body, c.created_at, u.user_id, u.username, c.is_edited, SUM(IFNULL(cv.vote = TRUE, 0)) AS upvotes, SUM(IFNULL(cv.vote = FALSE, 0)) AS downvotes
+--     FROM comments c
+--         JOIN threads t ON t.thread_id = c.thread_id
+--         JOIN users u ON c.user_id = u.user_id
+--         LEFT JOIN comment_votes cv ON c.comment_id = cv.comment_id 
+--     WHERE t.thread_id = param AND c.is_active = TRUE
+--     GROUP BY c.comment_id, c.parent_comment_id, c.body, c.created_at, u.user_id, u.username, c.is_edited
+--     ORDER BY c.parent_comment_id, c.created_at;
+
+-- END
+-- //
+
+
+-- Unsure if below is an efficient enough option. May need to re-work the above procedure. Especially if I can get nested comments working on the front end.
+-- Procedure below gives additional info from the parent comment to display on the front end, which will allow an easier but less elegent way to show comment ownership. 
+
 DELIMITER //
 
 CREATE PROCEDURE getThreadComments(param INT)
 
 BEGIN
 
-    SELECT c.comment_id, c.parent_comment_id, c.body, c.created_at, u.user_id, u.username, c.is_edited, SUM(IFNULL(cv.vote = TRUE, 0)) AS upvotes, SUM(IFNULL(cv.vote = FALSE, 0)) AS downvotes
+    SELECT c.comment_id, t.thread_id, c.body, c.created_at, u.user_id, u.username, c.is_edited, SUM(IFNULL(cv.vote = TRUE, 0)) AS upvotes, SUM(IFNULL(cv.vote = FALSE, 0)) AS downvotes, c.parent_comment_id, pcb.body AS parent_comment_body,
+    (SELECT pc.user_id FROM comments pc WHERE pc.comment_id = c.parent_comment_id) AS parent_user_id,
+    (SELECT pu.username FROM users pu WHERE parent_user_id = pu.user_id ) AS parent_username
     FROM comments c
         JOIN threads t ON t.thread_id = c.thread_id
         JOIN users u ON c.user_id = u.user_id
+        LEFT JOIN comments pcb ON c.parent_comment_id = pcb.comment_id
         LEFT JOIN comment_votes cv ON c.comment_id = cv.comment_id 
     WHERE t.thread_id = param AND c.is_active = TRUE
     GROUP BY c.comment_id, c.parent_comment_id, c.body, c.created_at, u.user_id, u.username, c.is_edited
-    ORDER BY c.parent_comment_id, c.created_at;
+    ORDER BY c.parent_comment_id, c.created_at; 
 
 END
 //
+
+
+
 
 
 

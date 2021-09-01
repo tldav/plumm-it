@@ -13,7 +13,7 @@ const FeaturedThreadContent = () => {
   const { user, isLoggedIn } = useContext(UserContext)
 
   const renderInputIfLoggedIn = !user.username && !isLoggedIn ? 
-  <LoggedOutBanner /> : <Input thread={thread} user={user} />
+  <LoggedOutBanner /> : <Input placeholderText="Leave a Comment" thread={thread} />
 
   if (!thread) return null;
   return (
@@ -21,7 +21,7 @@ const FeaturedThreadContent = () => {
       <FeaturedThreadBox thread={thread} />
       {renderInputIfLoggedIn}
       <hr style={{ marginTop: "40px", marginBottom: "40px" }} />
-      <CommentList comments={comments} originalPoster={thread.username} />
+      <CommentList comments={comments} thread={thread} originalPoster={thread.username} />
     </div>
   );
 };

@@ -60,6 +60,10 @@
 	color: #444;
 }
 
+.reply-input {
+	margin-top: 15px;
+}
+
 .convo-container .op-flag {
 	font-family: "Ultra", serif;
 	color: #000;

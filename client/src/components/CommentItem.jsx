@@ -3,12 +3,14 @@ import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import IconButton from "@material-ui/core/IconButton";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
+import CloseIcon from '@material-ui/icons/Close';
 import dateFormat from "dateformat"
 import Input from "./Input"
 import { UserContext } from "../context/UserContext";
 import "../stylesheets/Comment.css";
 
-const CommentItem = ({ comment, originalPoster }) => {
+
+const CommentItem = ({ comment, originalPoster, thread }) => {
   const {setIsSignupOpen, user, isLoggedIn} = useContext(UserContext)
   const [isInputVisible, setIsInputVisible] = useState(false)
   const refWrapper = useRef(null)
@@ -28,7 +30,8 @@ const CommentItem = ({ comment, originalPoster }) => {
   }, [isInputVisible])
 
   const onReplyClick = () => {
-    !user.username && !isLoggedIn ? setIsSignupOpen(true) : setIsInputVisible(true)
+    !user.username && !isLoggedIn ? setIsSignupOpen(true) : setIsInputVisible(true)  
+    console.log(comment.parent_comment_id);
   }
 
   const OPRender = originalPoster === comment.username ? "op-flag" : "hidden";
@@ -51,12 +54,16 @@ const CommentItem = ({ comment, originalPoster }) => {
               "dddd, mmmm dS, yyyy, h:MM TT"
             )} • ⤮ ${votes(comment.upvotes, comment.downvotes)}`}
             </p>
-            <p>{comment.body}</p>
-            {isInputVisible ? <div ref={refWrapper}><Input className="reply-input" /> </div> : null}            
-            <IconButton onClick={onReplyClick} className="reply-button" size="small">
+            <p style={{marginBottom: "1px"}} >{comment.body}</p>
+            {isInputVisible ? <div className="reply-input" ref={refWrapper}><Input thread={thread} parentId={comment.comment_id} placeholderText={`@ ${comment.username}`} /> </div> : null}
+            {isInputVisible ? <IconButton onClick={onReplyClick} className="reply-button" size="small">
+              <CloseIcon className="reply-icon" />
+              <p id="reply-text">Close</p>
+            </IconButton> : <IconButton onClick={onReplyClick} className="reply-button" size="small">
               <ChatBubbleIcon className="reply-icon" />
               <p id="reply-text">Reply</p>
-            </IconButton>
+            </IconButton>}        
+            
           </div>
         </div>
     </>
