@@ -55,3 +55,11 @@ const Input = ({thread, placeholderText, parentId}) => {
 };
 
 export default Input;
+
+
+
+
+
+
+
+

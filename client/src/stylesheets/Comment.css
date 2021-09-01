@@ -17,10 +17,12 @@
 	width: 100%;
 }
 
-.heading {
-	font-size: 0.825rem;
+.comment-heading {
+	font-size: 0.957rem;
 	color: #59236e;
-	font-style: italic;
+	/* font-style: italic; */
+	margin-bottom: 10px;
+	font-weight: bold;
 }
 
 .arrow-button {
@@ -38,7 +40,7 @@
 }
 
 .vertical-line {
-	background-color: grey;
+	background-color: #59236e;
 	width: 1px;
 	height: 100%;
 	margin: auto;
@@ -60,14 +62,36 @@
 	color: #444;
 }
 
-.reply-input {
-	margin-top: 15px;
+.comment-box {
+	padding-left: 7px;
 }
 
 .convo-container .op-flag {
 	font-family: "Ultra", serif;
 	color: #000;
 	font-style: normal;
+	font-weight: lighter;
+}
+
+.convo-container .is-reply-flag {
+	/* display: flex; */
+	/* padding-left: 7px; */
+	font-style: italic;
+	/* color: #666565; */
+	color: #4d4d4d;
+	margin-bottom: 15px;
+	font-size: 14px;
+}
+
+.convo-container .reply-body {
+	border-left: 1px solid #59236e;
+	padding-left: 10px;
+	font-style: normal;
+}
+
+.convo-container .reply-body p {
+	/* color: #666565; */
+	color: #4d4d4d;
 }
 
 .hidden {
