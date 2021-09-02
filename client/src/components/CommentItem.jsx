@@ -55,7 +55,6 @@ const CommentItem = ({ comment, originalPoster, thread }) => {
             "mmmm dS, yyyy, h:MM TT"
           )} • ⤮ ${votes(comment.upvotes, comment.downvotes)}`}
           </p>
-          {/* div nest hell is for precise style fine-tuning */}
           <div className="comment-box" >
             <div className={replyRender}>{comment.parent_username} posted: 
               <div className="reply-body">

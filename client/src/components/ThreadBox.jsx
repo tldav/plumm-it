@@ -36,7 +36,7 @@ const ThreadBox = ({thread}) => {
           <span className="category">p/{thread.category_name}</span>
           <span>{`• ${thread.username} • ${dateFormat(
             thread.created_at,
-            "dddd, mmmm dS, yyyy, h:MM TT"
+            "mmmm dS, yyyy, h:MM TT"
           )}`}</span>
         </div>
         <h2 className="thread-title">{thread.title}</h2>
