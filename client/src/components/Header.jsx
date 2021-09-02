@@ -29,19 +29,20 @@ const Header = () => {
         <h1 id="plumm-title" onClick={onHomeClick}>
           plummit
         </h1>
-        <div className="header-buttons">
           {!isLoggedIn && !user.username ? 
           <>
+        <div className="log-sign-header">
             <button className="no-style-button" onClick={() => setIsSignupOpen(true)}>Sign Up</button>
             <Modal open={isSignupOpen} setOpen={setIsSignupOpen} purpose="signup" />
             <button className="dialog-button-2" onClick={() => setIsLoginOpen(true)}>Log In</button>
             <Modal open={isLoginOpen} setOpen={setIsLoginOpen} purpose="login" />
-          </> : 
-          <>
-            Hello {user.username}
-            <button className="dialog-button" onClick={handleLogout}>LOG OUT</button>
-          </> }
         </div>
+          </> : 
+          <div className="logout-header">
+            
+            <span className="user-header">{user.username}</span>
+            <button className="dialog-button-2" onClick={handleLogout}>LOG OUT</button>
+          </div> }
       </div>
     </div>
   );

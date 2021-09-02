@@ -1,6 +1,6 @@
 .dialog-button {
 	color: #59236e;
-	background: #dac2e4;
+	background: #fff;
 	border-radius: 16px;
 	font-family: "Ultra", serif;
 	/* font-weight: 100; */
@@ -46,10 +46,13 @@
 	font-size: 0.9rem;
 	border: 2px solid #e6d0f0;
 	cursor: pointer;
+	margin: 5px 0;
 }
 
+/* 86.89 x 33 */
+
 .dialog-button-2:hover {
-	background: #f9edff;
+	background: #f5e6fc;
 }
 
 .dialog-box-bg {

@@ -1,4 +1,3 @@
-/* FORMATTING & UNIVERSAL STYLING*/
 *,
 *:before,
 *:after {
@@ -12,15 +11,12 @@ html {
 	scroll-behavior: smooth;
 }
 body {
-	/* background-color: #effffa; */
 	font-family: "Montserrat", Arial, Helvetica, sans-serif;
-	/* font-family: "Raleway", sans-serif; */
 	line-height: 1.71429;
 }
 p {
 	line-height: 1.71429;
 	font-size: 0.906rem;
-	/* color: rgb(53, 53, 53); */
 	color: #000;
 }
 h1 {

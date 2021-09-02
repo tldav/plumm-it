@@ -1,10 +1,10 @@
 .thread-header {
 	color: #59236e;
 	display: flex;
-	align-items: center;
+	align-items: flex-end;
 	margin-bottom: 4px;
-	font-size: 0.825rem;
-	font-style: italic;
+	font-size: 0.957rem;
+	font-weight: bold;
 }
 
 #avatar {
@@ -18,12 +18,14 @@
 	font-weight: bold;
 	margin-right: 4px;
 	font-style: normal;
+	font-family: "Raleway", sans-serif;
+	font-size: 1rem;
 }
 
 #iconDiv {
 	display: flex;
 	align-items: center;
-	color: #666;
+	color: #59236e;
 	margin: 4px;
 }
 
