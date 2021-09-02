@@ -130,7 +130,7 @@ const LogSignForm = ({ dialogPurpose, handleModalClose }) => {
         value={userCredentials.password}
         onChange={handleInputChange}
       />
-      <DialogActions className="dialog-box-bg">
+      <DialogActions>
         <Button onClick={handleModalClose} color="primary">
           Cancel
         </Button>

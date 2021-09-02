@@ -1,21 +1,4 @@
-.dialog-button {
-	color: #59236e;
-	background: #fff;
-	border-radius: 16px;
-	font-family: "Ultra", serif;
-	/* font-weight: 100; */
-	text-transform: lowercase;
-	/* font-family: "Raleway", sans-serif; */
-	font-size: 0.9rem;
-	cursor: pointer;
-	padding: 2px 6px;
-}
-
-.dialog-button:hover {
-	background: #e6d0f0;
-}
-
-.no-style-button {
+.simple-button {
 	background: none;
 	border: none;
 	color: #fff;
@@ -23,20 +6,19 @@
 	cursor: pointer;
 	text-transform: lowercase;
 	font-size: 1rem;
-	/* color: #59236e; */
 }
 
-.no-style-button:hover {
+.simple-button:hover {
 	color: #e6d0f0;
 }
 
-.no-style-button-alt {
+.underline {
 	text-decoration: underline;
 	text-decoration-thickness: 15%;
 	text-underline-offset: 3px;
 }
 
-.dialog-button-2 {
+.pill-button {
 	color: #59236e;
 	background: #fff;
 	border-radius: 16px;
@@ -49,15 +31,11 @@
 	margin: 5px 0;
 }
 
-/* 86.89 x 33 */
-
-.dialog-button-2:hover {
+.pill-button:hover {
 	background: #f5e6fc;
 }
 
-.dialog-box-bg {
-	/* background: #dac2e4; */
-	font-family: "Ultra", serif;
+.modal-main {
 	color: #59236e;
 }
 
@@ -70,12 +48,20 @@
 	border-radius: 5px;
 }
 
-/* #form-dialog-title {
+#modal-title span {
+	color: #59236e;
+	font-family: "Raleway", sans-serif;
+	font-weight: bold;
+}
+
+/* undecided if this is wanted */
+
+/* #modal-title {
 	background: #59236e;
 	margin-bottom: 10px;
 }
 
-#form-dialog-title h2 {
+#modal-title h2 {
 	color: #fff;
 	font-family: "Ultra", serif;
 	text-transform: lowercase;

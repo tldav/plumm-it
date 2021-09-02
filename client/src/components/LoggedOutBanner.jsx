@@ -17,14 +17,14 @@ const LoggedOutBanner = () => {
 <div className="logged-out-banner">
 {isDesktop ? (
   <>
-    <button className="no-style-button no-style-button-alt" onClick={() => setIsSignupOpen(true)}>Sign up</button>
+    <button className="simple-button underline" onClick={() => setIsSignupOpen(true)}>Sign up</button>
     <p> to leave a comment. Already a member? </p>
-    <button className="no-style-button no-style-button-alt" onClick={() => setIsLoginOpen(true)}>Log in</button>
+    <button className="simple-button underline" onClick={() => setIsLoginOpen(true)}>Log in</button>
   </>
 ) : <> 
-    <button className="no-style-button no-style-button-alt" onClick={() => setIsSignupOpen(true)}>Sign up</button>
+    <button className="simple-button underline" onClick={() => setIsSignupOpen(true)}>Sign up</button>
     <p> or </p>
-    <button className="no-style-button no-style-button-alt" onClick={() => setIsLoginOpen(true)}>Log in</button>
+    <button className="simple-button underline" onClick={() => setIsLoginOpen(true)}>Log in</button>
     <p> to leave a comment.</p>
     </>
   }     

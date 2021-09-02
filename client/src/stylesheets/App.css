@@ -70,19 +70,6 @@ ul {
 	padding-bottom: 28px;
 }
 
-/* ////////// MEDIA QUERIES ////////// */
-/* @media (max-width: 768px) {
-  .mid {
-    width: 100%;
-  }
-  .stage {
-    padding: 24px;
-  }
-  .intro {
-    margin-top: 40px;
-  }
-} */
-
 @media (max-width: 1550px) {
 	.right {
 		width: 270px;

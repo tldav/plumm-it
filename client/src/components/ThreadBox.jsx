@@ -46,7 +46,7 @@ const ThreadBox = ({thread}) => {
         <div id="iconDiv">
           <Upvote upvotes={thread.upvotes} />
           <Downvote downvotes={thread.downvotes} />
-          <CommentIcon comments={thread.comment_count} />
+          <CommentIcon commentCount={thread.comment_count} />
         </div>
       </div>
     </>

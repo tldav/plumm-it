@@ -32,16 +32,16 @@ const Header = () => {
           {!isLoggedIn && !user.username ? 
           <>
         <div className="log-sign-header">
-            <button className="no-style-button" onClick={() => setIsSignupOpen(true)}>Sign Up</button>
+            <button className="simple-button" onClick={() => setIsSignupOpen(true)}>Sign Up</button>
             <Modal open={isSignupOpen} setOpen={setIsSignupOpen} purpose="signup" />
-            <button className="dialog-button-2" onClick={() => setIsLoginOpen(true)}>Log In</button>
+            <button className="pill-button" onClick={() => setIsLoginOpen(true)}>Log In</button>
             <Modal open={isLoginOpen} setOpen={setIsLoginOpen} purpose="login" />
         </div>
           </> : 
           <div className="logout-header">
             
             <span className="user-header">{user.username}</span>
-            <button className="dialog-button-2" onClick={handleLogout}>LOG OUT</button>
+            <button className="pill-button" onClick={handleLogout}>LOG OUT</button>
           </div> }
       </div>
     </div>

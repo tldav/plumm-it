@@ -4,11 +4,8 @@
 	border: #59236e 2px solid;
 	border-radius: 4px;
 	border-width: 1px;
-	/* height: 300px; */
 	min-width: 250px;
-	/* margin-top: 10px; */
 	background-color: #dac2e4;
-	/* padding: 10px; */
 }
 
 .categories-header {
@@ -44,5 +41,3 @@
 	width: 2rem;
 	margin-right: 10px;
 }
-
-/* categories font is 20 px */

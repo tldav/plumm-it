@@ -48,10 +48,9 @@ const Modal = ({ purpose, open, setOpen }) => {
   }
 
   return ( 
-      <div>
         <Dialog open={open} onClose={() => setOpen(false)} aria-labelledby="form-dialog-title" >
-          <DialogTitle id="form-dialog-title" className="dialog-box-bg">{dialogPurpose.titleText}</DialogTitle>
-          <DialogContent className="dialog-box-bg">
+          <DialogTitle id="modal-title"><span> {dialogPurpose.titleText}</span> </DialogTitle>
+          <DialogContent>
             <DialogContentText>
               {dialogPurpose.contentText}
             </DialogContentText>
@@ -59,13 +58,12 @@ const Modal = ({ purpose, open, setOpen }) => {
           </DialogContent>
           {purpose === "signup" ? 
             <div className="modal-footer" >
-              <p>Already a member? </p><button className="no-style-button no-style-button-alt" onClick={modalSwitch}> log in</button> 
+              <p>Already a member? </p><button className="simple-button underline" onClick={modalSwitch}> log in</button> 
             </div> : 
             <div className="modal-footer" >
-              <p>Not a member?</p><button className="no-style-button no-style-button-alt" onClick={modalSwitch}>sign up</button>
+              <p>Not a member?</p><button className="simple-button underline" onClick={modalSwitch}>sign up</button>
             </div>}
         </Dialog>
-      </div>
   );
 }
 
