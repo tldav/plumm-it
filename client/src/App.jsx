@@ -6,6 +6,7 @@ import Thread from "./pages/Thread";
 import Category from "./pages/Category"
 import ThreadContextProvider from "./context/ThreadContext";
 import UserContextProvider from "./context/UserContext";
+import ScrollToTop from "./utils/ScrollToTop";
 import "./stylesheets/App.css";
 
 const App = ({ location }) => {
@@ -16,6 +17,7 @@ const App = ({ location }) => {
     <UserContextProvider>
       <ThreadContextProvider>
         <Header />
+        <ScrollToTop />
         <Switch>
           <Route exact path={["/", "/home"]}>
             <Home />
