@@ -4,8 +4,11 @@ import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import IconButton from "@material-ui/core/IconButton";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import CloseIcon from '@material-ui/icons/Close';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowUp, faArrowDown  } from '@fortawesome/free-solid-svg-icons'
 import dateFormat from "dateformat"
 import Input from "./Input"
+import voteCount from "../utils/voteCount";
 import { UserContext } from "../context/UserContext";
 import "../stylesheets/Comment.css";
 
@@ -15,9 +18,8 @@ const CommentItem = ({ comment, originalPoster, thread }) => {
   const [isInputVisible, setIsInputVisible] = useState(false)
   const refWrapper = useRef(null)
 
-  const votes = (a, b) => {
-    return a - b;
-  };
+  const votes = voteCount(comment.upvotes, comment.downvotes)
+
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -33,30 +35,42 @@ const CommentItem = ({ comment, originalPoster, thread }) => {
     !user.username && !isLoggedIn ? setIsSignupOpen(true) : setIsInputVisible(true)
   }
 
-  const OPRender = originalPoster === comment.username ? "op-flag" : "hidden";
+  const handleInputClose = () => {
+    setIsInputVisible(false)
+  }
 
-  const replyRender = comment.parent_comment_id ? "is-reply-flag" : "hidden";
+  const renderConfig = {
+    isOP: originalPoster === comment.username ? "op-flag" : "hidden",
+    isReply: comment.parent_comment_id ? "reply-flag" : "hidden",
+  }
+
 
   return (
     <>
       <div className="convo-container" >
         <div className="column-1">
           <IconButton id="upvote" size="small">
-            <ArrowUpwardIcon className="arrow-button" />
+          <FontAwesomeIcon icon={faArrowUp} className="arrow-button" />
+            {/* <ArrowUpwardIcon className="arrow-button" /> */}
           </IconButton>
+          <p>{votes}</p>
           <IconButton id="downvote" size="small">
-            <ArrowDownwardIcon className="arrow-button" />
+          <FontAwesomeIcon icon={faArrowDown} />
+            {/* <ArrowDownwardIcon className="arrow-button" /> */}
           </IconButton>
           <div className="vertical-line"></div>
         </div>
         <div className="column-2">
           <p className="comment-heading">
-          {<span className={OPRender}>OP </span>}{`${comment.username} • ${dateFormat(comment.created_at,
+          {/* {<span className={renderConfig.isOP}>OP </span>}<span className="comment-name">{comment.username}</span> {` • ${dateFormat(comment.created_at,
             "mmmm dS, yyyy, h:MM TT"
-          )} • ⤮ ${votes(comment.upvotes, comment.downvotes)}`}
+          )} • ⤮ ${votes(comment.upvotes, comment.downvotes)}`} */}
+          {<span className={renderConfig.isOP}>OP </span>}<span className="comment-name">{comment.username}</span> {` • ${dateFormat(comment.created_at,
+            "mmmm dS, yyyy, h:MM TT"
+          )}`}
           </p>
           <div className="comment-box" >
-            <div className={replyRender}>{comment.parent_username} posted: 
+            <div className={renderConfig.isReply}>{comment.parent_username} posted: 
               <div className="reply-body">
                 <p>{comment.parent_comment_body}</p>
               </div>
@@ -65,7 +79,7 @@ const CommentItem = ({ comment, originalPoster, thread }) => {
           </div>    
           {isInputVisible ? 
             <div ref={refWrapper}>
-              <Input thread={thread} parentId={comment.comment_id} placeholderText={`@ ${comment.username}`} /> 
+              <Input thread={thread} parentId={comment.comment_id} handleClose={handleInputClose} placeholderText={`@ ${comment.username}`} /> 
             </div> : null}
           {isInputVisible ? 
             <IconButton onClick={onReplyClick} className="reply-button" size="small">
