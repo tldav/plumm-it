@@ -2,49 +2,49 @@
   {
     "id": 1,
     "name": "news",
-    "image": "/images/news.jpg",
+    "image": "images/news.jpg",
     "description": "p/news is: real news articles pertaining to the world at large written in objectivity's best interest. p/news is not: editorials, conspiracies (see p/conspiracies), obstinate party loyalty, shouting, kitty pictures, etc.. Should probably remove this category."
   },
   {
     "id": 2,
     "name": "sports",
-    "image": "/images/sports.jpg",
+    "image": "images/sports.jpg",
     "description": "sports and stuff or whatever."
   },
   {
     "id": 3,
     "name": "technology",
-    "image": "/images/technology.jpg",
+    "image": "images/technology.jpg",
     "description": "dedicated to the news and discussions about the creation and use of technology and its surrounding issues."
   },
   {
     "id": 4,
     "name": "gaming",
-    "image": "/images/gaming.jpg",
+    "image": "images/gaming.jpg",
     "description": "gaming r cool."
   }, 
   {
     "id": 5,
     "name": "movies",
-    "image": "/images/movies.jpg",
+    "image": "images/movies.jpg",
     "description": "movies r cool."
   },
   {
     "id": 6,
     "name": "books",
-    "image": "/images/books.jpg",
+    "image": "images/books.jpg",
     "description": "books r cool."
   },
   {
     "id": 7,
     "name": "food",
-    "image": "/images/food.jpg",
+    "image": "images/food.jpg",
     "description": "food r good."
   },
   {
     "id": 8,
     "name": "conspiracies",
-    "image": "/images/conspiracies.JPG",
+    "image": "images/conspiracies.jpg",
     "description": "dedicated to exploring a wide range of unconventional, suppressed, & esoteric topics with the brightest minds for our troubled times."
   }
 ]
