@@ -256,6 +256,7 @@ BEGIN
         (title, body, user_id, category_id)
     VALUES
         (param_title, param_body, param_user_id, param_category_id);
+    CALL getOneThread(LAST_INSERT_ID());
 
 END
 //

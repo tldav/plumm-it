@@ -1,5 +1,6 @@
 {
     "prettier.printWidth": 100,
     "editor.tabSize": 2,
-    "files.defaultLanguage": "${activeEditorLanguage}"
+    "files.defaultLanguage": "${activeEditorLanguage}",
+    "terminal.integrated.defaultProfile.windows": "Git Bash"
 }

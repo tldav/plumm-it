@@ -39,7 +39,6 @@ const Header = () => {
         </div>
           </> : 
           <div className="logout-header">
-            
             <span className="user-header">{user.username}</span>
             <button className="pill-button" onClick={handleLogout}>LOG OUT</button>
           </div> }

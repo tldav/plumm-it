@@ -7,7 +7,7 @@ import { ThreadContext } from "../context/ThreadContext";
 import { UserContext } from "../context/UserContext";
 import "../stylesheets/Input.css";
 
-const Input = ({thread, placeholderText, parentId}) => {
+const Input = ({thread, placeholderText, parentId, handleClose}) => {
   const { handleThreadSelect } = useContext(ThreadContext)
   const {user} = useContext(UserContext)
   const [body, setBody] = useState("")
@@ -27,6 +27,7 @@ const Input = ({thread, placeholderText, parentId}) => {
     }
     handleThreadSelect(thread.thread_id)
     setBody("")
+    if (handleClose) handleClose()
   }
 
   return (

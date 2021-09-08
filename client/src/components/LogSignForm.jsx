@@ -102,7 +102,6 @@ const LogSignForm = ({ dialogPurpose, handleModalClose }) => {
           value={userCredentials.username}
           onChange={handleInputChange}
           onBlur={validateSubmit}
-          maxLength={2}
         />: 
         <TextField
           className={label.theme}
