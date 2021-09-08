@@ -9,7 +9,6 @@ const RandoBox = () => {
   const { handleCategorySelect } = useContext(ThreadContext)
   let history = useHistory();
 
-
   const onCategorySelect = (category) => {
     handleCategorySelect(category.id)
     history.push(`/p/${category.name}/${category.id}`)
@@ -21,7 +20,7 @@ const RandoBox = () => {
       <ul>
         {categories.map((category) => {
           return (
-              <li key={category.id} onClick={() => onCategorySelect(category)} className="list-item">
+              <li key={category.id} onClick={() => onCategorySelect(category)} className="list-item" title={category.name}>
                 <Avatar id="Avatar" src={`/static/${category.image}`} alt={category.name} />
                 p/{category.name}
               </li>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react"
 import ThreadBox from './ThreadBox';
 
 const ThreadList = ({threads}) => {

@@ -1,12 +1,13 @@
 import React from "react";
-import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import { IconButton } from "@material-ui/core";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
 
-const Downvote = ({ downvotes, onClick }) => {
+const Downvote = ({ onClick }) => {
   return (
-    <>
-      <ArrowDownwardIcon className="icon" fontSize="small" onClick={onClick} />
-      <span className="iconCount">{downvotes}</span>
-    </>
+    <IconButton size="small" id="downvote" title="downvote">
+      <FontAwesomeIcon  icon={faArrowDown}/>
+    </IconButton>
   );
 };
 

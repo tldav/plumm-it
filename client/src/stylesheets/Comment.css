@@ -7,28 +7,25 @@
 .column-1 {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	/* width: 25px; */
 }
 
-.column-2 {
-	display: flex;
-	flex-direction: column;
-	padding-left: 4px;
-	margin-top: 4px;
-}
-
-.heading {
-	font-size: 12px;
-	color: #666;
-}
-
-.arrow-button {
-	height: 16px;
-	width: 16px;
-	padding: 2px;
+#upvote,
+#downvote {
+	color: #59236e;
+	font-size: 1rem;
 }
 
 #upvote:hover {
-	color: rgb(94, 184, 10);
+	/* color: rgb(84, 173, 0);
+	color: rgb(115, 221, 16); */
+	/* color: #dac2e4; */
+	/* border: 1px solid black; */
+	/* border-radius: 50%; */
+	/* background: #59236e;
+	background: black; */
+	background: rgb(115, 221, 16);
 }
 
 #downvote:hover {
@@ -36,10 +33,34 @@
 }
 
 .vertical-line {
-	background-color: grey;
-	width: 1px;
+	background: #59236e;
+	width: 2px;
 	height: 100%;
 	margin: auto;
+}
+
+.column-2 {
+	display: flex;
+	flex-direction: column;
+	padding-left: 4px;
+	margin-top: 4px;
+	width: 100%;
+}
+
+.comment-heading {
+	font-size: 0.938rem;
+	color: #59236e;
+	margin-bottom: 10px;
+	/* font-family: "Raleway", sans-serif; */
+	/* font-weight: bold; */
+	/* border: 1px solid #59236e;
+	border-left: none;
+	border-right: none;
+	border-bottom: none; */
+}
+
+.comment-name {
+	font-weight: bold;
 }
 
 .reply-button {
@@ -47,6 +68,7 @@
 }
 
 .reply-icon {
+	color: #59236e;
 	height: 22px;
 	width: 22px;
 	margin-right: 2px;
@@ -55,5 +77,45 @@
 
 #reply-text {
 	font: 12px;
-	color: #666;
+	color: #59236e;
 }
+
+.comment-box {
+	padding-left: 7px;
+}
+
+.convo-container .op-flag {
+	font-family: "Ultra", serif;
+	color: #000;
+	font-style: normal;
+	font-weight: lighter;
+}
+
+.convo-container .reply-flag {
+	font-style: italic;
+	color: #4d4d4d;
+	margin-bottom: 20px;
+	font-size: 14px;
+}
+
+.convo-container .reply-body {
+	border-left: 2px solid #59236e;
+	padding-left: 10px;
+	font-style: normal;
+}
+
+.convo-container .reply-body p {
+	color: #4d4d4d;
+}
+
+/* .reply-fade-text {
+	max-height: 50px;
+	-webkit-mask-image: -webkit-gradient(
+		linear,
+		left 50%,
+		left bottom,
+		from(rgba(0, 0, 0, 1)),
+		to(rgba(0, 0, 0, 0))
+	);
+	mask-image: linear, left 50%, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0));
+} */

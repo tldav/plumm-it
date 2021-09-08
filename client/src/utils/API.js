@@ -13,6 +13,9 @@ const API = {
 	getCurrentUser: () => {
 		return axios.post("/api/users/current");
 	},
+	validateUsername: (username) => {
+		return axios.post("/api/users/validate", username);
+	},
 	updateUser: (id, updatedUser) => {
 		return axios.put("/api/users/" + id, updatedUser);
 	},
@@ -36,7 +39,7 @@ const API = {
 		return axios.put("/api/threads/upvote/" + threadId, userId);
 	},
 	downvoteThread: (threadId, userId) => {
-		return axios.put("/api/threads/downvote" + threadId, userId);
+		return axios.put("/api/threads/downvote/" + threadId, userId);
 	},
 	createComment: (newComment) => {
 		return axios.post("/api/comments", newComment);

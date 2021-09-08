@@ -23,12 +23,10 @@ const ThreadContextProvider = (props) => {
 					const response = await API.findAllThreads();
 					setRealThreads(response.data);
 				}
-
 				if (forwardSlashCount.length === 3) {
 					const response = await API.findAllThreadsInCategory(pathname.split("/")[3]);
 					setCategoryThreads(response.data);
 				}
-
 				if (forwardSlashCount.length === 5) {
 					const response = await API.findOneThread(pathname.split("/")[5]);
 					setFeaturedThread(response.data);

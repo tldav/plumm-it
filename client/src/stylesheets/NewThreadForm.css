@@ -1,0 +1,13 @@
+.new-thread-form span {
+	font-family: "Ultra", serif;
+	color: #59236e;
+	text-transform: lowercase;
+	font-size: 1.125rem;
+	text-decoration: underline;
+	text-decoration-thickness: 15%;
+	text-underline-offset: 3px;
+}
+
+.new-thread-form span:hover {
+	color: #fff;
+}

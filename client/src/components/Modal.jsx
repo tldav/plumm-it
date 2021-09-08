@@ -1,16 +1,15 @@
-import React, {useState, useContext} from 'react';
+import React, { useContext } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import UserDialogForm from './UserDialogForm';
+import LogSignForm from './LogSignForm';
 import { UserContext } from '../context/UserContext';
-import "../stylesheets/UserDialog.css"
+import "../stylesheets/Modal.css"
 
+const Modal = ({ purpose, open, setOpen }) => {
+  const {handleLogin, handleSignup, setIsSignupOpen, setIsLoginOpen} = useContext(UserContext)
 
-const UserDialog = ({buttonTheme, purpose}) => {
-  const {user, handleLogin, handleSignup, handleLogout, isLoggedIn} = useContext(UserContext)
-  const [open, setOpen] = useState(false);
 
   const onLoginSubmit = (userCredentials) => {
     setOpen(false)
@@ -22,13 +21,6 @@ const UserDialog = ({buttonTheme, purpose}) => {
     handleSignup(userCredentials)
   }
 
-  const onLogoutClick = () => {
-    handleLogout()
-  }
-
-  const handleModalClose = () => {
-    setOpen(false)
-  }
 
   const dialogConfig = {
     login: {
@@ -45,26 +37,39 @@ const UserDialog = ({buttonTheme, purpose}) => {
   
   let dialogPurpose = purpose === "signup" ? dialogConfig.signup : dialogConfig.login;
 
+  const modalSwitch = () => {
+    if (purpose === "signup") {
+      setIsSignupOpen(false)
+      setIsLoginOpen(true)
+    }
+    if (purpose === "login") {
+      setIsLoginOpen(false)
+      setIsSignupOpen(true)
+    }
+  }
+
   return ( 
-    !isLoggedIn && !user.username ? (
-      <div>
-        <button className={buttonTheme} onClick={() => setOpen(true)}>{dialogPurpose.titleText}</button>
         <Dialog open={open} onClose={() => setOpen(false)} aria-labelledby="form-dialog-title" >
-          <DialogTitle id="form-dialog-title" className="dialog-box-bg">{dialogPurpose.titleText}</DialogTitle>
-          <DialogContent className="dialog-box-bg">
+          <DialogTitle id="modal-title"><span> {dialogPurpose.titleText}</span> </DialogTitle>
+          <DialogContent>
             <DialogContentText>
               {dialogPurpose.contentText}
             </DialogContentText>
-            <UserDialogForm dialogPurpose={dialogPurpose} handleModalClose={handleModalClose} />
+              <LogSignForm 
+                dialogPurpose={dialogPurpose}
+                handleModalClose={() => setOpen(false)}
+                open={open}
+              />
           </DialogContent>
+          {purpose === "signup" ? 
+            <div className="modal-footer" >
+              <p>Already a member? </p><button className="simple-button underline" onClick={modalSwitch}> log in</button> 
+            </div> : 
+            <div className="modal-footer" >
+              <p>Not a member?</p><button className="simple-button underline" onClick={modalSwitch}>sign up</button>
+            </div>}
         </Dialog>
-      </div>
-    ) :  <div>
-      Hello {user.username}
-      <button className={buttonTheme} onClick={() => console.log("check user button click in UserDialog", user)}>check user</button>
-      <button className={buttonTheme} onClick={onLogoutClick}>LOG OUT</button>
-    </div>
   );
 }
 
-export default UserDialog;
+export default Modal;

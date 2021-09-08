@@ -3,3 +3,5 @@ debug.log
 .env
 /notes.yml
 /pseudo-components.jsx
+/.VSCodeCounter
+/thread-component-structure.yml
