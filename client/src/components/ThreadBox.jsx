@@ -1,17 +1,20 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import dateFormat from "dateformat";
-import { Avatar } from "@material-ui/core";
+import Avatar from "@material-ui/core/Avatar";
+import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import Upvote from "../components/Upvote";
 import Downvote from "../components/Downvote";
-import CommentIcon from "../components/CommentIcon";
+import formatNum, { formatVotes } from "../utils/formatNum"
 import { ThreadContext } from "../context/ThreadContext";
+import API from "../utils/API"
 import "../stylesheets/ThreadBox.css";
+import { UserContext } from "../context/UserContext";
 
 const ThreadBox = ({thread}) => {
-  let history = useHistory();
-
   const { handleThreadSelect } = useContext(ThreadContext)
+  const {user, isLoggedIn} = useContext(UserContext)
+  let history = useHistory();
 
   const redirectToThread = (selectedThread) => {
     handleThreadSelect(selectedThread.thread_id)
@@ -20,12 +23,11 @@ const ThreadBox = ({thread}) => {
   };
 
   return (
-    <>
       <div
-        // {...thread}    @nick what dis do?
         onClick={() => redirectToThread(thread)}
         className="stage"
         id="preview"
+        title={thread.title}
       >
         <div className="thread-header">
           <Avatar
@@ -40,16 +42,17 @@ const ThreadBox = ({thread}) => {
           )}`}</span>
         </div>
         <h2 className="thread-title">{thread.title}</h2>
-        <div className="fade-text-or-whatever">
+        <div className="thread-fade-text">
           <p>{thread.body}</p>
         </div>
-        <div id="iconDiv">
-          <Upvote upvotes={thread.upvotes} />
-          <Downvote downvotes={thread.downvotes} />
-          <CommentIcon commentCount={thread.comment_count} />
+        <div className="icons icons-horizontal">
+          <Upvote thread={thread} />
+          <span className="">{formatVotes(thread.upvotes, thread.downvotes)}</span>
+          <Downvote />
+          <ChatBubbleIcon fontSize="small" />
+          <span className="">{formatNum(thread.comment_count)} comments</span>
         </div>
       </div>
-    </>
   );
 };
 

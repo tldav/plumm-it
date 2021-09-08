@@ -39,7 +39,7 @@ const API = {
 		return axios.put("/api/threads/upvote/" + threadId, userId);
 	},
 	downvoteThread: (threadId, userId) => {
-		return axios.put("/api/threads/downvote" + threadId, userId);
+		return axios.put("/api/threads/downvote/" + threadId, userId);
 	},
 	createComment: (newComment) => {
 		return axios.post("/api/comments", newComment);

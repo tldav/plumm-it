@@ -22,12 +22,23 @@
 	font-size: 1rem;
 }
 
-#iconDiv {
+/* ***********************************************  */
+.icons-horizontal {
 	display: flex;
 	align-items: center;
-	color: #59236e;
 	margin: 4px;
+	width: 200px;
+	justify-content: space-between;
+	z-index: 2000;
 }
+
+.icons {
+	color: #59236e;
+	font-weight: bold;
+	font-size: 0.875rem;
+}
+
+/* ***********************************************  */
 
 #preview {
 	cursor: pointer;
@@ -37,7 +48,7 @@
 	font-size: 1.17rem;
 }
 
-.fade-text-or-whatever {
+.thread-fade-text {
 	max-height: 325px;
 	-webkit-mask-image: -webkit-gradient(
 		linear,

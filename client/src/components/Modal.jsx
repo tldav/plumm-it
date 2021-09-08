@@ -21,6 +21,7 @@ const Modal = ({ purpose, open, setOpen }) => {
     handleSignup(userCredentials)
   }
 
+
   const dialogConfig = {
     login: {
       titleText: "Log in",
@@ -54,7 +55,11 @@ const Modal = ({ purpose, open, setOpen }) => {
             <DialogContentText>
               {dialogPurpose.contentText}
             </DialogContentText>
-            <LogSignForm dialogPurpose={dialogPurpose} handleModalClose={() => setOpen(false)} open={open} />
+              <LogSignForm 
+                dialogPurpose={dialogPurpose}
+                handleModalClose={() => setOpen(false)}
+                open={open}
+              />
           </DialogContent>
           {purpose === "signup" ? 
             <div className="modal-footer" >

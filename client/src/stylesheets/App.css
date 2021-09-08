@@ -70,6 +70,10 @@ ul {
 	padding-bottom: 28px;
 }
 
+.hidden {
+	display: none;
+}
+
 @media (max-width: 1550px) {
 	.right {
 		width: 270px;

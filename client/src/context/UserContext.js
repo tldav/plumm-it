@@ -38,6 +38,7 @@ const UserContextProvider = (props) => {
 		try {
 			const newUser = await API.createUser(credentials);
 			setUser({ ...newUser.data });
+			if (!isLoggedIn) setIsLoggedIn(true);
 		} catch (error) {
 			console.log(error);
 		}
