@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import RandoBox from "../components/RandoBox";
 import ThreadList from "../components/ThreadList";
-import LoggedOutBanner from "../components/LoggedOutBanner"
+import Banner from "../components/Banner"
 import { ThreadContext } from "../context/ThreadContext";
 
 const Home = () => {
@@ -11,7 +11,7 @@ const Home = () => {
       <div className="left"></div>
       <div className="mid">
         <div className="threads">
-          <LoggedOutBanner />
+          <Banner />
           <ThreadList threads={realThreads} />
         </div>
       </div>
