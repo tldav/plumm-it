@@ -22,6 +22,7 @@ CREATE TABLE categories
     category_name VARCHAR(30) NOT NULL UNIQUE,
     user_id INT UNSIGNED NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    is_active BOOLEAN DEFAULT TRUE,
     FOREIGN KEY(user_id) REFERENCES users(user_id),
     PRIMARY KEY(category_id)
 );
@@ -108,19 +109,39 @@ END
 
 
 
+
+DELIMITER //
+
+CREATE PROCEDURE getAllCategories()
+
+BEGIN
+
+    SELECT cat.category_id, cat.category_name, cat.is_active, cat.created_at, u.user_id, u.username, (SELECT COUNT(*) FROM threads t WHERE t.category_id = cat.category_id) AS thread_count
+    FROM categories cat
+        JOIN users u ON cat.user_id = u.user_id
+    WHERE cat.is_active = TRUE
+    GROUP BY u.user_id, u.username, cat.category_name
+    ORDER BY cat.created_at DESC; 
+
+END
+//
+
+
+
+
 DELIMITER //
 
 CREATE PROCEDURE getCategoryThreads(param INT)
 
 BEGIN
 
-    SELECT t.thread_id, t.title, t.body, t.created_at, u.user_id, u.username, t.category_id, cat.category_name, t.is_edited, SUM(IFNULL(tv.vote = TRUE, 0)) AS upvotes, SUM(IFNULL(tv.vote = FALSE, 0)) AS downvotes, 
+    SELECT t.thread_id, t.title, t.body, t.created_at, u.user_id, u.username, t.category_id, cat.category_name, cat.is_active, t.is_edited, SUM(IFNULL(tv.vote = TRUE, 0)) AS upvotes, SUM(IFNULL(tv.vote = FALSE, 0)) AS downvotes, 
     (SELECT COUNT(*) FROM comments c WHERE c.thread_id = t.thread_id) AS comment_count
     FROM threads t
         JOIN users u ON t.user_id = u.user_id
         JOIN categories cat ON t.category_id = cat.category_id
 		    LEFT JOIN thread_votes tv ON t.thread_id = tv.thread_id 
-    WHERE cat.category_id = param AND t.is_active = TRUE
+    WHERE cat.category_id = param AND t.is_active = TRUE AND cat.is_active = TRUE
     GROUP BY t.thread_id, t.title, t.body, t.created_at, u.user_id, u.username, t.category_id, cat.category_name, t.is_edited
     ORDER BY t.created_at DESC;
 
@@ -372,6 +393,23 @@ CREATE PROCEDURE getUserById(param_user_id INT)
 BEGIN
 
 	SELECT u.user_id, u.email, u.username, u.first_name, u.last_name, u.created_at, u.is_active FROM users u WHERE u.user_id = param_user_id;
+
+END
+//
+
+
+
+
+
+DELIMITER //
+
+CREATE PROCEDURE unpublishComment(param_comment_id INT)
+
+BEGIN
+
+    UPDATE comments SET is_active = FALSE
+    WHERE comment_id = param_comment_id
+    LIMIT 1;
 
 END
 //

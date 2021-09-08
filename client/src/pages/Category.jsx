@@ -3,14 +3,15 @@ import RandoBox from "../components/RandoBox";
 import ThreadList from "../components/ThreadList";
 import { ThreadContext } from "../context/ThreadContext";
 
-const Home = () => {
-  const { realThreads } = useContext(ThreadContext)
+const Category = () => {
+  const { categoryThreads } = useContext(ThreadContext)
+  
   return (
     <div className="app-container ">
       <div className="left"></div>
       <div className="mid">
         <div className="threads">
-          <ThreadList threads={realThreads} />
+          <ThreadList threads={categoryThreads} />
         </div>
       </div>
       <div className="right">
@@ -22,4 +23,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Category;

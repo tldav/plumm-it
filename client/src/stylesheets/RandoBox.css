@@ -11,7 +11,7 @@
 	/* padding: 10px; */
 }
 
-.categories-title {
+.categories-header {
 	background: #59236e;
 	color: #ffffff;
 	font-family: "Ultra", serif;
@@ -28,17 +28,21 @@
 	font-weight: bold;
 	padding: 5px;
 	font-family: "Raleway", sans-serif;
+	transition-duration: 0.3s;
+	transition-property: transform;
 }
 
-.list-item:hover {
+.list-item:hover,
+.list-item:focus,
+.list-item:active {
 	cursor: pointer;
-}
-
-li {
-	margin-left: 10px;
+	transform: scale(1.1) translateX(11px);
 }
 
 #Avatar {
 	height: 2rem;
 	width: 2rem;
+	margin-right: 10px;
 }
+
+/* categories font is 20 px */

@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import FormDialog from "./FormDialog"
+import UserDialog from "./UserDialog"
 import "../stylesheets/Header.css";
+import { ThreadContext } from "../context/ThreadContext";
 
 const Header = () => {
   let history = useHistory();
+  const { handleReturnHome } = useContext(ThreadContext)
+
+  const onHomeClick = () => {
+    handleReturnHome()
+    history.push("/")
+  }
+
   return (
     <div className="header">
       <div className="header-flex-container">
-        <h1 id="plumm-title" onClick={() => history.push("/")}>
-          plumm.it
+        <h1 id="plumm-title" onClick={onHomeClick}>
+          plummit
         </h1>
         <div className="header-buttons">
-          <FormDialog purpose="signup"/>
-          <FormDialog purpose="login"/>
+            <UserDialog purpose="signup" buttonTheme="no-style-button"/>
+            <UserDialog purpose="login" buttonTheme="dialog-button-2"/>
         </div>
       </div>
     </div>

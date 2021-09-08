@@ -13,14 +13,14 @@ INSERT INTO categories
   (category_id, category_name, user_id)
 
 VALUES
-  (1, "News", 1),
-  (2, "Sports", 1),
-  (3, "Technology", 1),
-  (4, "Gaming", 1),
-  (5, "Movies", 1),
-  (6, "Books", 1),
-  (7, "Food", 1),
-  (8, "Conspiracies", 1);
+  (1, "news", 1),
+  (2, "sports", 1),
+  (3, "technology", 1),
+  (4, "gaming", 1),
+  (5, "movies", 1),
+  (6, "books", 1),
+  (7, "food", 1),
+  (8, "conspiracies", 1);
 
 INSERT INTO threads
   (thread_id, user_id, category_id, title, body, created_at)
@@ -164,7 +164,8 @@ Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, odit, aliqu
 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam, sunt harum! Tempora laboriosam, harum debitis ex quia ipsam porro animi, voluptatum cupiditate accusamus quidem dolorem obcaecati? Praesentium reprehenderit velit tenetur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut dolore, non enim cumque ipsa inventore velit laborum unde eligendi molestiae praesentium optio fuga nisi deleniti architecto incidunt et, ab soluta? Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quidem aperiam repellendus cum nesciunt nisi culpa perspiciatis placeat amet rem officia dicta iste ex consectetur ducimus tempore, asperiores error. Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus illum minus quasi. At, labore hic accusantium in harum repellat ipsum impedit ipsam voluptatibus tempore sequi rerum recusandae quod veniam ducimus? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae earum itaque, voluptas nesciunt ipsam asperiores? Dolore cumque expedita doloremque fuga. Quod eum ipsa illo aspernatur veniam maxime distinctio ipsam saepe. 
 Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
 
-Atque dolore quia ex culpa necessitatibus facilis quidem veritatis quos fugit accusantium magnam, id quam doloremque, dicta dolorem, esse ducimus molestias! Quos.");
+Atque dolore quia ex culpa necessitatibus facilis quidem veritatis quos fugit accusantium magnam, id quam doloremque, dicta dolorem, esse ducimus molestias! Quos."),
+(2, 1, "The world is saved", "lorem ipsum etc.");
 
 
 INSERT INTO comments

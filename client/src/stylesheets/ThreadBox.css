@@ -13,7 +13,7 @@
 }
 
 #user {
-	color: #666;
+	color: #444;
 }
 
 #category {
@@ -30,6 +30,10 @@
 
 #preview {
 	cursor: pointer;
+}
+
+.thread-title {
+	font-size: 1.17rem;
 }
 
 #avatar {

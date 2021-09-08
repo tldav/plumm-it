@@ -1,5 +1,5 @@
 import React from "react";
-import FeaturedThreadBox from "../components/FeaturedThreadBox";
+import FeaturedThreadContent from "../components/FeaturedThreadContent";
 import RandoBox from "../components/RandoBox";
 
 const Thread = () => {
@@ -7,7 +7,7 @@ const Thread = () => {
     <div className="app-container ">
       <div className="mid">
         <div className="threads">
-          <FeaturedThreadBox />
+          <FeaturedThreadContent />
         </div>
       </div>
       <div className="right">

@@ -38,5 +38,13 @@ module.exports = {
 			});
 		});
 	},
-	delete: () => {},
+	remove: (commentId) => {
+		const sql = `CALL unpublishComment(?)`;
+		return new Promise((resolve, reject) => {
+			connection.query(sql, commentId, (err, results) => {
+				if (err) reject(err);
+				return resolve(results);
+			});
+		});
+	},
 };

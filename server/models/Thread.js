@@ -12,27 +12,27 @@ module.exports = {
 		});
 	},
 	findOne: (id) => {
-		const sql = `CALL getOneThread(${id})`;
+		const sql = `CALL getOneThread(?)`;
 		return new Promise((resolve, reject) => {
-			connection.query(sql, (err, results) => {
+			connection.query(sql, id, (err, results) => {
 				if (err) reject(err);
 				return resolve(results);
 			});
 		});
 	},
 	findCategoryThreads: (id) => {
-		const sql = `CALL getCategoryThreads(${id})`;
+		const sql = `CALL getCategoryThreads(?)`;
 		return new Promise((resolve, reject) => {
-			connection.query(sql, (err, results) => {
+			connection.query(sql, id, (err, results) => {
 				if (err) reject(err);
 				return resolve(results);
 			});
 		});
 	},
 	findThreadComments: (id) => {
-		const sql = `CALL getThreadComments(${id})`;
+		const sql = `CALL getThreadComments(?)`;
 		return new Promise((resolve, reject) => {
-			connection.query(sql, (err, results) => {
+			connection.query(sql, id, (err, results) => {
 				if (err) reject(err);
 				return resolve(results);
 			});
@@ -74,5 +74,5 @@ module.exports = {
 			});
 		});
 	},
-	delete: () => {},
+	remove: () => {},
 };
