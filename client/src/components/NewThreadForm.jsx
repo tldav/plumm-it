@@ -3,7 +3,6 @@ import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
 import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions';
 import API from "../utils/API"
@@ -38,12 +37,12 @@ const NewThreadForm = () => {
   }
 
   return (
-    <div className="stage" style={{background: "#fff"}}>
+    <div className="stage" >
       <form action="" onSubmit={onFormSubmit}>
         <FormControl 
           variant="outlined" 
           margin="dense"
-          style={{marginBottom: "20px"}}>
+          style={{marginBottom: "20px", background: "#fff"}}>
           <InputLabel htmlFor="outlined-age-native-simple">Category</InputLabel>
           <Select 
             name="category"
@@ -52,20 +51,16 @@ const NewThreadForm = () => {
             onChange={handleInputChange}
             native
             label="Category"
-            // inputProps={{
-            //   name: 'category',
-            //   id: 'outlined-age-native-simple',
-            // }}
           >
             <option aria-label="None" value="" />
-            <option value={1}>news</option>
-            <option value={2}>sports</option>
-            <option value={3}>technology</option>
-            <option value={4}>gaming</option>
-            <option value={5}>movies</option>
-            <option value={6}>books</option>
-            <option value={7}>food</option>
-            <option value={8}>conspiracies</option>
+            <option value={1}>p/news</option>
+            <option value={2}>p/sports</option>
+            <option value={3}>p/technology</option>
+            <option value={4}>p/gaming</option>
+            <option value={5}>p/movies</option>
+            <option value={6}>p/books</option>
+            <option value={7}>p/food</option>
+            <option value={8}>p/conspiracies</option>
           </Select>
         </FormControl>
 
@@ -83,7 +78,6 @@ const NewThreadForm = () => {
         />
         <TextField
           style={{ background: "#fff"}}
-          required
           variant="outlined"
           label="Body"
           margin="dense"
@@ -95,9 +89,9 @@ const NewThreadForm = () => {
           onChange={handleInputChange}
         />
         <DialogActions>
-          {/* <Button type="submit" color="primary">
+          <Button onClick={() => history.push("/")} color="primary">
             Cancel
-          </Button> */}
+          </Button>
           <Button type="submit" color="primary">
             Create
           </Button>

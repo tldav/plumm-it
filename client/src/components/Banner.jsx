@@ -1,8 +1,10 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { useHistory } from 'react-router';
+import AddBoxIcon from '@material-ui/icons/AddBox';
 import { UserContext } from '../context/UserContext';
+import "../stylesheets/Banner.css"
 
-const LoggedOutBanner = () => {
+const Banner = () => {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 520)
   const { setIsSignupOpen, setIsLoginOpen, user, isLoggedIn } = useContext(UserContext)
 
@@ -20,27 +22,31 @@ const LoggedOutBanner = () => {
   }
 
   if (user.username && isLoggedIn) return (
-    <div>
-      <button onClick={onNewThreadClick}>new thread</button>
+    <div className="new-thread-banner banner">
+      <h3>post as <span style={{fontFamily: '"Montserrat", Arial, Helvetica, sans-serif', fontWeight: "bold"}}>{user.username}</span></h3>
+      <div onClick={onNewThreadClick} className="new-thread-button pill-button">
+        New Thread
+        <AddBoxIcon fontSize="large" />
+      </div>
     </div>
   )
   return (
-  <div className="logged-out-banner">
+  <div className="logged-out-banner banner">
   {isDesktop ? (
     <>
       <button className="simple-button underline" onClick={() => setIsSignupOpen(true)}>Sign up</button>
-      <p> to leave a comment. Already a member? </p>
+      <p> to contribute. Already a member? </p>
       <button className="simple-button underline" onClick={() => setIsLoginOpen(true)}>Log in</button>
     </>
   ) : <> 
       <button className="simple-button underline" onClick={() => setIsSignupOpen(true)}>Sign up</button>
       <p> or </p>
       <button className="simple-button underline" onClick={() => setIsLoginOpen(true)}>Log in</button>
-      <p> to leave a comment.</p>
+      <p> to contribute.</p>
       </>
     }     
   </div>
   );
 }
 
-export default LoggedOutBanner;
+export default Banner;
