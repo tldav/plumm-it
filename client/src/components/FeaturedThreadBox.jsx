@@ -37,7 +37,3 @@ const FeaturedThreadBox = ({thread}) => {
 };
 
 export default FeaturedThreadBox
-
-
-// 20 x 20
-// 16.67 x16.67
