@@ -121,8 +121,7 @@ const LogSignForm = ({ dialogPurpose, handleModalClose }) => {
       <TextField
         margin="dense"
         label="Password"
-        // type="password"
-        type="text"
+        type="password"
         fullWidth
         required
         name="password"
