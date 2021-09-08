@@ -1,4 +1,5 @@
 import React, {useContext, useState} from 'react'
+import { useHistory } from 'react-router';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
@@ -7,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions';
 import API from "../utils/API"
 import { UserContext } from '../context/UserContext';
-import { useHistory } from 'react-router';
+import "../stylesheets/NewThreadForm.css"
 
 const NewThreadForm = () => {
   const { user } = useContext(UserContext)
@@ -37,12 +38,12 @@ const NewThreadForm = () => {
   }
 
   return (
-    <div className="stage" >
+    <div className="stage">
       <form action="" onSubmit={onFormSubmit}>
         <FormControl 
           variant="outlined" 
           margin="dense"
-          style={{marginBottom: "20px", background: "#fff"}}>
+          style={{marginBottom: "20px", background: "#fff", borderRadius: "5px"}}>
           <InputLabel htmlFor="outlined-age-native-simple">Category</InputLabel>
           <Select 
             name="category"
@@ -63,7 +64,6 @@ const NewThreadForm = () => {
             <option value={8}>p/conspiracies</option>
           </Select>
         </FormControl>
-
         <TextField 
           style={{marginBottom: "20px", background: "#fff"}}
           autoFocus
@@ -88,7 +88,7 @@ const NewThreadForm = () => {
           value={thread.body}
           onChange={handleInputChange}
         />
-        <DialogActions>
+        <DialogActions className="new-thread-form">
           <Button onClick={() => history.push("/")} color="primary">
             Cancel
           </Button>
