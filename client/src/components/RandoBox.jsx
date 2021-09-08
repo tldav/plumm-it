@@ -20,7 +20,7 @@ const RandoBox = () => {
       <ul>
         {categories.map((category) => {
           return (
-              <li key={category.id} onClick={() => onCategorySelect(category)} className="list-item">
+              <li key={category.id} onClick={() => onCategorySelect(category)} className="list-item" title={category.name}>
                 <Avatar id="Avatar" src={`/static/${category.image}`} alt={category.name} />
                 p/{category.name}
               </li>
