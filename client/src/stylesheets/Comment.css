@@ -29,7 +29,8 @@
 }
 
 #downvote:hover {
-	color: rgb(209, 6, 6);
+	/* color: rgb(209, 6, 6); */
+	background: rgb(209, 6, 6);
 }
 
 .vertical-line {
