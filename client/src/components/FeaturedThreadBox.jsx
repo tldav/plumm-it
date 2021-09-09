@@ -4,7 +4,7 @@ import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import dateFormat from "dateformat"
 import Upvote from "../components/Upvote";
 import Downvote from "../components/Downvote";
-import formatNum, { formatVotes } from "../utils/formatNum"
+import formatNum from "../utils/formatNum"
 import "../stylesheets/ThreadBox.css";
 
 const FeaturedThreadBox = ({thread}) => {
@@ -27,7 +27,8 @@ const FeaturedThreadBox = ({thread}) => {
       <p>{thread.body}</p>
       <div className="icons icons-horizontal" style={{marginBottom: "15px", marginTop: "15px"}}>
           <Upvote />
-          <span className="iconCount">{formatVotes(thread.upvotes, thread.downvotes)}</span>
+          {/* <span className="iconCount">{formatVotes(thread.upvotes, thread.downvotes)}</span> */}
+          <span className="iconCount">{formatNum(thread.votes)}</span>
           <Downvote />
           <ChatBubbleIcon fontSize="small" />
           <span className="iconCount">{formatNum(thread.comment_count)} comments</span>

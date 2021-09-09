@@ -6,7 +6,7 @@ import Upvote from "./Upvote"
 import Downvote from "./Downvote";
 import dateFormat from "dateformat"
 import Input from "./Input"
-import {formatVotes} from "../utils/formatNum";
+import formatNum from "../utils/formatNum";
 import { UserContext } from "../context/UserContext";
 import "../stylesheets/Comment.css";
 
@@ -45,7 +45,8 @@ const CommentItem = ({ comment, originalPoster, thread }) => {
       <div className="convo-container" >
         <div className="column-1 icons">
           <Upvote />
-          <span className="">{formatVotes(thread.upvotes, thread.downvotes)}</span>
+          {/* <span className="">{formatVotes(thread.upvotes, thread.downvotes)}</span> */}
+          <span className="">{formatNum(comment.votes)}</span>
           <Downvote />
           {/* <IconButton id="upvote" size="small">
           <FontAwesomeIcon icon={faArrowUp} />
