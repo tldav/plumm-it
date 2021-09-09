@@ -8,13 +8,9 @@ import "../stylesheets/Upvote.css";
 
 const Upvote = ({ thread}) => {
   const {user, isLoggedIn} = useContext(UserContext)
-  const [mark, setMark] = useState(true)
+  const [mark, setMark] = useState(false)
 
   const toggle = mark ? faCheck : faArrowUp
-
-  const clicker = (e) => {
-    setMark(!mark)
-  }
 
   const handleUpvote = async (e) => {
     e.stopPropagation()
@@ -23,20 +19,19 @@ const Upvote = ({ thread}) => {
       if (user.username && isLoggedIn){
         const response = await API.upvoteThread(thread.thread_id, {userId: user.user_id})
         console.log(response);
+        setMark(!mark)
       }   
     } catch(error) {
       console.log(error);
     }
-
-    // threadId: thread.thread_id
-    // userId: user.user_id
   }
 
   return (
-    <IconButton onClick={handleUpvote} id="upvote" title="upvote">
+    <IconButton onClick={handleUpvote} size="small" id="upvote" title="upvote">
       <FontAwesomeIcon icon={toggle}/>
     </IconButton>
   );
 };
 
 export default Upvote;
+

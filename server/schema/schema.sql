@@ -194,7 +194,7 @@ END
 
 
 -- Unsure if below is an efficient enough option. May need to re-work the above procedure. Especially if I can get nested comments working on the front end.
--- Procedure below gives additional info from the parent comment to display on the front end, which will allow an easier but less elegent way to show comment ownership. 
+-- Procedure below gives additional info from the parent comment to display on the front end, which will allow an easier but slightly less elegent way to show comment ownership. 
 
 DELIMITER //
 
