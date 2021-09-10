@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 app.use(
 	cors({
-		origin: "http://localhost/3000",
+		origin: "http://localhost/3000" || "https://plummit.herokuapp.com/",
 		methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
 		credentials: true,
 	})
