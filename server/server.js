@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(logger("dev"));
 
-app.set("trust proxy");
+// app.set("trust proxy");
 
 app.use(
 	session({
@@ -34,9 +34,7 @@ app.use(
 		cookie: {
 			// maxAge: 1000 * 60 * 60 * 24, // cookie expires in 24 hours
 			maxAge: 3600000, // cookie expires in 1 hour
-			sameSite: "none",
-			httpOnly: false,
-			secure: true,
+			sameSite: true,
 		},
 	})
 );
