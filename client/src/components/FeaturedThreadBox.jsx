@@ -26,13 +26,12 @@ const FeaturedThreadBox = ({thread}) => {
       <h2 className="thread-title">{thread.title}</h2>
       <p>{thread.body}</p>
       <div className="icons icons-horizontal" style={{marginBottom: "15px", marginTop: "15px"}}>
-          <Upvote />
-          {/* <span className="iconCount">{formatVotes(thread.upvotes, thread.downvotes)}</span> */}
-          <span className="iconCount">{formatNum(thread.votes)}</span>
-          <Downvote />
-          <ChatBubbleIcon fontSize="small" />
-          <span className="iconCount">{formatNum(thread.comment_count)} comments</span>
-        </div>
+        <Upvote />
+        <span className="iconCount">{formatNum(thread.votes)}</span>
+        <Downvote />
+        <ChatBubbleIcon fontSize="small" />
+        <span className="iconCount">{formatNum(thread.comment_count)} comments</span>
+      </div>
     </div>
   );
 };

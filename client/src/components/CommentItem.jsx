@@ -45,7 +45,6 @@ const CommentItem = ({ comment, originalPoster, thread }) => {
       <div className="convo-container" >
         <div className="column-1 icons">
           <Upvote />
-          {/* <span className="">{formatVotes(thread.upvotes, thread.downvotes)}</span> */}
           <span className="">{formatNum(comment.votes)}</span>
           <Downvote />
           {/* <IconButton id="upvote" size="small">
@@ -59,9 +58,6 @@ const CommentItem = ({ comment, originalPoster, thread }) => {
         </div>
         <div className="column-2">
           <p className="comment-heading">
-            {/* {<span className={renderConfig.isOP}>OP </span>}<span className="comment-name">{comment.username}</span> {` • ${dateFormat(comment.created_at,
-              "mmmm dS, yyyy, h:MM TT"
-            )} • ⤮ ${votes(comment.upvotes, comment.downvotes)}`} */}
             {<span className={renderConfig.isOP}>OP </span>}
             <span className="comment-name">{comment.username}</span> 
             {` • ${dateFormat(comment.created_at, "mmmm dS, yyyy, h:MM TT")}`}
