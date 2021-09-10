@@ -11,7 +11,7 @@ const API = {
 		return axios.get("/api/users/logout");
 	},
 	getCurrentUser: () => {
-		return axios.get("/api/users/current");
+		return axios.post("/api/users/current");
 	},
 	validateUsername: (username) => {
 		return axios.post("/api/users/validate", username);
