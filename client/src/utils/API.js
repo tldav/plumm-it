@@ -11,7 +11,7 @@ const API = {
 		return axios.get("/api/users/logout");
 	},
 	getCurrentUser: () => {
-		return axios.post("/api/users/current");
+		return axios.get("/api/users/current");
 	},
 	validateUsername: (username) => {
 		return axios.post("/api/users/validate", username);
@@ -53,6 +53,16 @@ const API = {
 	downvoteComment: (commentId, userId) => {
 		return axios.put("/api/comments/downvote/" + commentId, userId);
 	},
+	//***********************************experimental
+	findAllThreadVotes: (threadId) => {
+		return axios.get("/api/threads/votes/" + threadId);
+	},
+	//***********************************experimental
+	//***********************************experimental
+	findAllUserVotes: (userId) => {
+		return axios.get("/api/users/votes/" + userId);
+	},
+	//***********************************experimental
 };
 
 export default API;
