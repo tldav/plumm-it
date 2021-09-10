@@ -107,7 +107,7 @@ router.get("/logout", (req, res) => {
 });
 
 // for persisting req.user on the front end.
-router.get("/current", (req, res) => {
+router.post("/current", (req, res) => {
 	try {
 		if (!req.user) {
 			res.send("No one is currently logged in");
