@@ -28,8 +28,6 @@ const sessionConfig = process.env.JAWSDB_URL
 
 console.log("sessionConfig: ", sessionConfig);
 
-const sessionStore = new MySQLStore(sessionConfig, connection.promise, () => {
-	console.log("sessionConfig: ", sessionConfig);
-});
+const sessionStore = new MySQLStore(sessionConfig, connection.promise);
 
 module.exports = sessionStore;
