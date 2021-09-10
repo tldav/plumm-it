@@ -3,11 +3,13 @@ import IconButton from "@material-ui/core/IconButton";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowDown, faCheck } from '@fortawesome/free-solid-svg-icons'
 import { UserContext } from "../context/UserContext";
+import { ThreadContext } from "../context/ThreadContext";
 import API from "../utils/API"
 import "../stylesheets/Upvote.css";
 
 const Downvote = ({ thread }) => {
   const {user, isLoggedIn} = useContext(UserContext)
+  const {handleReturnHome} = useContext(ThreadContext)
   const [mark, setMark] = useState(false)
 
   const toggle = mark ? faCheck : faArrowDown
@@ -20,6 +22,7 @@ const Downvote = ({ thread }) => {
         const response = await API.downvoteThread(thread.thread_id, {userId: user.user_id})
         console.log(response);
         setMark(!mark)
+        handleReturnHome()
       }   
     } catch(error) {
       console.log(error);

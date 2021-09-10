@@ -5,15 +5,13 @@ import Avatar from "@material-ui/core/Avatar";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import Upvote from "../components/Upvote";
 import Downvote from "../components/Downvote";
-import formatNum, { formatVotes } from "../utils/formatNum"
+import formatNum from "../utils/formatNum"
 import { ThreadContext } from "../context/ThreadContext";
-import API from "../utils/API"
 import "../stylesheets/ThreadBox.css";
-import { UserContext } from "../context/UserContext";
 
 const ThreadBox = ({thread}) => {
   const { handleThreadSelect } = useContext(ThreadContext)
-  const {user, isLoggedIn} = useContext(UserContext)
+
   let history = useHistory();
 
   const redirectToThread = (selectedThread) => {
@@ -47,7 +45,7 @@ const ThreadBox = ({thread}) => {
         </div>
         <div className="icons icons-horizontal">
           <Upvote thread={thread} />
-          <span className="">{formatVotes(thread.upvotes, thread.downvotes)}</span>
+          <span className="">{formatNum(thread.votes)}</span>
           <Downvote thread={thread} />
           <ChatBubbleIcon fontSize="small" />
           <span className="">{formatNum(thread.comment_count)} comments</span>

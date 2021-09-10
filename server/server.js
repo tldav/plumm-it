@@ -3,7 +3,6 @@ const express = require("express");
 const session = require("express-session");
 const logger = require("morgan");
 const cors = require("cors");
-const { wakeDyno } = require("heroku-keep-awake");
 const passport = require("./config/passport");
 const sessionStore = require("./config/session");
 require("dotenv").config();
@@ -11,18 +10,8 @@ const routes = require("./routes");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const DYNO_URL = "https://plummit.herokuapp.com/";
-const opts = {
-	interval: 29,
-	logging: false,
-	stopTimes: { start: "00:00", end: "06:00" },
-};
 
 // Middleware
-// app.use((req, res, next) => {
-// 	res.header("Access-Control-Allow-Origin", "https://localhost/3000");
-// 	next();
-// });
 app.use(
 	cors({
 		origin: "http://localhost/3000",
@@ -67,6 +56,5 @@ app.use(passport.session());
 app.use("/api", routes);
 
 app.listen(PORT, () => {
-	wakeDyno(DYNO_URL, opts);
 	console.log(`Server is running on port: ${PORT}`);
 });
