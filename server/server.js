@@ -32,10 +32,12 @@ app.use(
 		cookie: {
 			// maxAge: 1000 * 60 * 60 * 24, // cookie expires in 24 hours
 			maxAge: 3600000, // cookie expires in 1 hour
-			sameSite: true,
+			sameSite: none,
 		},
 	})
 );
+
+console.log("sessionStore: ", sessionStore);
 
 // Serve static assets
 if (process.env.NODE_ENV === "production") {

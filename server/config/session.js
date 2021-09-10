@@ -26,6 +26,10 @@ const sessionConfig = process.env.JAWSDB_URL
 			expiration: 7200000,
 	  };
 
-const sessionStore = new MySQLStore(sessionConfig, connection.promise);
+console.log("sessionConfig: ", sessionConfig);
+
+const sessionStore = new MySQLStore(sessionConfig, connection.promise, () => {
+	console.log("sessionConfig: ", sessionConfig);
+});
 
 module.exports = sessionStore;
