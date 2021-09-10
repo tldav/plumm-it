@@ -108,12 +108,30 @@ router.get("/logout", (req, res) => {
 
 // for persisting req.user on the front end.
 router.post("/current", (req, res) => {
-	if (!req.user) {
-		res.send("No one is currently logged in");
-	} else {
-		const { user_id, email, username, first_name, last_name, created_at, is_active } = req.user;
-		res.json({ user_id, email, username, first_name, last_name, created_at, is_active });
+	try {
+		if (!req.user) {
+			res.send("No one is currently logged in");
+		} else {
+			const { user_id, email, username, first_name, last_name, created_at, is_active } =
+				req.user;
+			res.json({ user_id, email, username, first_name, last_name, created_at, is_active });
+		}
+	} catch (err) {
+		res.status(500).json(err);
 	}
 });
+
+//***********************************experimental
+router.get("/votes/:id", async (req, res) => {
+	const userId = req.params.id;
+
+	try {
+		const votes = await User.getUserVotes(userId);
+		res.json(votes);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+//***********************************experimental
 
 module.exports = router;
