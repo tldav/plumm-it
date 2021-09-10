@@ -23,6 +23,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(logger("dev"));
 
+app.set("trust proxy");
+
 app.use(
 	session({
 		secret: process.env.SESSION_SECRET,
@@ -34,6 +36,7 @@ app.use(
 			maxAge: 3600000, // cookie expires in 1 hour
 			sameSite: "none",
 			httpOnly: false,
+			secure: true,
 		},
 	})
 );
