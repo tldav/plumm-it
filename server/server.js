@@ -27,7 +27,7 @@ app.use(logger("dev"));
 
 app.use(
 	session({
-		secret: process.env.SESSION_SECRET,
+		secret: "achoo",
 		store: sessionStore,
 		resave: false,
 		saveUninitialized: false,
@@ -39,7 +39,7 @@ app.use(
 	})
 );
 
-console.log("sessionStore: ", sessionStore);
+console.log("sessionStore from server: ", sessionStore);
 
 // Serve static assets
 if (process.env.NODE_ENV === "production") {
