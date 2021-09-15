@@ -24,7 +24,7 @@ const sessionConfig =
 				clearExpired: true,
 				checkExpirationInterval: 900000,
 				expiration: 7200000,
-				timeout: 60 * 60 * 1000,
+				// timeout: 60 * 60 * 1000,
 		  }
 		: {
 				host: "localhost",

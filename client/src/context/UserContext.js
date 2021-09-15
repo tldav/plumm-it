@@ -9,20 +9,20 @@ const UserContextProvider = (props) => {
 	const [isSignupOpen, setIsSignupOpen] = useState(false);
 	const [isLoginOpen, setIsLoginOpen] = useState(false);
 
-	useEffect(() => {
-		const checkLoginStatus = async () => {
-			const checkedUser = await API.getCurrentUser();
+	// useEffect(() => {
+	// 	const checkLoginStatus = async () => {
+	// 		const checkedUser = await API.getCurrentUser();
 
-			if (checkedUser.data.username && !isLoggedIn) {
-				setUser(checkedUser.data);
-				setIsLoggedIn(true);
-			} else if (!checkedUser.data.username && isLoggedIn) {
-				setUser({});
-				setIsLoggedIn(false);
-			}
-		};
-		checkLoginStatus();
-	}, [isLoggedIn]);
+	// 		if (checkedUser.data.username && !isLoggedIn) {
+	// 			setUser(checkedUser.data);
+	// 			setIsLoggedIn(true);
+	// 		} else if (!checkedUser.data.username && isLoggedIn) {
+	// 			setUser({});
+	// 			setIsLoggedIn(false);
+	// 		}
+	// 	};
+	// 	checkLoginStatus();
+	// }, [isLoggedIn]);
 
 	const handleLogin = async (credentials) => {
 		try {
@@ -53,8 +53,6 @@ const UserContextProvider = (props) => {
 			console.log(error);
 		}
 	};
-
-	// const openSignupModal = () => {};
 
 	return (
 		<UserContext.Provider
