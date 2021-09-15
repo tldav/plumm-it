@@ -2,19 +2,14 @@ import React, {useState, useContext} from "react";
 import IconButton from "@material-ui/core/IconButton";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp, faCheck } from '@fortawesome/free-solid-svg-icons'
-import { useHistory } from "react-router";
 import API from "../utils/API"
 import { UserContext } from "../context/UserContext";
 import { ThreadContext } from "../context/ThreadContext";
-import "../stylesheets/Upvote.css";
 
 const Upvote = ({ thread }) => {
   const {user, isLoggedIn} = useContext(UserContext)
   const {handleReturnHome} = useContext(ThreadContext)
-
   const [mark, setMark] = useState(false)
-
-  let history = useHistory()
 
   const toggle = mark ? faCheck : faArrowUp
 
