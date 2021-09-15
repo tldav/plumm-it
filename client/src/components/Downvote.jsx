@@ -5,7 +5,7 @@ import { faArrowDown, faCheck } from '@fortawesome/free-solid-svg-icons'
 import { UserContext } from "../context/UserContext";
 import { ThreadContext } from "../context/ThreadContext";
 import API from "../utils/API"
-import "../stylesheets/Upvote.css";
+
 
 const Downvote = ({ thread }) => {
   const {user, isLoggedIn} = useContext(UserContext)
