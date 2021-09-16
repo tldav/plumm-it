@@ -24,8 +24,8 @@ const LogSignForm = ({ dialogPurpose, handleModalClose }) => {
     setUserCredentials({username: "", password: ""})
   }
 
-  const validateSubmit = async () => {
-    if (userCredentials.username.length > 0 && userCredentials.username.length < 6) {
+  const validateSignup = async () => {
+    if (userCredentials.username.length >= 0 && userCredentials.username.length < 6) {
       setLabel({
         ...label, 
         text: "Username must be at least 6 characters long.", 
@@ -34,7 +34,6 @@ const LogSignForm = ({ dialogPurpose, handleModalClose }) => {
       })
       return
     }
-
     try {
       const nameCheck = await API.validateUsername(userCredentials)
       if (nameCheck.data === "unavailable" && userCredentials.username.length >= 6) {
@@ -101,7 +100,7 @@ const LogSignForm = ({ dialogPurpose, handleModalClose }) => {
           name="username"
           value={userCredentials.username}
           onChange={handleInputChange}
-          onBlur={validateSubmit}
+          onBlur={validateSignup}
         />: 
         <TextField
           className={label.theme}

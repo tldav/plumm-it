@@ -10,7 +10,6 @@ import "../stylesheets/Modal.css"
 const Modal = ({ purpose, open, setOpen }) => {
   const {handleLogin, handleSignup, setIsSignupOpen, setIsLoginOpen} = useContext(UserContext)
 
-
   const onLoginSubmit = (userCredentials) => {
     setOpen(false)
     handleLogin(userCredentials)
@@ -20,7 +19,6 @@ const Modal = ({ purpose, open, setOpen }) => {
     setOpen(false)
     handleSignup(userCredentials)
   }
-
 
   const dialogConfig = {
     login: {
