@@ -4,16 +4,6 @@ const passport = require("passport");
 const bcrypt = require("bcrypt");
 const User = require("../models").User;
 
-// for development only
-router.get("/", async (req, res) => {
-	try {
-		const results = await User.findAll();
-		res.json(results);
-	} catch (err) {
-		res.status(500).json(err);
-	}
-});
-
 router.post("/register", async (req, res) => {
 	const { email, username, firstName, lastName, password } = req.body;
 
@@ -52,7 +42,6 @@ router.post("/register", async (req, res) => {
 router.post("/validate", async (req, res) => {
 	try {
 		const validateUser = await User.findByName(req.body.username);
-		console.log("validateUser???", validateUser);
 		if (!validateUser) {
 			res.json("available");
 		}
@@ -79,7 +68,7 @@ router.put("/:id", async (req, res) => {
 router.post("/login", (req, res, next) => {
 	passport.authenticate("local", (err, user, info) => {
 		if (err) res.status(500).json(err);
-		if (!user) res.send("Invalid username or password!");
+		if (!user) res.json("Invalid username or password!");
 		else {
 			req.login(user, (err) => {
 				if (err) res.status(500).json(err);
@@ -121,17 +110,17 @@ router.post("/current", (req, res) => {
 	}
 });
 
-//***********************************experimental
-router.get("/votes/:id", async (req, res) => {
-	const userId = req.params.id;
+//***********************************experimental*****************************
+// router.get("/votes/:id", async (req, res) => {
+// 	const userId = req.params.id;
 
-	try {
-		const votes = await User.getUserVotes(userId);
-		res.json(votes);
-	} catch (err) {
-		res.status(500).json(err);
-	}
-});
-//***********************************experimental
+// 	try {
+// 		const votes = await User.getUserVotes(userId);
+// 		res.json(votes);
+// 	} catch (err) {
+// 		res.status(500).json(err);
+// 	}
+// });
+//***********************************experimental*****************************
 
 module.exports = router;

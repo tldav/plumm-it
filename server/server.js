@@ -23,8 +23,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(logger("dev"));
 
-// app.set("trust proxy");
-
 app.use(
 	session({
 		secret: "achoo",
@@ -32,14 +30,11 @@ app.use(
 		resave: false,
 		saveUninitialized: false,
 		cookie: {
-			// maxAge: 1000 * 60 * 60 * 24, // cookie expires in 24 hours
 			maxAge: 3600000, // cookie expires in 1 hour
 			sameSite: true,
 		},
 	})
 );
-
-console.log("sessionStore from server: ", sessionStore);
 
 // Serve static assets
 if (process.env.NODE_ENV === "production") {
@@ -50,12 +45,12 @@ if (process.env.NODE_ENV === "production") {
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use((req, res, next) => {
-	console.log("***req.session: ", req.session);
-	console.log("***req.user: ", req.user);
-	console.log("\n", "\n");
-	next();
-});
+// app.use((req, res, next) => {
+// 	console.log("***req.session: ", req.session);
+// 	console.log("***req.user: ", req.user);
+// 	console.log("\n", "\n");
+// 	next();
+// });
 
 app.use("/api", routes);
 

@@ -2,14 +2,6 @@
 const connection = require("../config").database;
 
 module.exports = {
-	findAll: () => {
-		return new Promise((resolve, reject) => {
-			connection.query(`SELECT * FROM users`, (err, results) => {
-				if (err) reject(err);
-				return resolve(results);
-			});
-		});
-	},
 	create: (email, username, firstName, lastName, password) => {
 		const sql = `CALL createUser(?, ?, ?, ?, ?)`;
 		return new Promise((resolve, reject) => {
@@ -56,5 +48,17 @@ module.exports = {
 			});
 		});
 	},
+
+	//***********************************experimental*****************************
+	// getUserVotes: (userId) => {
+	// 	const sql = `SELECT * FROM thread_votes WHERE user_id = ${userId}`;
+	// 	return new Promise((resolve, reject) => {
+	// 		connection.query(sql, (err, results) => {
+	// 			if (err) reject(err);
+	// 			return resolve(results);
+	// 		});
+	// 	});
+	// },
+	//***********************************experimental*****************************
 	remove: () => {},
 };

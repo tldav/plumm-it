@@ -44,16 +44,9 @@ const CommentItem = ({ comment, originalPoster, thread }) => {
     <>
       <div className="convo-container" >
         <div className="column-1 icons">
-          <Upvote />
+          <Upvote comment={comment} location="featuredThread" />
           <span className="">{formatNum(comment.votes)}</span>
-          <Downvote />
-          {/* <IconButton id="upvote" size="small">
-          <FontAwesomeIcon icon={faArrowUp} />
-          </IconButton>
-          <p>{votes}</p>
-          <IconButton id="downvote" size="small">
-          <FontAwesomeIcon icon={faArrowDown} />
-          </IconButton> */}
+          <Downvote comment={comment} location="featuredThread"/>
           <div className="vertical-line"></div>
         </div>
         <div className="column-2">

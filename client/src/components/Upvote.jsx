@@ -6,9 +6,9 @@ import API from "../utils/API"
 import { UserContext } from "../context/UserContext";
 import { ThreadContext } from "../context/ThreadContext";
 
-const Upvote = ({ thread }) => {
+const Upvote = ({ thread, comment, location }) => {
   const {user, isLoggedIn} = useContext(UserContext)
-  const {handleReturnHome} = useContext(ThreadContext)
+  const {handleReturnHome, handleThreadSelect} = useContext(ThreadContext)
   const [mark, setMark] = useState(false)
 
   const toggle = mark ? faCheck : faArrowUp
@@ -18,10 +18,25 @@ const Upvote = ({ thread }) => {
     
     try {
       if (user.username && isLoggedIn){
-        const response = await API.upvoteThread(thread.thread_id, {userId: user.user_id})
-        console.log(response);
-        setMark(!mark)
-        handleReturnHome()
+        if (comment && !thread && location === "featuredThread") {
+          const response = await API.upvoteComment(comment.comment_id, {userId: user.user_id})
+          console.log("comment vote", response);
+          setMark(!mark)
+          handleThreadSelect(comment.thread_id)
+        }
+        if (!comment && thread && location === "featuredThread") {
+          const response = await API.upvoteThread(thread.thread_id, {userId: user.user_id})
+          console.log("featured thread vote", response);
+          setMark(!mark)
+          handleThreadSelect(thread.thread_id)
+        }
+        if (!comment && thread && location === "home") {
+          const response = await API.upvoteThread(thread.thread_id, {userId: user.user_id})
+          console.log("home thread vote", response);
+          setMark(!mark)
+          handleReturnHome()
+        }
+        
       }   
     } catch(error) {
       console.log(error);
