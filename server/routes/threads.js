@@ -94,4 +94,17 @@ router.put("/downvote/:id", async (req, res) => {
 	}
 });
 
+//***********************************experimental*****************************
+// router.get("/votes/:id", async (req, res) => {
+// 	const threadId = req.params.id;
+
+// 	try {
+// 		const votes = await Thread.getThreadVotes(threadId);
+// 		res.json(votes);
+// 	} catch (err) {
+// 		res.status(500).json(err);
+// 	}
+// });
+//***********************************experimental*****************************
+
 module.exports = router;

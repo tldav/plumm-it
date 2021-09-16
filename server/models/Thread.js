@@ -74,5 +74,17 @@ module.exports = {
 			});
 		});
 	},
+	//***********************************experimental*****************************
+	// getThreadVotes: (threadId) => {
+	// 	const sql = `SELECT * FROM thread_votes WHERE thread_id = ${threadId}`;
+	// 	return new Promise((resolve, reject) => {
+	// 		connection.query(sql, (err, results) => {
+	// 			if (err) reject(err);
+	// 			return resolve(results);
+	// 		});
+	// 	});
+	// },
+	//***********************************experimental*****************************
+
 	remove: () => {},
 };
