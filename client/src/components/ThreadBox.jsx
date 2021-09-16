@@ -44,9 +44,9 @@ const ThreadBox = ({thread}) => {
           <p>{thread.body}</p>
         </div>
         <div className="icons icons-horizontal">
-          <Upvote thread={thread} />
+          <Upvote thread={thread} location="home" />
           <span className="">{formatNum(thread.votes)}</span>
-          <Downvote thread={thread} />
+          <Downvote thread={thread} location="home" />
           <ChatBubbleIcon fontSize="small" />
           <span className="">{formatNum(thread.comment_count)} comments</span>
         </div>
