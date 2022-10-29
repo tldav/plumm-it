@@ -52,16 +52,7 @@ const API = {
 	},
 	downvoteComment: (commentId, userId) => {
 		return axios.put("/api/comments/downvote/" + commentId, userId);
-	},
-	//***********************************experimental*****************************
-	// findAllThreadVotes: (threadId) => {
-	// 	return axios.get("/api/threads/votes/" + threadId);
-	// },
-
-	// findAllUserVotes: (userId) => {
-	// 	return axios.get("/api/users/votes/" + userId);
-	// },
-	//***********************************experimental*****************************
+	}
 };
 
 export default API;
